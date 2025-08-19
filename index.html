@@ -17,8 +17,30 @@
   <meta name="twitter:title" content="Academea QAS Login" />
   <meta name="twitter:description" content="Securely log in to your Academea QAS account." />
   <meta name="twitter:image" content="https://YOUR_DOMAIN/path/to/login-preview-image.png" />
+
+<style>
+.marquee {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+.marquee {
+  display: inline-block;
+  padding-left: 100%;
+  animation: scroll-left 10s linear infinite;
+}
+
+@keyframes scroll-left {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-100%); }
+}
+</style>
+
 </head>
 <body>
-  <H1><marque>Come back soon !!!</marque></H1>
+  <div class="marquee">
+    <H1>Come back soon !!!</H1>
+ </div>
 </body>
 </html>
