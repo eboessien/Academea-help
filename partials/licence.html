@@ -1,0 +1,297 @@
+<div class="block-header mt-3">
+  <h4 class="mb-0">Dashboards</h4>
+</div>
+    <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #6c757d;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #5a5c69;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            color: #444;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 700;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .pricing-card {
+            transition: transform 0.3s;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .support-channel {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(78, 115, 223, 0.1);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+        }
+        
+        .badge {
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 20px;
+        }
+        
+        .main-footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--dark);
+        }
+        
+        .page-title {
+            color: #2c304d;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .page-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            border-radius: 2px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2a3e9d 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+        }
+        
+        .academea-logo {
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .academea-logo span {
+            color: #ffcc00;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, #f8f9fc 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+        <section id="licenses" class="mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-title">Licensing Options</h2>
+                    <p class="lead mb-4">Choose the right license for your educational institution's needs</p>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-primary">
+                                All licenses include future updates and technical support. Educational discounts available for accredited institutions.
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 pricing-card border-primary">
+                                        <div class="card-header bg-primary text-white text-center">
+                                            <h5 class="mb-0">Basic License</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title pricing-card-title">GHS 0/term</h3>
+                                            <ul class="feature-list mt-3 mb-4">
+                                                <li>100 students</li>
+                                                <li>Student Management</li>
+                                                <li>Staff Management</li>
+                                                <li>Account Management</li>
+                                                <li>Billing System</li>
+                                                <li>Basic Reports</li>
+                                                <li>Admin Panel</li>
+                                                <li>Email support</li>
+                                                <li>Core features only</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-primary btn-lg w-100">Get Started</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 pricing-card border-success">
+                                        <div class="card-header bg-success text-white text-center">
+                                            <h5 class="mb-0">Standard License</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title pricing-card-title">GHS 300/term</h3>
+                                            <ul class="feature-list mt-3 mb-4">
+                                                <li>SMS Integration</li>
+                                                <li>Advanced Academics</li>
+                                                <li>Feeding Fee Management</li>
+                                                <li>Multiple users</li>
+                                                <li>Advanced Billing</li>
+                                                <li>Detailed Reports</li>
+                                                <li>Admin Panel</li>
+                                                <li>Priority Support</li>
+                                                <li>All features in basic package</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-success btn-lg w-100">Get Started</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 pricing-card border-info">
+                                        <div class="card-header bg-info text-white text-center">
+                                            <h5 class="mb-0">Advanced License</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title pricing-card-title">GHS 500/term</h3>
+                                            <ul class="feature-list mt-3 mb-4">
+                                                <li>Unlimited SMS</li>
+                                                <li>Comprehensive Academics</li>
+                                                <li>Feeding Fee Management</li>
+                                                <li>Unlimited users</li>
+                                                <li>Parents Dashboard</li>
+                                                <li>Chat Support</li>
+                                                <li>Custom Grading System</li>
+                                                <li>24/7 Premium Support</li>
+                                                <li>All features in Standard package</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-info btn-lg w-100">Contact Sales</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>License Terms & Conditions</h5>
+                                <div class="alert alert-light" role="alert">
+                                    <p>By purchasing an AcademEA license, you agree to the following terms:</p>
+                                    <ul class="feature-list">
+                                        <li>Licenses are for a term and auto-renew unless canceled</li>
+                                        <li>Support includes bug fixes and technical assistance</li>
+                                        <li>Customizations are available at additional cost</li>
+                                        <li>License keys are institution-specific</li>
+                                        <li>All licenses include access to future updates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>

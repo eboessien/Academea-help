@@ -27576,3 +27576,89 @@ button.btn-close {
 	background-color: #f3f6f8;
 	border-radius: 0.35rem;
 }
+
+
+
+
+/********************************side bar *****************/
+
+/* Sidebar base */
+.sidebar {
+  width: 250px;
+  height: 100vh;
+  background: #f8f9fa; /* light */
+  color: #212529;
+  position: fixed;
+  left: 0;
+  top: 0;
+  transition: all 0.3s ease;
+}
+.sidebar a {
+  color: #212529;
+  text-decoration: none;
+}
+.sidebar a:hover {
+  background: #f8f9fa;
+}
+
+
+.sidebar .list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar .list li {
+  position: relative;
+}
+
+.sidebar .list a {
+  display: block;
+  padding: 10px 20px;
+  color: #fff;
+  text-decoration: none;
+}
+
+.sidebar .list a:hover {
+  background: #57606f;
+}
+
+/* Submenu */
+.submenu-list {
+  display: none; /* hidden by default */
+  list-style: none;
+  padding-left: 20px;
+  background: #404b5a;
+}
+
+.submenu-list li a {
+  font-size: 14px;
+  padding: 8px 20px;
+}
+
+/* When active */
+.submenu.active > .submenu-list {
+  display: block;
+}
+
+.sidebar .submenu {
+  display: none;
+  list-style: none;
+  padding-left: 20px;
+}
+
+.sidebar .submenu li a {
+  font-size: 14px;
+  display: block;
+  padding: 8px 15px;
+  color: #ccc;
+}
+
+.sidebar .submenu li a:hover {
+  background: #444;
+  color: #fff;
+}
+
+.has-submenu.open > .submenu {
+  display: block;
+}

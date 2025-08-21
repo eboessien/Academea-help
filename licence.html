@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademEA - Support & Licensing</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #6c757d;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #5a5c69;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Nunito', 'Segoe UI', sans-serif;
+            color: #444;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .navbar-brand {
+            font-weight: 800;
+            color: white !important;
+            font-size: 1.5rem;
+        }
+        
+        .nav-link {
+            color: rgba(255, 255, 255, 0.8) !important;
+            font-weight: 600;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover {
+            color: white !important;
+            transform: translateY(-2px);
+        }
+        
+        .card {
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            margin-bottom: 24px;
+            border: none;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+        }
+        
+        .card-header {
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px 10px 0 0 !important;
+            font-weight: 700;
+        }
+        
+        .card-body {
+            padding: 25px;
+        }
+        
+        .pricing-card {
+            transition: transform 0.3s;
+            height: 100%;
+            border: 2px solid transparent;
+        }
+        
+        .pricing-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        
+        .support-channel {
+            padding: 15px;
+            border-radius: 8px;
+            background-color: rgba(78, 115, 223, 0.1);
+            margin-bottom: 15px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .icon-circle {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+        }
+        
+        .badge {
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 20px;
+        }
+        
+        .main-footer {
+            background-color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-top: 30px;
+            border-top: 1px solid rgba(0, 0, 0, 0.05);
+            color: var(--dark);
+        }
+        
+        .page-title {
+            color: #2c304d;
+            font-weight: 700;
+            margin-bottom: 25px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        .page-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            border-radius: 2px;
+        }
+        
+        .feature-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        .feature-list li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        
+        .feature-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: var(--success);
+            font-weight: bold;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            border: none;
+            padding: 10px 20px;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            background: linear-gradient(135deg, #2a3e9d 0%, var(--primary) 100%);
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(78, 115, 223, 0.3);
+        }
+        
+        .hero-section {
+            background: linear-gradient(135deg, var(--primary) 0%, #2a3e9d 100%);
+            color: white;
+            padding: 60px 0;
+            border-radius: 0 0 30px 30px;
+            margin-bottom: 40px;
+        }
+        
+        .academea-logo {
+            font-weight: 800;
+            font-size: 2.5rem;
+            color: white;
+            text-decoration: none;
+        }
+        
+        .academea-logo span {
+            color: #ffcc00;
+        }
+        
+        .contact-info-card {
+            background: linear-gradient(135deg, #f8f9fc 0%, #e9ecef 100%);
+            border-radius: 10px;
+            padding: 25px;
+            height: 100%;
+        }
+        
+        .contact-form {
+            background: white;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+	<nav class="navbar navbar-expand-lg navbar-dark">
+		<div class="container">
+			<a class="navbar-brand academea-logo" href="#"></a>
+				<img src="assets/images/logo.png" alt="AcademEA Logo" height="48" style="display:inline-block; vertical-align:middle;">
+			</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarContent">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#licenses"><i class="fas fa-key me-1"></i> Licenses</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#support"><i class="fas fa-headset me-1"></i> Support</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact"><i class="fas fa-envelope me-1"></i> Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container text-center">
+            <h1 class="display-4 fw-bold mb-3">AcademEA Support & Licensing</h1>
+            <p class="lead mb-4">Empowering educational institutions with cutting-edge management solutions</p>
+            <a href="#licenses" class="btn btn-light btn-lg px-4 py-2 fw-bold">View Licensing Options</a>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="container py-5">
+        <!-- Licenses Section -->
+        <section id="licenses" class="mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-title">Licensing Options</h2>
+                    <p class="lead mb-4">Choose the right license for your educational institution's needs</p>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-primary">
+                                All licenses include future updates and technical support. Educational discounts available for accredited institutions.
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 pricing-card border-primary">
+                                        <div class="card-header bg-primary text-white text-center">
+                                            <h5 class="mb-0">Basic License</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title pricing-card-title">GHS 0/term</h3>
+                                            <ul class="feature-list mt-3 mb-4">
+                                                <li>100 students</li>
+                                                <li>Student Management</li>
+                                                <li>Staff Management</li>
+                                                <li>Account Management</li>
+                                                <li>Billing System</li>
+                                                <li>Basic Reports</li>
+                                                <li>Admin Panel</li>
+                                                <li>Email support</li>
+                                                <li>Core features only</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-primary btn-lg w-100">Get Started</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 pricing-card border-success">
+                                        <div class="card-header bg-success text-white text-center">
+                                            <h5 class="mb-0">Standard License</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title pricing-card-title">GHS 300/term</h3>
+                                            <ul class="feature-list mt-3 mb-4">
+                                                <li>SMS Integration</li>
+                                                <li>Advanced Academics</li>
+                                                <li>Feeding Fee Management</li>
+                                                <li>Multiple users</li>
+                                                <li>Advanced Billing</li>
+                                                <li>Detailed Reports</li>
+                                                <li>Admin Panel</li>
+                                                <li>Priority Support</li>
+                                                <li>All features in basic package</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-success btn-lg w-100">Get Started</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4 mb-4">
+                                    <div class="card h-100 pricing-card border-info">
+                                        <div class="card-header bg-info text-white text-center">
+                                            <h5 class="mb-0">Advanced License</h5>
+                                        </div>
+                                        <div class="card-body">
+                                            <h3 class="card-title pricing-card-title">GHS 500/term</h3>
+                                            <ul class="feature-list mt-3 mb-4">
+                                                <li>Unlimited SMS</li>
+                                                <li>Comprehensive Academics</li>
+                                                <li>Feeding Fee Management</li>
+                                                <li>Unlimited users</li>
+                                                <li>Parents Dashboard</li>
+                                                <li>Chat Support</li>
+                                                <li>Custom Grading System</li>
+                                                <li>24/7 Premium Support</li>
+                                                <li>All features in Standard package</li>
+                                            </ul>
+                                            <button type="button" class="btn btn-info btn-lg w-100">Contact Sales</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-4">
+                                <h5>License Terms & Conditions</h5>
+                                <div class="alert alert-light" role="alert">
+                                    <p>By purchasing an AcademEA license, you agree to the following terms:</p>
+                                    <ul class="feature-list">
+                                        <li>Licenses are for a term and auto-renew unless canceled</li>
+                                        <li>Support includes bug fixes and technical assistance</li>
+                                        <li>Customizations are available at additional cost</li>
+                                        <li>License keys are institution-specific</li>
+                                        <li>All licenses include access to future updates</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section id="support" class="mb-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-title">Support Center</h2>
+                    <p class="lead mb-4">We provide comprehensive support for our users with multiple channels for assistance</p>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="alert alert-success" role="alert">
+                                <h5 class="alert-heading"><i class="fas fa-star me-2"></i>Dedicated Support</h5>
+                                We provide premium support for our paid users. Our average response time is under 2 hours during business days.
+                            </div>
+                            
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <h6 class="mb-0"><i class="fas fa-headphones me-2"></i> Support Channels</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="d-flex align-items-center mb-3 support-channel">
+                                                <div class="icon-circle">
+                                                    <i class="fas fa-envelope text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Email Support</h6>
+                                                    <p class="text-muted mb-0">support@eatechnologies.tech</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center mb-3 support-channel">
+                                                <div class="icon-circle">
+                                                    <i class="fas fa-phone text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Phone Support</h6>
+                                                    <p class="text-muted mb-0">+233 50 128 2006</p>
+                                                    <p class="text-muted mb-0">+233 50 128 2008</p>
+                                                    <p class="text-muted mb-0">+233 50 169 6167</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center mb-3 support-channel">
+                                                <div class="icon-circle">
+                                                    <i class="fas fa-book text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Knowledge Base</h6>
+                                                    <p class="text-muted mb-0">Comprehensive guides & tutorials</p>
+                                                </div>
+                                            </div>
+                                            
+                                            <div class="d-flex align-items-center support-channel">
+                                                <div class="icon-circle">
+                                                    <i class="fas fa-video text-white"></i>
+                                                </div>
+                                                <div>
+                                                    <h6 class="mb-0">Video Tutorials</h6>
+                                                    <p class="text-muted mb-0">Step-by-step video guides</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <div class="card mb-4">
+                                        <div class="card-header">
+                                            <h6 class="mb-0"><i class="fas fa-clock me-2"></i> Support Hours</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <table class="table table-bordered">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Day</th>
+                                                        <th>Hours</th>
+                                                        <th>Availability</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Monday - Friday</td>
+                                                        <td>8:00 AM - 5:00 PM</td>
+                                                        <td><span class="badge bg-success">Full Support</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Saturday</td>
+                                                        <td>9:00 AM - 1:00 PM</td>
+                                                        <td><span class="badge bg-warning">Limited Support</span></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Sunday</td>
+                                                        <td>Emergency Only</td>
+                                                        <td><span class="badge bg-danger">On Call</span></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                            
+                                            <div class="alert alert-info mt-3" role="alert">
+                                                <strong>Emergency Support:</strong> For critical issues outside business hours, call our emergency line at <strong>+233 50 169 6167</strong>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="row mt-4">
+                                <div class="col-md-12">
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h6 class="mb-0"><i class="fas fa-question-circle me-2"></i> Frequently Asked Questions</h6>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="accordion" id="faqAccordion">
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingOne">
+                                                        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                                            How do I activate my license?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#faqAccordion">
+                                                        <div class="accordion-body">
+                                                            After purchasing, you'll receive a license key via email. Log into your AcademEA account and enter the key in the License section of your dashboard to activate your subscription.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingTwo">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                                            What's included in technical support?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                                        <div class="accordion-body">
+                                                            Our technical support includes troubleshooting, bug fixes, and guidance on using AcademEA features. It does not include custom development or data migration services, which are available at an additional cost.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="accordion-item">
+                                                    <h2 class="accordion-header" id="headingThree">
+                                                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                                            Can I upgrade my license later?
+                                                        </button>
+                                                    </h2>
+                                                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+                                                        <div class="accordion-body">
+                                                            Yes, you can upgrade your license at any time. The cost will be prorated based on the time remaining on your current subscription. Contact our sales team for assistance with upgrades.
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2 class="page-title">Contact Information</h2>
+                    <p class="lead mb-4">Reach out to us through any of these channels</p>
+                    
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-lg-6 mb-4">
+                                    <div class="contact-info-card">
+                                        <h4 class="mb-4"><i class="fas fa-map-marker-alt me-2"></i> Our Location</h4>
+                                        <p class="mb-4">
+                                            1st Floor, Milli Plaza,<br>
+                                            Community School Junction,<br>
+                                            Adenta Housing, Accra
+                                        </p>
+                                        
+                                        <h4 class="mb-3"><i class="fas fa-phone me-2"></i> Phone Numbers</h4>
+                                        <p class="mb-2">+233 50 128 2006</p>
+                                        <p class="mb-2">+233 50 128 2008</p>
+                                        <p class="mb-4">+233 50 169 6167</p>
+                                        
+                                        <h4 class="mb-3"><i class="fas fa-envelope me-2"></i> Email Addresses</h4>
+                                        <p class="mb-2">info@eatechnologies.tech</p>
+                                        <p class="mb-4">support@eatechnologies.tech</p>
+                                        
+                                        <h4 class="mb-3"><i class="fas fa-clock me-2"></i> Business Hours</h4>
+                                        <p class="mb-0">Monday - Friday: 8am - 5pm</p>
+                                    </div>
+                                </div>
+                                
+                                <div class="col-lg-6">
+                                    <div class="contact-form">
+                                        <h4 class="mb-4">Send Us a Message</h4>
+                                        <form>
+                                            <div class="mb-3">
+                                                <label for="name" class="form-label">Name</label>
+                                                <input type="text" class="form-control" id="name" placeholder="Your Name">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email" placeholder="Your Email">
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="message" class="form-label">Message</label>
+                                                <textarea class="form-control" id="message" rows="5" placeholder="Your Message"></textarea>
+                                            </div>
+                                            <button type="submit" class="btn btn-primary btn-lg w-100">Send Message</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="alert alert-secondary mt-4" role="alert">
+                                <h6 class="alert-heading">Before Contacting Support</h6>
+                                <p class="mb-0">Please have your license key and system information ready. This helps us resolve your issue faster. For technical issues, screenshots or screen recordings can significantly reduce resolution time.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <p>Copyright &copy; 2019-2025 <strong>EA Technologies Limited</strong>. All rights reserved.</p>
+                    <p class="mb-0">Designed for educational institutions worldwide</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap & jQuery JS -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script>
+        $(document).ready(function() {
+            // Smooth scrolling for anchor links
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if(target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top - 70
+                    }, 1000);
+                }
+            });
+            
+            // Highlight active nav link
+            $(window).scroll(function() {
+                var scrollDistance = $(window).scrollTop();
+                
+                // Add/remove active class based on section visibility
+                $('section').each(function(i) {
+                    if ($(this).position().top - 71 <= scrollDistance) {
+                        $('.nav-link.active').removeClass('active');
+                        $('.nav-link').eq(i).addClass('active');
+                    }
+                });
+            });
+            
+            // Add animation to cards when they come into view
+            function animateCards() {
+                $('.card').each(function() {
+                    var position = $(this).offset().top;
+                    var scroll = $(window).scrollTop();
+                    var windowHeight = $(window).height();
+                    
+                    if (position < scroll + windowHeight - 100) {
+                        $(this).addClass('animate__animated animate__fadeInUp');
+                    }
+                });
+            }
+            
+            // Initial call
+            animateCards();
+            
+            // Call on scroll
+            $(window).scroll(function() {
+                animateCards();
+            });
+        });
+    </script>
+</body>
+</html>
