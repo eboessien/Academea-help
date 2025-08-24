@@ -1,4 +1,632 @@
-<div class="block-header mt-3">
-  <h4 class="mb-0">All Students</h4>
-</div>
-    
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Students - Student Management System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5d3c64;
+            --secondary: #ebedef;
+            --accent: #4e73df;
+            --light: #f8f9fa;
+            --dark: #2e3a59;
+        }
+        
+        body {
+            background-color: #f5f7fb;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+        
+        .school-header {
+            background: linear-gradient(90deg, var(--primary) 0%, var(--dark) 100%);
+            color: white;
+            padding: 15px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .sidebar {
+            background-color: var(--primary);
+            color: white;
+            min-height: calc(100vh - 80px);
+            position: sticky;
+            top: 80px;
+            box-shadow: 3px 0 10px rgba(0, 0, 0, 0.16);
+        }
+        
+        .sidebar .nav-link {
+            color: rgba(255, 255, 255, 0.8);
+            padding: 12px 20px;
+            margin: 4px 0;
+            border-left: 3px solid transparent;
+            transition: all 0.3s;
+        }
+        
+        .sidebar .nav-link:hover, .sidebar .nav-link.active {
+            color: white;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-left: 3px solid var(--accent);
+        }
+        
+        .sidebar .nav-link i {
+            width: 25px;
+            margin-right: 10px;
+        }
+        
+        .main-content {
+            padding: 20px;
+            min-height: calc(100vh - 80px);
+        }
+        
+        .card {
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.175);
+            margin-bottom: 20px;
+            border: none;
+        }
+        
+        .card-header {
+            background-color: white;
+            border-bottom: 1px solid #e3e6f0;
+            font-weight: 600;
+            padding: 15px 20px;
+            border-radius: 8px 8px 0 0 !important;
+        }
+        
+        .table-container {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.201);
+        }
+        
+        .table th {
+            background-color: var(--secondary);
+            font-weight: 600;
+            padding: 12px 15px;
+        }
+        
+        .table td {
+            padding: 12px 15px;
+            vertical-align: middle;
+        }
+        
+        .btn-primary {
+            background-color: var(--accent);
+            border-color: var(--accent);
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a59df;
+            border-color: #3a59df;
+        }
+        
+        .action-buttons .btn {
+            padding: 0.25rem 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .form-label {
+            font-weight: 500;
+        }
+        
+        .stats-box {
+            text-align: center;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            color: white;
+        }
+        
+        .stats-box.primary {
+            background: linear-gradient(90deg, var(--accent) 0%, #6f8bf1 100%);
+        }
+        
+        .stats-box.success {
+            background: linear-gradient(90deg, #1cc88a 0%, #4ee4b2 100%);
+        }
+        
+        .stats-box.warning {
+            background: linear-gradient(90deg, #f6c23e 0%, #f9d780 100%);
+        }
+        
+        .stats-box.info {
+            background: linear-gradient(90deg, #36b9cc 0%, #70d0e0 100%);
+        }
+        
+        .stats-box h2 {
+            font-size: 1.8rem;
+            margin: 0;
+        }
+        
+        .stats-box p {
+            margin: 5px 0 0;
+            font-size: 0.9rem;
+        }
+        
+        .pagination {
+            margin: 20px 0 0;
+        }
+        
+        .student-id {
+            font-weight: 600;
+            color: var(--accent);
+        }
+        
+        .copyright {
+            padding: 15px 0;
+            text-align: center;
+            color: #6e707e;
+            font-size: 0.9rem;
+            border-top: 1px solid #e3e6f0;
+            margin-top: 20px;
+        }
+        
+        .search-box {
+            max-width: 300px;
+        }
+        
+        .student-detail-label {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .filter-bar {
+            background-color: white;
+            padding: 15px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="school-header">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-md-6">
+                    <div class="d-flex align-items-center">
+                        <img src='/assets/images/logo.png' alt="School Crest" class="me-3 rounded-circle" style="width: 100px; height: 100px; object-fit: contain;>
+                        <h3 class="mb-0">Student Management System</h3>
+                    </div>
+                </div>
+                <div class="col-md-6 text-end">
+                    <div class="dropdown">
+                        <button class="btn btn-outline-light dropdown-toggle" type="button" id="userMenu" data-bs-toggle="dropdown">
+                            <i class="fas fa-user-circle me-1"></i>Admin User
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i>Profile</a></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i>Settings</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container-fluid">
+        <div class="row">
+            <!-- Sidebar -->
+            <div class="col-md-2 sidebar p-0">
+                <nav class="nav flex-column py-3">
+                    <a class="nav-link" href="dashboard.html">
+                        <i class="fas fa-tachometer-alt"></i> Dashboard
+                    </a>
+                    <a class="nav-link active" href="allstudent.html">
+                        <i class="fas fa-users"></i> All Students
+                    </a>
+                    <a class="nav-link" href="currentstudent.html">
+                        <i class="fas fa-user-graduate"></i> Current Students
+                    </a>
+                    <a class="nav-link" href="addstudent.html">
+                        <i class="fas fa-user-plus"></i> Add Student
+                    </a>
+                    <a class="nav-link" href="oldstudents.html">
+                        <i class="fas fa-user-clock"></i> Old Students
+                    </a>
+                    <a class="nav-link" href="new-students.html">
+                        <i class="fas fa-user-plus"></i> New Students
+                    </a>
+                    <a class="nav-link" href="scholarship-students.html">
+                        <i class="fas fa-award"></i> Student Scholarship
+                    </a>
+                    <a class="nav-link" href="accounts.html">
+                        <i class="fas fa-money-check"></i> Accounts
+                    </a>
+                    <a class="nav-link" href="staff.html">
+                        <i class="fas fa-user-tie"></i> Staff
+                    </a>
+                    <a class="nav-link" href="reports.html">
+                        <i class="fas fa-chart-bar"></i> Reports
+                    </a>
+                </nav>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-md-10 main-content">
+                <!-- All Students Page -->
+                <div class="page-content active" id="all-students-page">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="mb-0">All Students</h4>
+                        <a href="addstudent.html" class="btn btn-primary">
+                            <i class="fas fa-plus-circle me-1"></i> Add Student
+                        </a>
+                    </div>
+
+                    <!-- Filter Bar -->
+                    <div class="filter-bar">
+                        <div class="row">
+                            <div class="col-md-3 mb-2">
+                                <input type="text" class="form-control" placeholder="Search by name..." id="all-search-name">
+                            </div>
+                            <div class="col-md-2 mb-2">
+                                <select class="form-select" id="all-filter-class">
+                                    <option value="">All Classes</option>
+                                    <option value="J H S 1">J H S 1</option>
+                                    <option value="J H S 2">J H S 2</option>
+                                    <option value="J H S 3">J H S 3</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 mb-2">
+                                <select class="form-select" id="all-filter-program">
+                                    <option value="">All Programs</option>
+                                    <option value="Basic">Basic</option>
+                                    <option value="Pre-School">Pre-School</option>
+                                </select>
+                            </div>
+                            <div class="col-md-2 mb-2">
+                                <select class="form-select" id="all-filter-status">
+                                    <option value="">All Status</option>
+                                    <option value="current">Current</option>
+                                    <option value="new">New</option>
+                                    <option value="old">Old</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3 mb-2 text-end">
+                                <button class="btn btn-outline-secondary" id="all-reset-filters">
+                                    <i class="fas fa-sync-alt me-1"></i> Reset Filters
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-header d-flex justify-content-between align-items-center">
+                            <span>All Students</span>
+                            <div>
+                                <button class="btn btn-sm btn-outline-secondary" id="all-toggle-columns">
+                                    <i class="fas fa-eye me-1"></i> Columns
+                                </button>
+                                <div class="btn-group ms-2">
+                                    <button type="button" class="btn btn-sm btn-outline-primary">Export</button>
+                                    <button type="button" class="btn btn-sm btn-outline-primary dropdown-toggle dropdown-toggle-split" data-bs-toggle="dropdown">
+                                        <span class="visually-hidden">Toggle Dropdown</span>
+                                    </button>
+                                    <div class="dropdown-menu">
+                                        <a class="dropdown-item" href="#">PDF</a>
+                                        <a class="dropdown-item" href="#">Excel</a>
+                                        <a class="dropdown-item" href="#">CSV</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-hover" id="all-students-table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>STUDENT ID</th>
+                                            <th>FIRST NAME</th>
+                                            <th>MIDDLE NAME</th>
+                                            <th>LAST NAME</th>
+                                            <th>GENDER</th>
+                                            <th>PROGRAMME</th>
+                                            <th>CLASS</th>
+                                            <th>STATUS</th>
+                                            <th>ACTIONS</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <!-- All students data will be populated here -->
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <!-- Pagination -->
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination justify-content-end">
+                                    <li class="page-item disabled">
+                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
+                                    </li>
+                                    <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                                    <li class="page-item">
+                                        <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Copyright Notice -->
+                <div class="copyright">
+                    Copyright © Designed & Developed by EAtechnologies 2025
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- View Student Modal -->
+    <div class="modal fade" id="viewStudentModal" tabindex="-1" aria-labelledby="viewStudentModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="viewStudentModalLabel">Student Details</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row mb-4">
+                        <div class="col-md-8">
+                            <h4 id="viewStudentName"></h4>
+                            <p class="text-muted student-id" id="viewStudentId"></p>
+                        </div>
+                        <div class="col-md-4 text-end">
+                            <span class="badge bg-success" id="viewStudentStatus">Current Student</span>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h6>Personal Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="40%">Gender</th>
+                                    <td id="viewGender"></td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Birth</th>
+                                    <td id="viewDob"></td>
+                                </tr>
+                                <tr>
+                                    <th>Nationality</th>
+                                    <td id="viewNationality"></td>
+                                </tr>
+                                <tr>
+                                    <th>House</th>
+                                    <td id="viewHouse"></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="col-md-6">
+                            <h6>Academic Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="40%">Programme</th>
+                                    <td id="viewProgram"></td>
+                                </tr>
+                                <tr>
+                                    <th>Class</th>
+                                    <td id="viewClass"></td>
+                                </tr>
+                                <tr>
+                                    <th>Residency</th>
+                                    <td id="viewResidency"></td>
+                                </tr>
+                                <tr>
+                                    <th>Admission Year</th>
+                                    <td id="viewAdmissionYear"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="row mt-3">
+                        <div class="col-md-6">
+                            <h6>Contact Information</h6>
+                            <table class="table table-sm">
+                                <tr>
+                                    <th width="40%">Email</th>
+                                    <td id="viewEmail"></td>
+                                </tr>
+                                <tr>
+                                    <th>Phone</th>
+                                    <td id="viewPhone"></td>
+                                </tr>
+                                <tr>
+                                    <th>Postal Address</th>
+                                    <td id="viewAddress"></td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="editStudentBtn">Edit Student</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Function to get students from localStorage
+        function getStudents() {
+            return JSON.parse(localStorage.getItem('students')) || [];
+        }
+
+        // Function to render students table
+        function renderStudentsTable() {
+            const tableBody = document.querySelector('#all-students-table tbody');
+            tableBody.innerHTML = '';
+            
+            const students = getStudents();
+            
+            // Get filter values
+            const nameFilter = document.getElementById('all-search-name').value.toLowerCase();
+            const classFilter = document.getElementById('all-filter-class').value;
+            const programFilter = document.getElementById('all-filter-program').value;
+            const statusFilter = document.getElementById('all-filter-status').value;
+            
+            // Filter students
+            const filteredStudents = students.filter(student => {
+                const fullName = `${student.firstName} ${student.middleName} ${student.lastName}`.toLowerCase();
+                return (
+                    fullName.includes(nameFilter) &&
+                    (classFilter === '' || student.class === classFilter) &&
+                    (programFilter === '' || student.program === programFilter) &&
+                    (statusFilter === '' || student.status === statusFilter)
+                );
+            });
+            
+            filteredStudents.forEach((student, index) => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${index + 1}</td>
+                    <td class="student-id">${student.studentId}</td>
+                    <td>${student.firstName}</td>
+                    <td>${student.middleName}</td>
+                    <td>${student.lastName}</td>
+                    <td>${student.gender}</td>
+                    <td>${student.program}</td>
+                    <td>${student.class}</td>
+                    <td><span class="badge ${student.status === 'current' ? 'bg-success' : student.status === 'new' ? 'bg-warning' : 'bg-secondary'}">${student.status.charAt(0).toUpperCase() + student.status.slice(1)}</span></td>
+                    <td class="action-buttons">
+                        <button class="btn btn-sm btn-info view-student" data-id="${student.id}">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                        <button class="btn btn-sm btn-warning edit-student" data-id="${student.id}">
+                            <i class="fas fa-edit"></i>
+                        </button>
+                        <button class="btn btn-sm btn-danger delete-student" data-id="${student.id}">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </td>
+                `;
+                
+                tableBody.appendChild(row);
+            });
+            
+            // Add event listeners to action buttons
+            document.querySelectorAll('.view-student').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const studentId = e.currentTarget.getAttribute('data-id');
+                    viewStudent(studentId);
+                });
+            });
+            
+            document.querySelectorAll('.edit-student').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const studentId = e.currentTarget.getAttribute('data-id');
+                    editStudent(studentId);
+                });
+            });
+            
+            document.querySelectorAll('.delete-student').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const studentId = e.currentTarget.getAttribute('data-id');
+                    deleteStudent(studentId);
+                });
+            });
+        }
+
+        // Function to view student details
+        function viewStudent(studentId) {
+            const students = getStudents();
+            const student = students.find(s => s.id == studentId);
+            
+            if (student) {
+                document.getElementById('viewStudentName').textContent = 
+                    `${student.firstName} ${student.middleName} ${student.lastName}`;
+                document.getElementById('viewStudentId').textContent = student.studentId;
+                document.getElementById('viewGender').textContent = student.gender;
+                document.getElementById('viewDob').textContent = student.dob;
+                document.getElementById('viewNationality').textContent = student.nationality;
+                document.getElementById('viewHouse').textContent = student.house;
+                document.getElementById('viewProgram').textContent = student.program;
+                document.getElementById('viewClass').textContent = student.class;
+                document.getElementById('viewResidency').textContent = student.residency;
+                document.getElementById('viewAdmissionYear').textContent = student.admissionYear;
+                document.getElementById('viewEmail').textContent = student.email || 'N/A';
+                document.getElementById('viewPhone').textContent = student.phone;
+                document.getElementById('viewAddress').textContent = student.address;
+                
+                // Set status badge
+                const statusBadge = document.getElementById('viewStudentStatus');
+                statusBadge.textContent = student.status.charAt(0).toUpperCase() + student.status.slice(1) + ' Student';
+                if (student.status === 'new') {
+                    statusBadge.className = 'badge bg-warning';
+                } else if (student.status === 'old') {
+                    statusBadge.className = 'badge bg-secondary';
+                } else {
+                    statusBadge.className = 'badge bg-success';
+                }
+                
+                // Set up edit button
+                document.getElementById('editStudentBtn').onclick = function() {
+                    editStudent(studentId);
+                };
+                
+                const viewModal = new bootstrap.Modal(document.getElementById('viewStudentModal'));
+                viewModal.show();
+            }
+        }
+
+        // Function to edit student
+        function editStudent(studentId) {
+            // Store the student ID to edit in sessionStorage
+            sessionStorage.setItem('editStudentId', studentId);
+            // Redirect to add-student page
+            window.location.href = 'add-student.html';
+        }
+
+        // Function to delete student
+        function deleteStudent(studentId) {
+            if (confirm('Are you sure you want to delete this student?')) {
+                let students = getStudents();
+                students = students.filter(s => s.id != studentId);
+                localStorage.setItem('students', JSON.stringify(students));
+                renderStudentsTable();
+            }
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', function() {
+            // Render the student table
+            renderStudentsTable();
+            
+            // Set up filter event listeners
+            document.getElementById('all-search-name').addEventListener('input', renderStudentsTable);
+            document.getElementById('all-filter-class').addEventListener('change', renderStudentsTable);
+            document.getElementById('all-filter-program').addEventListener('change', renderStudentsTable);
+            document.getElementById('all-filter-status').addEventListener('change', renderStudentsTable);
+            
+            // Reset filters button
+            document.getElementById('all-reset-filters').addEventListener('click', function() {
+                document.getElementById('all-search-name').value = '';
+                document.getElementById('all-filter-class').value = '';
+                document.getElementById('all-filter-program').value = '';
+                document.getElementById('all-filter-status').value = '';
+                renderStudentsTable();
+            });
+            
+            // Initialize tooltips
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+</body>
+</html>
