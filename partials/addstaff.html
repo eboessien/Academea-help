@@ -1,851 +1,161 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academea Help</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2{
+            color: #1a4dab;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 3px solid #1a4dab;
+            margin-bottom: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid #cce0ff;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
+
 <body>
-
-<!-- Top Header -->
-<div class="top-header">
-  <div class="d-flex align-items-center justify-content-between">
-    <div class="d-flex align-items-center">
-      <button class="sidebar-toggle d-lg-none" onclick="toggleSidebar()">
-        <i class="fas fa-bars"></i>
-      </button>
-      <div class="logo d-flex align-items-center ms-3">
-        <div class="logo-icon">
-          <i class="fas fa-graduation-cap"></i>
-        </div>
-        <span class="logo-text ms-2">AcademEA</span>
-      </div>
-    </div>
-    <div class="header-actions d-flex align-items-center">
-      <div class="search-box me-3">
-        <i class="fas fa-search"></i>
-        <input type="text" placeholder="Search">
-      </div>
-      <div class="header-icons">
-        <i class="fas fa-bell me-3"></i>
-        <i class="fas fa-user-circle"></i>
-        <span class="ms-2">Tools</span>
-      </div>
-    </div>
-  </div>
-</div>
-
-<!-- Sidebar -->
-<div class="sidebar" id="sidebar">
-  <div class="sidebar-content">
-    <div class="main-menu-label">MAIN MENU</div>
-    
-    <div class="menu-item active">
-      <i class="fas fa-home"></i>
-      <span>Dashboard</span>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-user-graduate"></i>
-      <span>Students</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-credit-card"></i>
-      <span>Accounts</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="menu-item has-submenu active-parent" onclick="toggleSubmenu(this)">
-      <i class="fas fa-users"></i>
-      <span>Staff</span>
-      <i class="fas fa-chevron-down submenu-arrow"></i>
-      <div class="submenu">
-        <div class="submenu-item">All Staff</div>
-        <div class="submenu-item active">Add Staff</div>
-        <div class="submenu-item">Current Staff</div>
-        <div class="submenu-item">Staff Old</div>
-      </div>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-chart-bar"></i>
-      <span>Reports</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-cog"></i>
-      <span>Administration</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-sms"></i>
-      <span>SMS</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="system-setup-label">SYSTEM SETUP</div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-tools"></i>
-      <span>Configurations</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-lock"></i>
-      <span>Access Control</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-    
-    <div class="menu-item has-submenu" onclick="toggleSubmenu(this)">
-      <i class="fas fa-external-link-alt"></i>
-      <span>External Links</span>
-      <i class="fas fa-chevron-right submenu-arrow"></i>
-    </div>
-  </div>
-</div>
-
-<!-- Main Content -->
-<div class="main-content" id="mainContent">
-  <!-- Breadcrumb -->
-  <div class="breadcrumb-section">
-    <div class="welcome-text">
-      <h5>Hi, welcome back!</h5>
-      <span class="text-muted">Dashboard</span>
-    </div>
-    <div class="breadcrumb">
-      <span>Home</span>
-      <i class="fas fa-chevron-right"></i>
-      <span>Add Staff</span>
-    </div>
-  </div>
-
-  <!-- Form Container -->
-  <div class="container mt-4">
-    <div class="block-header mt-3">
-      <h4 class="mb-0">Add Staff</h4>
-    </div>
-
-    <!-- Step Indicator -->
-    <div class="row mb-4">
-      <div class="col text-center">
-        <span class="step active" onclick="showStep(1)">1</span>
-        <span class="step-label">Personal Information</span>
-        <span class="step-separator"></span>
-        <span class="step" onclick="showStep(2)">2</span>
-        <span class="step-label">Education & Contact Info</span>
-        <span class="step-separator"></span>
-        <span class="step" onclick="showStep(3)">3</span>
-        <span class="step-label">Class & Subject</span>
-        <span class="step-separator"></span>
-        <span class="step" onclick="showStep(4)">4</span>
-        <span class="step-label">Other Staff Information</span>
-      </div>
-    </div>
-
-    <!-- Staff Form Steps -->
-    <form>
-      <div id="step-1" class="step-content">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="mb-3">
-              <label for="staffId" class="form-label">Staff ID</label>
-              <input type="text" class="form-control" id="staffId" value="10133" readonly>
-            </div>
-            <div class="mb-3">
-              <label for="lastName" class="form-label">Last Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="lastName">
-            </div>
-            <div class="mb-3">
-              <label for="mobileNumber" class="form-label">Mobile Number <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="mobileNumber">
-            </div>
-            <div class="mb-3">
-              <label for="department" class="form-label">Department <span class="text-danger">*</span></label>
-              <select class="form-select" id="department">
-                <option>Choose</option>
-                <!-- Add department options here -->
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="mb-3">
-              <label for="firstName" class="form-label">First Name <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="firstName">
-            </div>
-            <div class="mb-3">
-              <label for="otherNames" class="form-label">Other Names</label>
-              <input type="text" class="form-control" id="otherNames">
-            </div>
-            <div class="mb-3">
-              <label for="gender" class="form-label">Gender <span class="text-danger">*</span></label>
-              <select class="form-select" id="gender">
-                <option>Choose</option>
-                <option>Male</option>
-                <option>Female</option>
-              </select>
-            </div>
-            <div class="mb-3">
-              <label class="form-label">Photo</label><br>
-              <div class="photo-placeholder">
-                <i class="fas fa-user fa-3x"></i>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row mt-4">
-          <div class="col-md-6 offset-md-6">
-            <div class="mb-3">
-              <label for="photoUpload" class="form-label">Upload Photo</label>
-              <input type="file" class="form-control" id="photoUpload">
-            </div>
-            <div>
-              <button type="button" class="btn btn-secondary w-100 mb-2">Start Camera</button>
-              <button type="button" class="btn btn-secondary w-100 mb-2">Take Photo</button>
-              <button type="button" class="btn btn-secondary w-100">Stop Camera</button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="step-2" class="step-content">
-        <div class="row">
-          <div class="col-md-6">
-            <div class="mb-3">
-              <label for="highestQualification" class="form-label">Highest Qualification <span class="text-danger">*</span></label>
-              <input type="text" class="form-control" id="highestQualification" placeholder="e.g. B.Sc, M.Ed">
-            </div>
-            <div class="mb-3">
-              <label for="institution" class="form-label">Institution Attended</label>
-              <input type="text" class="form-control" id="institution" placeholder="e.g. University of Lagos">
-            </div>
-            <div class="mb-3">
-              <label for="graduationYear" class="form-label">Year of Graduation</label>
-              <input type="number" class="form-control" id="graduationYear" min="1950" max="2099" placeholder="e.g. 2020">
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="mb-3">
-              <label for="email" class="form-label">Email Address <span class="text-danger">*</span></label>
-              <input type="email" class="form-control" id="email" placeholder="e.g. staff@email.com">
-            </div>
-            <div class="mb-3">
-              <label for="altPhone" class="form-label">Alternate Phone Number</label>
-              <input type="text" class="form-control" id="altPhone" placeholder="e.g. 08012345678">
-            </div>
-            <div class="mb-3">
-              <label for="address" class="form-label">Home Address</label>
-              <textarea class="form-control" id="address" rows="2" placeholder="Enter address"></textarea>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="step-3" class="step-content">
-        <div class="mb-3">
-          <label class="form-label" style="color:#1976d2; font-weight:600;">Class & subject Information</label>
-          <div class="row g-3">
-            <div class="col-md-6">
-              <div class="mb-2">
-                <label class="form-label">Class</label>
-                <select class="form-select" id="classSelect">
-                  <option>Choose</option>
-                  <option>Creche</option>
-                  <option>NS1</option>
-                  <option>NS2</option>
-                  <option>KG1</option>
-                  <option>KG2</option>
-                  <option>Basic1</option>
-                  <option>Basic2</option>
-                  <option>Basic3</option>
-                  <option>Basic4</option>
-                  <option>Basic5</option>
-                  <option>Basic6</option>
-                  <option>JHS1</option>
-                  <option>JHS2</option>
-                  <option>JHS3</option>
-                </select>
-              </div>
-              <div class="mb-2">
-                <label class="form-label">Subjects</label>
-                <div>
-                  <input type="checkbox" id="selectAllSubjects" onclick="toggleAllSubjects(this)"> <label for="selectAllSubjects">Select All</label>
-                </div>
-                <div id="subjectsList" style="display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px;">
-                  <div><input type="checkbox" id="subjectMath" name="subjects" value="Math"> <label for="subjectMath">Math</label></div>
-                  <div><input type="checkbox" id="subjectEnglish" name="subjects" value="English"> <label for="subjectEnglish">English</label></div>
-                  <div><input type="checkbox" id="subjectScience" name="subjects" value="Science"> <label for="subjectScience">Science</label></div>
-                  <div><input type="checkbox" id="subjectICT" name="subjects" value="ICT"> <label for="subjectICT">ICT</label></div>
-                  <div><input type="checkbox" id="subjectFrench" name="subjects" value="French"> <label for="subjectFrench">French</label></div>
-                  <div><input type="checkbox" id="subjectRME" name="subjects" value="RME"> <label for="subjectRME">RME</label></div>
-                  <div><input type="checkbox" id="subjectCreativeArts" name="subjects" value="Creative Arts"> <label for="subjectCreativeArts">Creative Arts</label></div>
-                  <div><input type="checkbox" id="subjectHistory" name="subjects" value="History"> <label for="subjectHistory">History</label></div>
-                </div>
-              </div>
-            </div>
-            <div class="col-md-6">
-              <label class="form-label">Classes & Subject Taught</label>
-              <div class="table-responsive">
-                <table class="table table-bordered align-middle" id="taughtTable">
-                  <thead class="table-light">
-                    <tr>
-                      <th style="width:40px;">#</th>
-                      <th>Class</th>
-                      <th>Subject</th>
-                      <th>Remove</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <!-- Rows will be added dynamically -->
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <div id="step-4" class="step-content">
-        <div class="mb-3">
-          <label class="form-label" style="color:#1976d2; font-weight:600;">Other Information</label>
-          <div class="row g-3">
-            <div class="col-12">
-              <div class="table-responsive">
-                <table class="table table-bordered align-middle">
-                  <tbody>
-                    <tr>
-                      <td style="width:40%">
-                        <select class="form-select">
-                          <option>Choose</option>
-                          <option>Marital Status</option>
-                          <option>Religion</option>
-                          <option>Nationality</option>
-                          <option>Blood Group</option>
-                          <option>Experience</option>
-                          <option>Position</option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" placeholder="Enter value">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <select class="form-select">
-                          <option>Choose</option>
-                          <option>Marital Status</option>
-                          <option>Religion</option>
-                          <option>Nationality</option>
-                          <option>Blood Group</option>
-                          <option>Experience</option>
-                          <option>Position</option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" placeholder="Enter value">
-                      </td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <select class="form-select">
-                          <option>Choose</option>
-                          <option>Marital Status</option>
-                          <option>Religion</option>
-                          <option>Nationality</option>
-                          <option>Blood Group</option>
-                          <option>Experience</option>
-                          <option>Position</option>
-                        </select>
-                      </td>
-                      <td>
-                        <input type="text" class="form-control" placeholder="Enter value">
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </form>
-  </div>
-</div>
-
-<!-- Overlay for mobile -->
-<div class="sidebar-overlay" id="sidebarOverlay" onclick="toggleSidebar()"></div>
-
-<style>
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-  background-color: #f5f7fa;
-}
-
-/* Top Header */
-.top-header {
-  background: #f8f9fa;
-  color: #333;
-  padding: 12px 20px;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.08);
-  border-bottom: 1px solid #e9ecef;
-}
-
-.logo {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  padding: 8px 16px;
-  border-radius: 8px;
-  color: white;
-}
-
-.logo-icon {
-  background: rgba(255,255,255,0.2);
-  width: 30px;
-  height: 30px;
-  border-radius: 6px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.logo-text {
-  font-weight: 600;
-  font-size: 1.1em;
-}
-
-.sidebar-toggle {
-  background: none;
-  border: none;
-  color: #666;
-  font-size: 1.2em;
-  padding: 8px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.sidebar-toggle:hover {
-  background: #e9ecef;
-}
-
-.search-box {
-  position: relative;
-  background: white;
-  border: 1px solid #e9ecef;
-  border-radius: 8px;
-  padding: 8px 15px;
-  display: flex;
-  align-items: center;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
-}
-
-.search-box i {
-  color: #999;
-}
-
-.search-box input {
-  background: none;
-  border: none;
-  color: #333;
-  outline: none;
-  margin-left: 8px;
-  font-size: 0.9em;
-}
-
-.search-box input::placeholder {
-  color: #999;
-}
-
-.header-icons {
-  display: flex;
-  align-items: center;
-  color: #666;
-}
-
-.header-icons i {
-  cursor: pointer;
-  padding: 8px;
-  border-radius: 4px;
-  color: #666;
-}
-
-.header-icons i:hover {
-  background: #e9ecef;
-}
-
-.header-icons span {
-  font-size: 0.9em;
-  font-weight: 500;
-}
-
-/* Sidebar */
-.sidebar {
-  position: fixed;
-  top: 62px;
-  left: 0;
-  width: 240px;
-  height: calc(100vh - 62px);
-  background: #f8f9fa;
-  border-right: 1px solid #e9ecef;
-  z-index: 999;
-  overflow-y: auto;
-  transition: transform 0.3s ease;
-}
-
-.sidebar-content {
-  padding: 16px 0;
-}
-
-.main-menu-label, .system-setup-label {
-  color: #6c757d;
-  font-size: 0.7em;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  padding: 0 16px;
-  margin: 16px 0 8px 0;
-}
-
-.main-menu-label {
-  margin-top: 0;
-}
-
-.menu-item {
-  display: flex;
-  align-items: center;
-  padding: 10px 16px;
-  color: #495057;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  position: relative;
-  font-size: 0.9em;
-}
-
-.menu-item:hover {
-  background: #e9ecef;
-  color: #495057;
-}
-
-.menu-item.active {
-  background: #007bff;
-  color: white;
-}
-
-.menu-item.active-parent {
-  background: #e3f2fd;
-  color: #1976d2;
-}
-
-.menu-item i {
-  width: 16px;
-  margin-right: 10px;
-  font-size: 0.9em;
-}
-
-.submenu-arrow {
-  margin-left: auto;
-  transition: transform 0.2s ease;
-  font-size: 0.7em;
-}
-
-.menu-item.expanded .submenu-arrow {
-  transform: rotate(90deg);
-}
-
-.submenu {
-  background: #ffffff;
-  border-top: 1px solid #e9ecef;
-  margin-top: 0;
-  padding: 4px 0;
-}
-
-.submenu-item {
-  padding: 8px 16px 8px 42px;
-  color: #6c757d;
-  cursor: pointer;
-  transition: all 0.2s ease;
-  font-size: 0.85em;
-}
-
-.submenu-item:hover {
-  background: #f8f9fa;
-  color: #495057;
-}
-
-.submenu-item.active {
-  background: #e3f2fd;
-  color: #1976d2;
-  font-weight: 500;
-}
-
-/* Main Content */
-.main-content {
-  margin-left: 240px;
-  margin-top: 62px;
-  min-height: calc(100vh - 62px);
-  transition: margin-left 0.3s ease;
-  background: #f8f9fa;
-}
-
-.breadcrumb-section {
-  background: white;
-  padding: 16px 20px;
-  border-bottom: 1px solid #e9ecef;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.welcome-text h5 {
-  margin: 0;
-  color: #6c757d;
-  font-weight: 500;
-  font-size: 1.1em;
-}
-
-.welcome-text span {
-  font-size: 0.85em;
-  color: #adb5bd;
-}
-
-.breadcrumb {
-  display: flex;
-  align-items: center;
-  color: #adb5bd;
-  font-size: 0.85em;
-}
-
-.breadcrumb span:last-child {
-  color: #6c757d;
-  font-weight: 500;
-}
-
-.breadcrumb i {
-  margin: 0 6px;
-  font-size: 0.7em;
-}
-
-/* Form Styles */
-.container {
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 16px rgba(0,0,0,0.08);
-  padding: 32px 24px;
-  margin: 32px 20px;
-}
-
-.block-header h4 {
-  color: #1976d2;
-  font-weight: 600;
-  margin-bottom: 18px;
-}
-
-.step-content { display: none; }
-.step-content.active { display: block; }
-
-.step {
-  display: inline-block;
-  background: #2196f3;
-  color: #fff;
-  border-radius: 8px;
-  padding: 6px 16px;
-  font-weight: bold;
-  margin-right: 4px;
-  font-size: 1.2em;
-  box-shadow: 0 2px 8px rgba(33,150,243,0.12);
-  cursor: pointer;
-  transition: background 0.2s;
-}
-
-.step.active {
-  background: #1976d2;
-  box-shadow: 0 4px 12px rgba(33,150,243,0.18);
-}
-
-.step-label {
-  margin-right: 24px;
-  font-size: 1em;
-  color: #444;
-  font-weight: 500;
-}
-
-.step-separator {
-  display: inline-block;
-  width: 60px;
-  height: 3px;
-  background: #e3eaf3;
-  vertical-align: middle;
-  margin-right: 8px;
-  border-radius: 2px;
-}
-
-.form-label {
-  font-weight: 500;
-  color: #1976d2;
-}
-
-.form-control, .form-select {
-  border-radius: 8px;
-  border: 1px solid #e3eaf3;
-  font-size: 1em;
-  padding: 0.7em 1em;
-  background: #f8fafc;
-  transition: border-color 0.2s;
-}
-
-.form-control:focus, .form-select:focus {
-  border-color: #1976d2;
-  box-shadow: 0 0 0 2px rgba(33,150,243,0.08);
-}
-
-.btn-secondary {
-  background: #e3eaf3;
-  color: #1976d2;
-  border-radius: 8px;
-  border: none;
-  font-weight: 500;
-}
-
-.btn-secondary:hover {
-  background: #1976d2;
-  color: #fff;
-}
-
-.photo-placeholder {
-  width: 100px;
-  height: 100px;
-  background: #f8fafc;
-  border: 1px solid #e3eaf3;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #ccc;
-  margin-top: 8px;
-}
-
-.sidebar-overlay {
-  position: fixed;
-  top: 62px;
-  left: 0;
-  width: 100vw;
-  height: calc(100vh - 62px);
-  background: rgba(0,0,0,0.5);
-  z-index: 998;
-  display: none;
-}
-
-/* Mobile Responsive */
-@media (max-width: 991.98px) {
-  .sidebar {
-    transform: translateX(-100%);
-  }
-  
-  .sidebar.active {
-    transform: translateX(0);
-  }
-  
-  .main-content {
-    margin-left: 0;
-  }
-  
-  .sidebar-overlay.active {
-    display: block;
-  }
-  
-  .breadcrumb-section {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 10px;
-  }
-  
-  .container {
-    margin: 20px 10px;
-    padding: 20px 15px;
-  }
-  
-  .step-separator { width: 20px; }
-  .step-label { display: block; margin-bottom: 8px; }
-  .form-control, .form-select { font-size: 0.95em; padding: 0.5em 0.7em; }
-}
-
-@media (max-width: 768px) {
-  .search-box {
-    display: none;
-  }
-  
-  .header-actions span {
-    display: none;
-  }
-}
-</style>
-
-<script>
-function showStep(step) {
-  document.querySelectorAll('.step-content').forEach(function(el) {
-    el.classList.remove('active');
-  });
-  document.getElementById('step-' + step).classList.add('active');
-  document.querySelectorAll('.step').forEach(function(el, idx) {
-    el.classList.toggle('active', idx === step - 1);
-  });
-}
-
-function toggleAllSubjects(source) {
-  document.querySelectorAll('#subjectsList input[type="checkbox"]').forEach(cb => {
-    cb.checked = source.checked;
-  });
-}
-
-function toggleSidebar() {
-  const sidebar = document.getElementById('sidebar');
-  const overlay = document.getElementById('sidebarOverlay');
-  
-  sidebar.classList.toggle('active');
-  overlay.classList.toggle('active');
-}
-
-function toggleSubmenu(element) {
-  element.classList.toggle('expanded');
-  const submenu = element.querySelector('.submenu');
-  if (submenu) {
-    submenu.style.display = submenu.style.display === 'block' ? 'none' : 'block';
-  }
-}
-
-// Initialize
-showStep(1);
-
-// Close sidebar when clicking outside on mobile
-document.addEventListener('click', function(e) {
-  if (window.innerWidth <= 991.98) {
-    const sidebar = document.getElementById('sidebar');
-    const sidebarToggle = document.querySelector('.sidebar-toggle');
-    
-    if (!sidebar.contains(e.target) && !sidebarToggle.contains(e.target)) {
-      sidebar.classList.remove('active');
-      document.getElementById('sidebarOverlay').classList.remove('active');
-    }
-  }
-});
-
-// Handle window resize
-window.addEventListener('resize', function() {
-  if (window.innerWidth > 991.98) {
-    document.getElementById('sidebar').classList.remove('active');
-    document.getElementById('sidebarOverlay').classList.remove('active');
-  }
-});
-</script>
-
+    <h1>Academea Help</h1>
+    <hr>
+
+    <section>
+        <h2>"Personal Information" (First Step)</h2>
+        <p>
+This is the initial step in the "ADD STAFF" form.
+ Its primary purpose is to capture the most essential identifying and administrative details for a new staff member.<br></p>
+
+        <h3>Purpose:</h3>
+        <p> To collect core personal and HR information.<br></p>
+<h3>Key Sections:</h3>
+<p>Staff ID: A unique number (10133 is pre-filled as an example)<br>
+  Basic Bio-Data: Mandatory fields for the employee's Last Name, First Name, and Gender.<br>
+  Contact & Department: A mandatory Mobile Number field and a dropdown to select the employee's Department.<br></p>
+
+  <h3>Functionality:</h3>
+  <p>This tab is likely part of a multi-step form, as indicated by the tabs at the top ("Personal Info," "Education & Contact Info," etc.).
+     The user focuses on this specific set of data before moving to the next step.
+      It also includes an option to upload a profile photo either from a file or directly from a camera.</p>
+        <img src="assets/images/.png" alt="top part">
+    </section>
+
+
+      <section>
+        <h2>"Education & Contact Info" (Second Step)</h2>
+        <p>
+This appears to be the second step or a detailed view of the form focused on the staff member's
+ professional qualifications and additional contact details.<br></p>
+
+        <h3>Purpose:</h3>
+        <p> To gather detailed information about the employee's background, employment terms, and how to contact them.<br></p>
+<h3>Key Sections:</h3>
+<p>Employment Details: Fields for Date Employed and Designation/Position.<br>
+  Personal Details: Fields for Date of Birth and Marital Status.<br>
+  Education: Fields for Qualifications and Education Level.<br>
+Contact: Fields for Email Address and Postal Address.<br>
+Document Upload: A specific button to Upload Certificate, likely for verifying academic or professional qualifications.<br.</p>
+
+  <h3>Functionality:</h3>
+  <p>This tab consolidates all the necessary information for official records and communication.
+     The Submit and Cancel buttons at the bottom suggest this might be the final step or a summary page where the user can review all entered data before completing the process</p>
+        <img src="assets/images/.png" alt="top part">
+    </section>
+
+
+       <section>
+        <h2>"Class & Subject" (Third Step)</h2>
+        <p>This step is highly specific to an educational context (like a school).
+           It is designed to assign a teaching staff member to their specific classes and subjects.<br></p>
+
+        <h3>Purpose:</h3>
+        <p>To define the teaching responsibilities of the staff member.<br></p>
+<h3>Key Sections:</h3>
+<p>Assignment Selection: A dropdown to choose a Class and a list of Subjects with a "Select All" option.<br>
+Assignment Summary Table: A table (currently empty) titled "Classes & Subject Taught" is designed to list all assigned classes and subjects.
+ Each entry will likely have a REMOVE button for easy management.<br></p>
+
+  <h3>Functionality:</h3>
+  <p>This tab allows an administrator to precisely configure what a teacher will teach.
+     The interface suggests that multiple class-subject combinations can be added for a single staff member.</p>
+        <img src="assets/images/.png" alt="top part">
+    </section>
+
+
+    <section>
+        <h2>"Other Staff Information" (Fourth Step)</h2>
+        <p>The fourth step in the form, titled "Other Staff Information," serves as a comprehensive section for capturing
+           any remaining administrative data required to complete the staff profile.
+           This part of the form is structured with a series of dropdown menus, each generically labeled "Choose,"
+            indicating that the specific selection options are configured within the system's backend settings.
+            These menus are likely designed to gather a variety of additional details that are essential for internal records
+             but do not fit into the previous categories, such as emergency contact information, bank account details for payroll,
+              specific tax status, health insurance options, or employment type classification.<br><br>
+
+By consolidating these miscellaneous fields into a single, dedicated step, the form maintains a clean and organized structure,
+ preventing the earlier sections from becoming cluttered.
+ This approach ensures that all necessary information is collected in a systematic manner while allowing for flexibility,
+  as the dropdown options can be customized to meet the organization's specific administrative and compliance needs.</p>
+        <img src="assets/images/.png" alt="top part">
+    </section>
 </body>
 </html>
