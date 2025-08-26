@@ -3,10 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Student - AcademEA School Management</title>
-    <!-- Bootstrap CSS -->
+    <title>AcademEA Help - Add Student</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -22,768 +20,566 @@
         
         body {
             background-color: #f8f9fc;
-            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
         
         .navbar {
-            background-color: var(--primary);
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .sidebar {
-            background-color: #4e73df;
-            background-image: linear-gradient(180deg, #4e73df 10%, #224abe 100%);
-            background-size: cover;
-            height: 100vh;
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 250px;
-            z-index: 100;
-            padding-top: 60px;
-        }
-        
-        .sidebar .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
-        }
-        
-        .sidebar .nav-link:hover {
-            color: #fff;
-        }
-        
-        .sidebar .nav-link.active {
-            font-weight: bold;
-            color: #fff;
-        }
-        
-        .main-content {
-            margin-left: 250px;
+        .help-container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
         
-        .card {
-            border: none;
+        .help-header {
+            background: white;
             border-radius: 10px;
-            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
         }
         
-        .card-header {
-            background-color: #f8f9fc;
-            border-bottom: 1px solid #e3e6f0;
-            padding: 15px 20px;
+        .help-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
         }
         
-        .wizard-nav {
-            background-color: #fff;
-            border-radius: 10px;
-            padding: 20px;
+        .help-section h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
             margin-bottom: 20px;
         }
         
-        .wizard-nav .nav-link {
-            color: var(--secondary);
-            font-weight: 600;
-            padding: 10px 15px;
+        .step-card {
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            background: var(--light);
+            border-radius: 0 8px 8px 0;
         }
         
-        .wizard-nav .nav-link.active {
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            text-align: center;
+        }
+        
+        .screenshot img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+        
+        .note {
+            background: #e8f4fd;
+            border-left: 4px solid var(--info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip {
+            background: #f0f9f0;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: #fef7f7;
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .feature-icon {
             color: var(--primary);
-            border-bottom: 2px solid var(--primary);
+            font-size: 24px;
+            margin-right: 10px;
         }
         
-        .form-section {
-            display: none;
+        .help-nav {
+            position: sticky;
+            top: 20px;
         }
         
-        .form-section.active {
+        .help-nav .nav-link {
+            color: var(--dark);
+            padding: 8px 15px;
+            border-left: 3px solid transparent;
+            border-radius: 0;
+        }
+        
+        .help-nav .nav-link:hover, .help-nav .nav-link.active {
+            color: var(--primary);
+            border-left-color: var(--primary);
+            background: #f8f9fc;
+        }
+        
+        .form-preview {
+            background-color: #f8f9fc;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        
+        .form-field {
+            margin-bottom: 15px;
+        }
+        
+        .form-field label {
+            font-weight: 500;
+            margin-bottom: 5px;
             display: block;
         }
         
-        .btn-primary {
-            background-color: var(--primary);
-            border-color: var(--primary);
-        }
-        
-        .btn-primary:hover {
-            background-color: #2e59d9;
-            border-color: #2e59d9;
-        }
-        
-        .required-field::after {
+        .required::after {
             content: "*";
             color: var(--danger);
             margin-left: 3px;
         }
         
-        .image-upload-container {
-            border: 2px dashed #ddd;
-            border-radius: 8px;
-            padding: 20px;
-            text-align: center;
-            margin-bottom: 20px;
-        }
-        
-        .camera-controls {
-            margin-top: 15px;
-        }
-        
-        #cameraPreview {
-            width: 100%;
-            max-width: 300px;
-            margin: 0 auto;
-            display: block;
+        @media (max-width: 768px) {
+            .help-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Sidebar -->
-    <div class="sidebar d-none d-md-block">
-        <div class="px-3 py-4">
-            <a href="dashboard.html" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
-                <span class="fs-4">AcademEA</span>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                               <img src="/assets/images/logo.png" alt="AcademEA logo" height="100" width="150">
             </a>
-            <hr>
-            <ul class="nav nav-pills flex-column mb-auto">
-                <li class="nav-item">
-                    <a href="dashboard.html" class="nav-link text-white">
-                        <i class="fas fa-home me-2"></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li>
-                    <a href="allstudent.html" class="nav-link text-white">
-                        <i class="fas fa-users me-2"></i>
-                        All Students
-                    </a>
-                </li>
-                <li>
-                    <a href="addstudent.html" class="nav-link active">
-                        <i class="fas fa-user-plus me-2"></i>
-                        Add Student
-                    </a>
-                </li>
-                <li>
-                    <a href="currentstudent.html" class="nav-link text-white">
-                        <i class="fas fa-user-graduate me-2"></i>
-                        Current Students
-                    </a>
-                </li>
-                <li>
-                    <a href="student-scholarship.html" class="nav-link text-white">
-                        <i class="fas fa-award me-2"></i>
-                        Student Scholarship
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Header -->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light mb-4">
-            <div class="container-fluid">
-                <button class="btn btn-primary d-md-none" type="button" data-bs-toggle="collapse" data-bs-target="#sidebarMenu">
-                    <i class="fas fa-bars"></i>
-                </button>
-                <div class="d-flex justify-content-end w-100">
-                    <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown">
-                                <img src="/Academea-help/assets/images/logo.png" alt="logo" width="30" height="30" class="rounded-circle"> 
-                            </a>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-user me-2"></i> Profile</a></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-cog me-2"></i> Settings</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Add New Student</h1>
-            <div class="student-management-tabs">
-                <ul class="nav nav-pills">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="allstudent.html">
-                            <i class="fas fa-users me-1"></i> All Students
-                        </a>
+                        <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="addstudent.html">
-                            <i class="fas fa-user-plus me-1"></i> Add Student
-                        </a>
+                        <a class="nav-link" href="#"><i class="fas fa-book me-1"></i> Guides</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="currentstudent.html">
-                            <i class="fas fa-user-graduate me-1"></i> Current Students
-                        </a>
+                        <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i> Support</a>
                     </li>
                 </ul>
             </div>
         </div>
+    </nav>
 
-        <!-- Content Row -->
+    <div class="help-container">
         <div class="row">
-            <div class="col-12">
-                <div class="card">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Student Information</h6>
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="help-section help-nav">
+                    <h4>Contents</h4>
+                    <div class="nav flex-column">
+                        <a class="nav-link active" href="#intro">Introduction</a>
+                        <a class="nav-link" href="#navigation">Navigation</a>
+                        <a class="nav-link" href="#steps">Form Steps</a>
+                        <a class="nav-link" href="#student-info">Student Information</a>
+                        <a class="nav-link" href="#parent-info">Parent Information</a>
+                        <a class="nav-link" href="#completion">Completion</a>
+                        <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
                     </div>
-                    <div class="card-body">
-                        <!-- Progress Indicator -->
-                        <div class="d-flex justify-content-between mb-4 position-relative">
-                            <div class="progress" style="height: 5px; position: absolute; top: 15px; left: 0; right: 0; z-index: 1;">
-                                <div class="progress-bar" role="progressbar" style="width: 25%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Header -->
+                <div class="help-header text-center">
+                    <h1 class="text-primary"><i class="fas fa-user-plus me-2"></i>Add Student Guide</h1>
+                    <p class="lead">Learn how to add new students to the AcademEA system</p>
+                    <div class="d-flex justify-content-center flex-wrap gap-2 mt-4">
+                        <span class="badge bg-primary p-2"><i class="fas fa-clock me-1"></i>Time: 10 min read</span>
+                        <span class="badge bg-success p-2"><i class="fas fa-difficulty me-1"></i>Difficulty: Easy</span>
+                        <span class="badge bg-info p-2"><i class="fas fa-calendar me-1"></i>Last updated: Aug 26, 2025</span>
+                    </div>
+                </div>
+
+                <!-- Introduction Section -->
+                <div class="help-section" id="intro">
+                    <h3><i class="fas fa-info-circle feature-icon"></i>Introduction to Adding Students</h3>
+                    <p>The <strong>Add Student</strong> feature allows you to register new students into the AcademEA system. This process collects all necessary information to create a complete student profile.</p>
+                    
+                    <div class="note">
+                        <strong><i class="fas fa-lightbulb me-1"></i>Note:</strong> You need appropriate permissions to add students. Contact your system administrator if you don't see the Add Student option.
+                    </div>
+
+                    <p>In this guide, you'll learn how to:</p>
+                    <ul>
+                        <li>Navigate to the Add Student section</li>
+                        <li>Complete the multi-step form</li>
+                        <li>Enter student information</li>
+                        <li>Add parent/guardian details</li>
+                        <li>Save and complete the process</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Section -->
+                <div class="help-section" id="navigation">
+                    <h3><i class="fas fa-compass feature-icon"></i>Navigating to Add Student</h3>
+                    <p>To access the Add Student section:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Open the Dashboard</h5>
+                        <p>Log in to your AcademEA account and you'll be directed to the Dashboard homepage.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Access the Students Menu</h5>
+                        <p>In the sidebar navigation, locate and click on the <strong>"Students"</strong> menu to expand it.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>Select Add Student</h5>
+                        <p>From the expanded Students menu, click on <strong>"Add Student"</strong> to open the form.</p>
+                    </div>
+
+                    <div class="screenshot">
+                        <p class="text-muted mb-2"><i class="fas fa-image me-1"></i>Navigation menu</p>
+                        <img src="/assets/images/navigationimage.png" alt="Navigation Menu" class="img-fluid">
+                        <p class="mt-2"><small>Replace with your actual navigation screenshot</small></p>
+                    </div>
+                </div>
+
+                <!-- Form Steps Section -->
+                <div class="help-section" id="steps">
+                    <h3><i class="fas fa-list-ol feature-icon"></i>Form Steps Overview</h3>
+                    <p>The Add Student form is divided into multiple steps to make the process organized and manageable:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Student Information</h5>
+                        <p>This is the first step where you enter the student's personal details:</p>
+                        <ul>
+                            <li>First Name, Last Name</li>
+                            <li>Gender, Date of Birth</li>
+                            <li>Phone Number</li>
+                            <li>Class/Form selection</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Father Information</h5>
+                        <p>The second step collects information about the student's father:</p>
+                        <ul>
+                            <li>Father's Name</li>
+                            <li>Contact Information</li>
+                            <li>Occupation and Education</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>Mother Information</h5>
+                        <p>The third step collects information about the student's mother:</p>
+                        <ul>
+                            <li>Mother's Name</li>
+                            <li>Contact Information</li>
+                            <li>Occupation and Education</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">4</span>Guardian Information</h5>
+                        <p>The final step collects information about the student's guardian (if different from parents):</p>
+                        <ul>
+                            <li>Guardian's Name</li>
+                            <li>Contact Information</li>
+                            <li>Relationship to student</li>
+                        </ul>
+                    </div>
+
+                    <div class="screenshot">
+                        <p class="text-muted mb-2"><i class="fas fa-image me-1"></i>Form steps visualization</p>
+                        <img src="/assets/images/addstudentimage.png" alt="Form Steps" class="img-fluid">
+                        <p class="mt-2"><small>Replace with your actual form steps screenshot</small></p>
+                    </div>
+                </div>
+
+                <!-- Student Information Section -->
+                <div class="help-section" id="student-info">
+                    <h3><i class="fas fa-user-graduate feature-icon"></i>Student Information</h3>
+                    <p>The first step requires you to enter the student's personal information. Here's what you need to know:</p>
+
+                    <div class="form-preview">
+                        <h5 class="mb-3">Student Information Form Preview</h5>
+                        
+                        <div class="row">
+                            <div class="col-md-6 form-field">
+                                <label class="required">First Name</label>
+                                <div class="bg-white p-2 border rounded">Text input field</div>
                             </div>
-                            <div class="d-flex justify-content-between w-100 position-relative" style="z-index: 2;">
-                                <div class="text-center">
-                                    <div class="rounded-circle bg-primary text-white d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">1</div>
-                                    <div class="mt-1">Student Info</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">2</div>
-                                    <div class="mt-1">Father Info</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">3</div>
-                                    <div class="mt-1">Mother Info</div>
-                                </div>
-                                <div class="text-center">
-                                    <div class="rounded-circle bg-secondary text-white d-inline-flex align-items-center justify-content-center" style="width: 40px; height: 40px;">4</div>
-                                    <div class="mt-1">Guardian Info</div>
+                            <div class="col-md-6 form-field">
+                                <label class="required">Last Name</label>
+                                <div class="bg-white p-2 border rounded">Text input field</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 form-field">
+                                <label class="required">Phone Number</label>
+                                <div class="bg-white p-2 border rounded">Text input field</div>
+                            </div>
+                            <div class="col-md-6 form-field">
+                                <label class="required">Class/Form</label>
+                                <div class="bg-white p-2 border rounded">Dropdown selector</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 form-field">
+                                <label>House/Section</label>
+                                <div class="bg-white p-2 border rounded">Dropdown selector</div>
+                            </div>
+                            <div class="col-md-6 form-field">
+                                <label>Parent ID</label>
+                                <div class="bg-white p-2 border rounded">Text input field</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 form-field">
+                                <label class="required">Gender</label>
+                                <div class="bg-white p-2 border rounded">Dropdown selector</div>
+                            </div>
+                            <div class="col-md-6 form-field">
+                                <label class="required">Residence Type</label>
+                                <div class="bg-white p-2 border rounded">Dropdown selector</div>
+                            </div>
+                        </div>
+                        
+                        <div class="row">
+                            <div class="col-md-6 form-field">
+                                <label>Nationality</label>
+                                <div class="bg-white p-2 border rounded">Dropdown selector</div>
+                            </div>
+                            <div class="col-md-6 form-field">
+                                <label class="required">Program Type</label>
+                                <div class="bg-white p-2 border rounded">Dropdown selector</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tip">
+                        <strong><i class="fas fa-tip me-1"></i>Tip:</strong> Fields marked with an asterisk (<span class="text-danger">*</span>) are required. You must complete these fields to proceed to the next step.
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Complete Required Fields</h5>
+                        <p>Fill in all fields marked with an asterisk. These are essential for creating the student record.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Provide Additional Information</h5>
+                        <p>While optional fields are not required, providing complete information helps create a more comprehensive student profile.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>Navigate to Next Step</h5>
+                        <p>Click the <strong>"Next"</strong> button to proceed to the Father Information step once all required fields are completed.</p>
+                    </div>
+                </div>
+
+                <!-- Parent Information Section -->
+                <div class="help-section" id="parent-info">
+                    <h3><i class="fas fa-users feature-icon"></i>Parent Information</h3>
+                    <p>The next steps involve entering information about the student's parents or guardians:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Father Information</h5>
+                        <p>Complete information about the student's father including:</p>
+                        <ul>
+                            <li>Full name and title</li>
+                            <li>Mobile number</li>
+                            <li>Postal and residential addresses</li>
+                            <li>Education level and occupation</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Mother Information</h5>
+                        <p>Complete information about the student's mother including:</p>
+                        <ul>
+                            <li>Full name and title</li>
+                            <li>Mobile number</li>
+                            <li>Postal and residential addresses</li>
+                            <li>Education level and occupation</li>
+                        </ul>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>Guardian Information</h5>
+                        <p>If the student's guardian is different from their parents, provide:</p>
+                        <ul>
+                            <li>Guardian's full name and title</li>
+                            <li>Mobile number</li>
+                            <li>Relationship to the student</li>
+                            <li>Postal and residential addresses</li>
+                        </ul>
+                    </div>
+
+                    <div class="note">
+                        <strong><i class="fas fa-lightbulb me-1"></i>Note:</strong> You can use the <strong>"Previous"</strong> button to go back to earlier steps and make changes if needed.
+                    </div>
+
+                    <div class="screenshot">
+                        <p class="text-muted mb-2"><i class="fas fa-image me-1"></i>Parent information form example</p>
+                        <img src="/assets/images/parent.png" alt="Parent Information Form" class="img-fluid">
+                        <p class="mt-2"><small></small></p>
+                    </div>
+                </div>
+
+                <!-- Completion Section -->
+                <div class="help-section" id="completion">
+                    <h3><i class="fas fa-check-circle feature-icon"></i>Completing the Process</h3>
+                    <p>After completing all form steps, you can finalize the student registration:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Review Information</h5>
+                        <p>Use the <strong>"Previous"</strong> button to navigate through all steps and verify that all information is correct.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Save Student Record</h5>
+                        <p>Click the <strong>"Save Student"</strong> button to complete the registration process.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>Confirmation</h5>
+                        <p>You should receive a confirmation message indicating the student has been successfully added to the system.</p>
+                    </div>
+
+                    <div class="tip">
+                        <strong><i class="fas fa-tip me-1"></i>Tip:</strong> You can save a partially completed form as a draft and return to it later by clicking the <strong>"Save Draft"</strong> button.
+                    </div>
+
+                    <div class="warning">
+                        <strong><i class="fas fa-exclamation-triangle me-1"></i>Important:</strong> After saving, you can add additional information like medical details from the Current Students page.
+                    </div>
+                </div>
+
+                <!-- Troubleshooting Section -->
+                <div class="help-section" id="troubleshooting">
+                    <h3><i class="fas fa-tools feature-icon"></i>Troubleshooting</h3>
+                    <p>Here are solutions to common issues you might encounter:</p>
+
+                    <div class="accordion" id="helpAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    Can't proceed to next step
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Ensure all required fields (marked with *) are completed. Check for any validation messages highlighting missing or incorrect information.
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Form Sections -->
-                        <form id="addStudentForm">
-                            <!-- Student Information -->
-                            <div class="form-section active" id="student-info-section">
-                                <h5 class="mb-3">Student Information</h5>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="firstName" class="form-label required-field">First Name</label>
-                                        <input type="text" class="form-control" id="firstName" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="lastName" class="form-label required-field">Last Name</label>
-                                        <input type="text" class="form-control" id="lastName" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="gender" class="form-label required-field">Gender</label>
-                                        <select class="form-select" id="gender" required>
-                                            <option value="">Choose</option>
-                                            <option value="male">Male</option>
-                                            <option value="female">Female</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="class" class="form-label required-field">Class/Form</label>
-                                        <select class="form-select" id="class" required>
-                                            <option value="">Choose</option>
-                                            <option value="jhs1">J.H.S 1</option>
-                                            <option value="jhs2">J.H.S 2</option>
-                                            <option value="jhs3">J.H.S 3</option>
-                                            <option value="basic1">Basic 1</option>
-                                            <option value="basic2">Basic 2</option>
-                                            <option value="basic3">Basic 3</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="house" class="form-label">House/Section</label>
-                                        <select class="form-select" id="house">
-                                            <option value="">Choose</option>
-                                            <option value="red">Red House</option>
-                                            <option value="blue">Blue House</option>
-                                            <option value="green">Green House</option>
-                                            <option value="yellow">Yellow House</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="phone" class="form-label required-field">Phone Number</label>
-                                        <input type="tel" class="form-control" id="phone" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="residenceType" class="form-label required-field">Residence Type</label>
-                                        <select class="form-select" id="residenceType" required>
-                                            <option value="">Choose</option>
-                                            <option value="day">Day</option>
-                                            <option value="boarding">Boarding</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="nationality" class="form-label">Nationality</label>
-                                        <select class="form-select" id="nationality">
-                                            <option value="">Choose</option>
-                                            <option value="ghanaian">Ghanaian</option>
-                                            <option value="nigerian">Nigerian</option>
-                                            <option value="other">Other</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="programType" class="form-label required-field">Program Type</label>
-                                        <select class="form-select" id="programType" required>
-                                            <option value="">Choose</option>
-                                            <option value="basic">Basic</option>
-                                            <option value="preschool">Pre School</option>
-                                            <option value="special">Special Education</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="parentId" class="form-label">Parent ID</label>
-                                        <input type="text" class="form-control" id="parentId">
-                                    </div>
-                                </div>
-                                
-                                <!-- Student Photo Upload -->
-                                <div class="image-upload-container mb-4">
-                                    <h6>Student Photo</h6>
-                                    <div class="mb-3">
-                                        <div id="imagePreview" class="text-center mb-3">
-                                            <div class="bg-light py-5">
-                                                <i class="fas fa-user fa-3x text-secondary"></i>
-                                                <p class="mt-2">NO IMAGE AVAILABLE</p>
-                                            </div>
-                                        </div>
-                                        <input type="file" class="form-control d-none" id="studentPhoto" accept="image/*">
-                                        <button type="button" class="btn btn-outline-primary me-2" onclick="document.getElementById('studentPhoto').click()">
-                                            <i class="fas fa-file-upload me-1"></i> Choose File
-                                        </button>
-                                        <span id="fileName">No file chosen</span>
-                                    </div>
-                                    
-                                    <div class="camera-controls">
-                                        <button type="button" class="btn btn-outline-primary me-2" id="startCamera">
-                                            <i class="fas fa-camera me-1"></i> Start Camera
-                                        </button>
-                                        <button type="button" class="btn btn-outline-success me-2" id="takePhoto" disabled>
-                                            <i class="fas fa-camera me-1"></i> Take Photo
-                                        </button>
-                                        <button type="button" class="btn btn-outline-danger" id="stopCamera" disabled>
-                                            <i class="fas fa-stop-circle me-1"></i> Stop Camera
-                                        </button>
-                                    </div>
-                                    <video id="cameraPreview" class="mt-3" autoplay playsinline style="display: none;"></video>
-                                </div>
-                                
-                                <div class="d-flex justify-content-end">
-                                    <button type="button" class="btn btn-secondary me-2" id="resetForm">
-                                        <i class="fas fa-redo me-1"></i> Reset
-                                    </button>
-                                    <button type="button" class="btn btn-primary next-section" data-next="father-info">
-                                        Next <i class="fas fa-arrow-right ms-1"></i>
-                                    </button>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Form not saving
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Check your internet connection. If the problem persists, try refreshing the page and ensure all required fields are completed before saving.
                                 </div>
                             </div>
-
-                            <!-- Father Information -->
-                            <div class="form-section" id="father-info-section">
-                                <h5 class="mb-3">Father Information</h5>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherFirstName" class="form-label required-field">First Name</label>
-                                        <input type="text" class="form-control" id="fatherFirstName" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherLastName" class="form-label required-field">Last Name</label>
-                                        <input type="text" class="form-control" id="fatherLastName" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherMobile" class="form-label required-field">Mobile Number</label>
-                                        <input type="tel" class="form-control" id="fatherMobile" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherTitle" class="form-label">Title</label>
-                                        <select class="form-select" id="fatherTitle">
-                                            <option value="">Choose</option>
-                                            <option value="mr">Mr.</option>
-                                            <option value="dr">Dr.</option>
-                                            <option value="prof">Prof.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherPostalAddress" class="form-label">Postal Address</label>
-                                        <textarea class="form-control" id="fatherPostalAddress" rows="3"></textarea>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherResidentialAddress" class="form-label">Residential Address</label>
-                                        <textarea class="form-control" id="fatherResidentialAddress" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherEducation" class="form-label">Education Level</label>
-                                        <select class="form-select" id="fatherEducation">
-                                            <option value="">Choose</option>
-                                            <option value="primary">Primary</option>
-                                            <option value="secondary">Secondary</option>
-                                            <option value="tertiary">Tertiary</option>
-                                            <option value="postgraduate">Postgraduate</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherOccupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" id="fatherOccupation">
-                                    </div>
-                                </div>
-                                
-                                <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-secondary prev-section" data-prev="student-info">
-                                        <i class="fas fa-arrow-left me-1"></i> Previous
-                                    </button>
-                                    <button type="button" class="btn btn-primary next-section" data-next="mother-info">
-                                        Next <i class="fas fa-arrow-right ms-1"></i>
-                                    </button>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Dropdown menus not working
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Try refreshing the page. If the issue continues, check if you have any browser extensions that might be interfering with dropdown functionality.
                                 </div>
                             </div>
+                        </div>
+                    </div>
 
-                            <!-- Mother Information -->
-                            <div class="form-section" id="mother-info-section">
-                                <h5 class="mb-3">Mother Information</h5>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherFirstName" class="form-label required-field">First Name</label>
-                                        <input type="text" class="form-control" id="motherFirstName" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherLastName" class="form-label required-field">Last Name</label>
-                                        <input type="text" class="form-control" id="motherLastName" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherMobile" class="form-label required-field">Mobile Number</label>
-                                        <input type="tel" class="form-control" id="motherMobile" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherTitle" class="form-label">Title</label>
-                                        <select class="form-select" id="motherTitle">
-                                            <option value="">Choose</option>
-                                            <option value="mrs">Mrs.</option>
-                                            <option value="ms">Ms.</option>
-                                            <option value="dr">Dr.</option>
-                                            <option value="prof">Prof.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherPostalAddress" class="form-label">Postal Address</label>
-                                        <textarea class="form-control" id="motherPostalAddress" rows="3"></textarea>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherResidentialAddress" class="form-label">Residential Address</label>
-                                        <textarea class="form-control" id="motherResidentialAddress" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherEducation" class="form-label">Education Level</label>
-                                        <select class="form-select" id="motherEducation">
-                                            <option value="">Choose</option>
-                                            <option value="primary">Primary</option>
-                                            <option value="secondary">Secondary</option>
-                                            <option value="tertiary">Tertiary</option>
-                                            <option value="postgraduate">Postgraduate</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherOccupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" id="motherOccupation">
-                                    </div>
-                                </div>
-                                
-                                <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-secondary prev-section" data-prev="father-info">
-                                        <i class="fas fa-arrow-left me-1"></i> Previous
-                                    </button>
-                                    <button type="button" class="btn btn-primary next-section" data-next="guardian-info">
-                                        Next <i class="fas fa-arrow-right ms-1"></i>
-                                    </button>
-                                </div>
-                            </div>
-
-                            <!-- Guardian Information -->
-                            <div class="form-section" id="guardian-info-section">
-                                <h5 class="mb-3">Guardian Information</h5>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianFirstName" class="form-label required-field">First Name</label>
-                                        <input type="text" class="form-control" id="guardianFirstName" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianLastName" class="form-label required-field">Last Name</label>
-                                        <input type="text" class="form-control" id="guardianLastName" required>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianMobile" class="form-label required-field">Mobile Number</label>
-                                        <input type="tel" class="form-control" id="guardianMobile" required>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianTitle" class="form-label">Title</label>
-                                        <select class="form-select" id="guardianTitle">
-                                            <option value="">Choose</option>
-                                            <option value="mr">Mr.</option>
-                                            <option value="mrs">Mrs.</option>
-                                            <option value="ms">Ms.</option>
-                                            <option value="dr">Dr.</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianPostalAddress" class="form-label">Postal Address</label>
-                                        <textarea class="form-control" id="guardianPostalAddress" rows="3"></textarea>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianResidentialAddress" class="form-label">Residential Address</label>
-                                        <textarea class="form-control" id="guardianResidentialAddress" rows="3"></textarea>
-                                    </div>
-                                </div>
-                                
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianEducation" class="form-label">Education Level</label>
-                                        <select class="form-select" id="guardianEducation">
-                                            <option value="">Choose</option>
-                                            <option value="primary">Primary</option>
-                                            <option value="secondary">Secondary</option>
-                                            <option value="tertiary">Tertiary</option>
-                                            <option value="postgraduate">Postgraduate</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianOccupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" id="guardianOccupation">
-                                    </div>
-                                </div>
-                                
-                                <div class="alert alert-info mt-4">
-                                    <i class="fas fa-info-circle me-2"></i>
-                                    <strong>Note:</strong> To add other information like medical information, go to the Current Student Page after saving.
-                                </div>
-                                
-                                <div class="d-flex justify-content-between">
-                                    <button type="button" class="btn btn-secondary prev-section" data-prev="mother-info">
-                                        <i class="fas fa-arrow-left me-1"></i> Previous
-                                    </button>
-                                    <div>
-                                        <button type="button" class="btn btn-secondary me-2" id="saveDraft">
-                                            <i class="fas fa-save me-1"></i> Save Draft
-                                        </button>
-                                        <button type="submit" class="btn btn-success">
-                                            <i class="fas fa-check me-1"></i> Save Student
-                                        </button>
-                                    </div>
-                                </div>
-                            </div>
-                        </form>
+                    <div class="note mt-4">
+                        <strong><i class="fas fa-life-ring me-1"></i>Need more help?</strong> Contact the AcademEA support team at info@eatechnologies.tech or call (233)50 128 2006 between 8am and 5pm GMT.
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Bootstrap & jQuery -->
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>AcademEA School Management System</h5>
+                    <p>Simplifying education management for institutions across Ghana</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>© 2025 AcademEA. All rights reserved.</p>
+                    <p>Version 3.2.1</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    
     <script>
-        $(document).ready(function() {
-            let currentSection = 'student-info';
-            let stream = null;
-            
-            // Form navigation
-            $('.next-section').on('click', function() {
-                const nextSection = $(this).data('next');
-                if (validateSection(currentSection)) {
-                    navigateToSection(nextSection);
-                    updateProgressIndicator(nextSection);
-                } else {
-                    alert('Please fill in all required fields before proceeding.');
-                }
-            });
-            
-            $('.prev-section').on('click', function() {
-                const prevSection = $(this).data('prev');
-                navigateToSection(prevSection);
-                updateProgressIndicator(prevSection);
-            });
-            
-            function navigateToSection(section) {
-                // Hide all sections
-                $('.form-section').removeClass('active');
-                
-                // Show the target section
-                $(`#${section}-section`).addClass('active');
-                
-                currentSection = section;
-                
-                // Scroll to top of form
-                $('html, body').animate({
-                    scrollTop: $('.card-body').offset().top
-                }, 500);
-            }
-            
-            function updateProgressIndicator(section) {
-                const progressMap = {
-                    'student-info': 25,
-                    'father-info': 50,
-                    'mother-info': 75,
-                    'guardian-info': 100
-                };
-                
-                $('.progress-bar').css('width', `${progressMap[section]}%`);
-                
-                // Update step indicators
-                $('.rounded-circle').removeClass('bg-primary').addClass('bg-secondary');
-                
-                const stepNumber = Object.keys(progressMap).indexOf(section) + 1;
-                $(`.rounded-circle:eq(${stepNumber - 1})`).removeClass('bg-secondary').addClass('bg-primary');
-            }
-            
-            function validateSection(section) {
-                let isValid = true;
-                $(`#${section}-section input[required], #${section}-section select[required]`).each(function() {
-                    if ($(this).val() === '') {
-                        isValid = false;
-                        $(this).addClass('is-invalid');
-                    } else {
-                        $(this).removeClass('is-invalid');
-                    }
-                });
-                return isValid;
-            }
-            
-            // Form submission
-            $('#addStudentForm').on('submit', function(e) {
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('.help-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
                 e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
                 
-                if (validateSection('guardian-info')) {
-                    // Simulate form submission
-                    alert('Student information saved successfully!');
-                    
-                    // Reset form
-                    $('#addStudentForm')[0].reset();
-                    navigateToSection('student-info');
-                    updateProgressIndicator('student-info');
-                } else {
-                    alert('Please fill in all required fields.');
-                }
-            });
-            
-            // Save draft functionality
-            $('#saveDraft').on('click', function() {
-                alert('Draft saved successfully. You can continue later.');
-            });
-            
-            // Reset form
-            $('#resetForm').on('click', function() {
-                if (confirm('Are you sure you want to reset the form? All entered data will be lost.')) {
-                    $('#addStudentForm')[0].reset();
-                    navigateToSection('student-info');
-                    updateProgressIndicator('student-info');
-                }
-            });
-            
-            // File input change handler
-            $('#studentPhoto').on('change', function() {
-                const file = this.files[0];
-                if (file) {
-                    $('#fileName').text(file.name);
-                    
-                    const reader = new FileReader();
-                    reader.onload = function(e) {
-                        $('#imagePreview').html(`<img src="${e.target.result}" class="img-fluid" style="max-height: 200px;">`);
-                    };
-                    reader.readAsDataURL(file);
-                }
-            });
-            
-            // Camera functionality
-            $('#startCamera').on('click', function() {
-                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-                    navigator.mediaDevices.getUserMedia({ video: true })
-                        .then(function(mediaStream) {
-                            stream = mediaStream;
-                            $('#cameraPreview').show()[0].srcObject = mediaStream;
-                            $('#takePhoto, #stopCamera').prop('disabled', false);
-                            $('#startCamera').prop('disabled', true);
-                        })
-                        .catch(function(error) {
-                            console.error('Error accessing camera:', error);
-                            alert('Unable to access camera: ' + error.message);
-                        });
-                } else {
-                    alert('Your browser does not support camera access.');
-                }
-            });
-            
-            $('#takePhoto').on('click', function() {
-                const video = $('#cameraPreview')[0];
-                const canvas = document.createElement('canvas');
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                canvas.getContext('2d').drawImage(video, 0, 0, canvas.width, canvas.height);
-                
-                const imageData = canvas.toDataURL('image/png');
-                $('#imagePreview').html(`<img src="${imageData}" class="img-fluid" style="max-height: 200px;">`);
-                
-                // Convert data URL to blob and create a File object
-                fetch(imageData)
-                    .then(res => res.blob())
-                    .then(blob => {
-                        const file = new File([blob], 'student-photo.png', { type: 'image/png' });
-                        const dataTransfer = new DataTransfer();
-                        dataTransfer.items.add(file);
-                        $('#studentPhoto').prop('files', dataTransfer.files);
-                        $('#fileName').text('student-photo.png');
-                    });
-            });
-            
-            $('#stopCamera').on('click', function() {
-                if (stream) {
-                    stream.getTracks().forEach(track => track.stop());
-                    $('#cameraPreview').hide()[0].srcObject = null;
-                    $('#takePhoto, #stopCamera').prop('disabled', true);
-                    $('#startCamera').prop('disabled', false);
-                }
+                // Update active class
+                document.querySelectorAll('.help-nav .nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
             });
         });
     </script>
