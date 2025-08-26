@@ -1,781 +1,536 @@
 <!DOCTYPE html>
-<html>
-<head>
-    <title>AcademEA Online - Current Students</title>
-    
-    <meta content="education" charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta property="og:title" content="AcademEA School Management Application" />
-    <meta property="og:description" content="Manage you school with AcademEA for simplicity and easy of use" />
-    <meta property="og:image" content="images/favicon.png" />
-    <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="images/favicon.png">
-    <!-- Form step -->
-    <link href="vendor/jquery-steps/css/jquery.steps.css" rel="stylesheet">
-    <!-- Custom Stylesheet -->
-    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="css/font-awesome.4.7.min.css" rel="stylesheet" />
-    <link href="vendor/bootstrap-select/dist/css/bootstrap-select.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/jquery-ui.css">
-    <link href="css/style.css" rel="stylesheet">
-
-    <link href="css/jquery.dataTables.min.css" rel="stylesheet">
-    <link href="css/buttons.dataTables.min.css" rel="stylesheet">
-    <link href="css/font-awesome.4.7.min.css" rel="stylesheet">
-    <style type="text/css">
-        video, #screenshot-img {
-            width: 161px;
-            height: 131px;
-            border: solid;
-            border-color: black;
-        }
-
-        .videostream {
-            /* ... */
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 131px;
-        }
-
-        .parent {
-            position: relative;
-        }
-       
-        .mycheckbox input input {
-            margin-left: 0px;
-        }
-
-        .mycheckbox td {
-            padding-left: 5px;
-        }
-
-        .mycheckbox input[type="checkbox"] {
-            margin-right: 5px;
-        }
-    </style>
-</head>
-<body>
-    
-<!--*******************
-        Preloader start
-    ********************-->
-<div id="preloader">
-    <div class="sk-three-bounce">
-        <div class="sk-child sk-bounce1"></div>
-        <div class="sk-child sk-bounce2"></div>
-        <div class="sk-child sk-bounce3"></div>
-    </div>
-</div>
-
-<div id="main-wrapper">
-
-    <div class="nav-header">
-        <a href="Dashboard" class="brand-logo">
-            <img class="logo-abbr" src="images/logo-white-2.png" alt="">
-            <img class="logo-compact" src="images/logo-text-white.png" alt="">
-            <img class="brand-title" src="images/logo-text-white.png" alt="">
-        </a>
-
-        <div class="nav-control">
-            <div class="hamburger">
-                <span class="line"></span><span class="line"></span><span class="line"></span>
-            </div>
-        </div>
-    </div>
- 
-    <div class="header">
-        <div class="header-content">
-            <nav class="navbar navbar-expand">
-                <div class="collapse navbar-collapse justify-content-between">
-                    <div class="header-left">
-                        <div class="search_bar dropdown">
-                            <span class="search_icon p-3 c-pointer" data-toggle="dropdown">
-                                <i class="mdi mdi-magnify" id="searchbar"></i>
-                            </span>
-                            <div class="dropdown-menu p-0 m-0" id="dropdown-menu">
-                                <input class="form-control" type="text" id="searchsite1" placeholder="Search" aria-label="Search" />
-                            </div>
-                        </div>
-                    </div>
-                    <ul class="navbar-nav header-right">
-                        <li class="nav-item dropdown notification_dropdown">
-                            <a class="nav-link bell ai-icon" href="#" role="button" data-toggle="dropdown">
-                                <svg id="icon-user" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-bell">
-                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path>
-                                    <path d="M13.73 21a2 2 0 0 1-3.46 0"></path>
-                                </svg>
-                                <div id="bell" class="pulse-css1"></div>
-                            </a>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <ul class="list-unstyled" id="notify">
-                                    
-                                    
-                                </ul>
-                                <a class="all-notification" href="#">See all notifications <i
-                                    class="ti-arrow-right"></i></a>
-                            </div>
-                        </li>
-                        <li class="nav-item dropdown header-profile">
-                            <a class="nav-link" href="#" role="button" data-toggle="dropdown">
-                              
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AcademEA Online - Current Students</title>
+    <title>AcademEA Help - Current Students</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="vendor/datatables/css/jquery.dataTables.min.css" rel="stylesheet">
     <style>
         :root {
-            --primary-color: #4e73df;
-            --secondary-color: #6f42c1;
-            --light-color: #f8f9fc;
-            --dark-color: #5a5c69;
+            --primary: #4e73df;
+            --secondary: #858796;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #5a5c69;
         }
         
         body {
             background-color: #f8f9fc;
-            font-family: 'Nunito', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial, sans-serif;
-        }
-        
-        .card {
-            border: none;
-            border-radius: 10px;
-            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
-        }
-        
-        .card-header {
-            background-color: var(--primary-color);
-            color: white;
-            border-radius: 10px 10px 0 0 !important;
-            font-weight: bold;
-        }
-        
-        .nav-tabs .nav-link {
-            color: var(--dark-color);
-            font-weight: 600;
-        }
-        
-        .nav-tabs .nav-link.active {
-            color: var(--primary-color);
-            border-bottom: 3px solid var(--primary-color);
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            background: transparent;
-        }
-        
-        .btn-primary {
-            background-color: var(--primary-color);
-            border-color: var(--primary-color);
-        }
-        
-        .btn-primary:hover {
-            background-color: var(--secondary-color);
-            border-color: var(--secondary-color);
-        }
-        
-        .sidebar {
-            background: linear-gradient(180deg, var(--primary-color) 10%, var(--secondary-color) 100%);
-            color: white;
-            height: 100vh;
-            position: fixed;
-            z-index: 100;
-        }
-        
-        .sidebar .nav-link {
-            color: rgba(255, 255, 255, 0.8);
-            padding: 1rem;
-        }
-        
-        .sidebar .nav-link:hover {
-            color: white;
-        }
-        
-        .sidebar .nav-link.active {
-            color: white;
-            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
         }
         
         .navbar {
-            background-color: white;
-            box-shadow: 0 0.15rem 1.75rem 0 rgba(58, 59, 69, 0.15);
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
-        .main-content {
-            margin-left: 250px;
+        .help-container {
+            max-width: 1200px;
+            margin: 0 auto;
             padding: 20px;
         }
         
-        .student-photo {
-            width: 150px;
-            height: 150px;
+        .help-header {
+            background: white;
             border-radius: 10px;
-            object-fit: cover;
-            border: 3px solid var(--primary-color);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
         }
         
-        .table-responsive {
+        .help-section {
+            background: white;
             border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .help-section h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .step-card {
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            background: var(--light);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .note {
+            background: #e8f4fd;
+            border-left: 4px solid var(--info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip {
+            background: #f0f9f0;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: #fef7f7;
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .help-nav {
+            position: sticky;
+            top: 20px;
+        }
+
+        /* Image placeholder styles */
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-height: 460px;
             overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
         }
         
-        #tblStudent tbody tr:hover {
-            background-color: rgba(78, 115, 223, 0.1);
-            cursor: pointer;
-        }
-        
-        .form-label {
-            font-weight: 600;
-            color: var(--dark-color);
+        @media (max-width: 768px) {
+            .help-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation Sidebar -->
-    <div class="sidebar col-md-3 col-lg-2 d-md-block sidebar">
-        <div class="position-sticky pt-3">
-            <ul class="nav flex-column">
-                <li class="nav-item">
-                    <a class="nav-link active" href="#">
-                        <i class="fas fa-home me-2"></i>
-                        Dashboard
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-user-graduate me-2"></i>
-                        Students
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-calculator me-2"></i>
-                        Accounts
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-users me-2"></i>
-                        Staff
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-chart-bar me-2"></i>
-                        Reports
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">
-                        <i class="fas fa-cog me-2"></i>
-                        Settings
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </div>
-
-    <!-- Main Content -->
-    <div class="main-content">
-        <!-- Top Navigation -->
-        <nav class="navbar navbar-expand navbar-light mb-4">
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <form class="d-flex">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-primary" type="submit">Search</button>
-                </form>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark mb-4">
+        <div class="container">
+            <a class="navbar-brand" href="#">
+                <img src="/assets/images/logo.png" alt="AcademEA logo" height="50" width="100">
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            <i class="fas fa-user-circle fa-fw"></i> Admin
-                        </a>
-                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <li><a class="dropdown-item" href="#">Profile</a></li>
-                            <li><a class="dropdown-item" href="#">Settings</a></li>
-                            <li><hr class="dropdown-divider"></li>
-                            <li><a class="dropdown-item" href="#">Logout</a></li>
-                        </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-home me-1"></i> Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-book me-1"></i> Guides</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#"><i class="fas fa-question-circle me-1"></i> Support</a>
                     </li>
                 </ul>
             </div>
-        </nav>
-
-        <!-- Page Heading -->
-        <div class="d-sm-flex align-items-center justify-content-between mb-4">
-            <h1 class="h3 mb-0 text-gray-800">Current Students</h1>
-            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
-                <i class="fas fa-download fa-sm text-white-50"></i> Generate Report
-            </a>
         </div>
+    </nav>
 
-        <!-- Content Row -->
+    <div class="help-container">
         <div class="row">
-            <div class="col-md-4">
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-white">Student List</h6>
-                    </div>
-                    <div class="card-body">
-                        <div class="mb-3">
-                            <select class="form-select" id="classFilter">
-                                <option value="">All Classes</option>
-                                <option value="1">Class 1</option>
-                                <option value="2">Class 2</option>
-                                <option value="3">Class 3</option>
-                                <option value="4">Class 4</option>
-                                <option value="5">Class 5</option>
-                                <option value="6">Class 6</option>
-                            </select>
-                        </div>
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="tblStudent" width="100%" cellspacing="0">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Name</th>
-                                        <th>Class</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr data-id="1001">
-                                        <td>1001</td>
-                                        <td>John Smith</td>
-                                        <td>Class 5</td>
-                                    </tr>
-                                    <tr data-id="1002">
-                                        <td>1002</td>
-                                        <td>Emily Johnson</td>
-                                        <td>Class 4</td>
-                                    </tr>
-                                    <tr data-id="1003">
-                                        <td>1003</td>
-                                        <td>Michael Williams</td>
-                                        <td>Class 6</td>
-                                    </tr>
-                                    <tr data-id="1004">
-                                        <td>1004</td>
-                                        <td>Sarah Brown</td>
-                                        <td>Class 5</td>
-                                    </tr>
-                                    <tr data-id="1005">
-                                        <td>1005</td>
-                                        <td>David Jones</td>
-                                        <td>Class 3</td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="help-section help-nav">
+                    <h4>Contents</h4>
+                    <div class="nav flex-column">
+                        <a class="nav-link active" href="#intro">Introduction</a>
+                        <a class="nav-link" href="#viewing">Viewing Students</a>
+                        <a class="nav-link" href="#details">Student Details</a>
+                        <a class="nav-link" href="#photos">Adding Photos</a>
+                        <a class="nav-link" href="#tabs">Information Tabs</a>
+                        <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
                     </div>
                 </div>
             </div>
 
-            <div class="col-md-8">
-                <div class="card mb-4">
-                    <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-white">Student Details</h6>
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Header -->
+                <div class="help-header text-center">
+                    <h1 class="text-primary"><i class="fas fa-user-graduate me-2"></i>Current Students Guide</h1>
+                    <p class="lead">Learn how to effectively manage and view current student information in AcademEA</p>
+                    <div class="d-flex justify-content-center flex-wrap gap-2 mt-4">
+                        <span class="badge bg-primary p-2"><i class="fas fa-clock me-1"></i>Time: 10 min read</span>
+                        <span class="badge bg-success p-2"><i class="fas fa-difficulty me-1"></i>Difficulty: Easy</span>
+                        <span class="badge bg-info p-2"><i class="fas fa-calendar me-1"></i>Last updated: Aug 26, 2025</span>
                     </div>
-                    <div class="card-body">
-                        <div class="mb-4">
-                            <h5 id="studentName">Select a student to view details</h5>
-                        </div>
 
-                        <!-- Nav tabs -->
-                        <ul class="nav nav-tabs" id="studentTabs" role="tablist">
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link active" id="personal-tab" data-bs-toggle="tab" data-bs-target="#personal" type="button" role="tab" aria-controls="personal" aria-selected="true">Personal</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="father-tab" data-bs-toggle="tab" data-bs-target="#father" type="button" role="tab" aria-controls="father" aria-selected="false">Father</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="mother-tab" data-bs-toggle="tab" data-bs-target="#mother" type="button" role="tab" aria-controls="mother" aria-selected="false">Mother</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="guardian-tab" data-bs-toggle="tab" data-bs-target="#guardian" type="button" role="tab" aria-controls="guardian" aria-selected="false">Guardian</button>
-                            </li>
-                            <li class="nav-item" role="presentation">
-                                <button class="nav-link" id="academic-tab" data-bs-toggle="tab" data-bs-target="#academic" type="button" role="tab" aria-controls="academic" aria-selected="false">Academic</button>
-                            </li>
+                    <!-- IMAGE PLACEHOLDER: replace the `src` value of #page-screenshot with your own image URL or local path -->
+                    <div class="mt-4 screenshot text-center bg-light py-3">
+                        <p class="text-muted"><i class="fas fa-image me-1"></i>Page interface</p>
+                        <div class="image-placeholder">
+                            <!-- Replace the src value below with your image path (e.g. "assets/images/mypage.png") or a URL -->
+                            <img id="page-screenshot" src="/assets/images/currentstudent.png" alt="Page screenshot" class="img-fluid rounded" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Introduction Section -->
+                <div class="help-section" id="intro">
+                    <h3><i class="fas fa-info-circle feature-icon"></i>Introduction to Current Students</h3>
+                    <p>The <strong>Current Students</strong> section allows you to view and manage all students currently enrolled in your institution. This powerful tool helps you access student information quickly and efficiently.</p>
+                    
+                    <div class="note">
+                        <strong><i class="fas fa-lightbulb me-1"></i>Note:</strong> You must have appropriate permissions to view and edit student information. Contact your system administrator if you need access.
+                    </div>
+
+                    <p>In this guide, you'll learn how to:</p>
+                    <ul>
+                        <li>Select a class to view its students</li>
+                        <li>Search for specific students</li>
+                        <li>View detailed student information</li>
+                        <li>Add student photos</li>
+                        <li>Navigate between different information tabs</li>
+                    </ul>
+                </div>
+
+                <!-- Viewing Students Section -->
+                <div class="help-section" id="viewing">
+                    <h3><i class="fas fa-list feature-icon"></i>Viewing Students by Class</h3>
+                    <p>To view students in a specific class, follow these steps:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Select a Class</h5>
+                        <p>Use the <strong>"Choose Class"</strong> dropdown menu to select the class you want to view. The student list will automatically update to show only students from that class.</p>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Class selection dropdown example</p>
+                            <div class="d-inline-block text-start">
+                                <select class="form-select">
+                                    <option>Choose Class -</option>
+                                    <option>J.H.S 1</option>
+                                    <option>J.H.S 2</option>
+                                    <option>J.H.S 3</option>
+                                    <option>Basic 1</option>
+                                    <option>Basic 2</option>
+                                    <option>Basic 3</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Search for a Student</h5>
+                        <p>If you're looking for a specific student, use the <strong>Search box</strong> above the student list. You can search by:</p>
+                        <ul>
+                            <li>Student ID</li>
+                            <li>First or Last name</li>
+                            <li>Other identifying information</li>
                         </ul>
-
-                        <!-- Tab panes -->
-                        <div class="tab-content p-3 border border-top-0" id="studentTabContent">
-                            <!-- Personal Information Tab -->
-                            <div class="tab-pane fade show active" id="personal" role="tabpanel" aria-labelledby="personal-tab">
-                                <div class="row">
-                                    <div class="col-md-4 text-center mb-4">
-                                        <img src="https://via.placeholder.com/150" alt="Student Photo" class="student-photo mb-3">
-                                        <div>
-                                            <input type="file" class="form-control" id="studentPhoto">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label for="firstName" class="form-label">First Name</label>
-                                                <input type="text" class="form-control" id="firstName">
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="lastName" class="form-label">Last Name</label>
-                                                <input type="text" class="form-control" id="lastName">
-                                            </div>
-                                        </div>
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <label for="dob" class="form-label">Date of Birth</label>
-                                                <input type="date" class="form-control" id="dob">
-                                            </div>
-                                            <div class="col-md-6 mb-3">
-                                                <label for="gender" class="form-label">Gender</label>
-                                                <select class="form-select" id="gender">
-                                                    <option value="">Select Gender</option>
-                                                    <option value="male">Male</option>
-                                                    <option value="female">Female</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="address" class="form-label">Address</label>
-                                            <textarea class="form-control" id="address" rows="2"></textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-primary">Save Changes</button>
-                                </div>
-                            </div>
-
-                            <!-- Father Information Tab -->
-                            <div class="tab-pane fade" id="father" role="tabpanel" aria-labelledby="father-tab">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherName" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="fatherName">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherPhone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="fatherPhone">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherEmail" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="fatherEmail">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="fatherOccupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" id="fatherOccupation">
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-primary">Save Changes</button>
-                                </div>
-                            </div>
-
-                            <!-- Mother Information Tab -->
-                            <div class="tab-pane fade" id="mother" role="tabpanel" aria-labelledby="mother-tab">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherName" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="motherName">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherPhone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="motherPhone">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherEmail" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="motherEmail">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="motherOccupation" class="form-label">Occupation</label>
-                                        <input type="text" class="form-control" id="motherOccupation">
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-primary">Save Changes</button>
-                                </div>
-                            </div>
-
-                            <!-- Guardian Information Tab -->
-                            <div class="tab-pane fade" id="guardian" role="tabpanel" aria-labelledby="guardian-tab">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianName" class="form-label">Full Name</label>
-                                        <input type="text" class="form-control" id="guardianName">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianPhone" class="form-label">Phone Number</label>
-                                        <input type="tel" class="form-control" id="guardianPhone">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianEmail" class="form-label">Email</label>
-                                        <input type="email" class="form-control" id="guardianEmail">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="guardianRelationship" class="form-label">Relationship</label>
-                                        <input type="text" class="form-control" id="guardianRelationship">
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-primary">Save Changes</button>
-                                </div>
-                            </div>
-
-                            <!-- Academic Information Tab -->
-                            <div class="tab-pane fade" id="academic" role="tabpanel" aria-labelledby="academic-tab">
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="studentClass" class="form-label">Class</label>
-                                        <select class="form-select" id="studentClass">
-                                            <option value="">Select Class</option>
-                                            <option value="1">Class 1</option>
-                                            <option value="2">Class 2</option>
-                                            <option value="3">Class 3</option>
-                                            <option value="4">Class 4</option>
-                                            <option value="5">Class 5</option>
-                                            <option value="6">Class 6</option>
-                                        </select>
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="academicYear" class="form-label">Academic Year</label>
-                                        <select class="form-select" id="academicYear">
-                                            <option value="2023-2024">2023-2024</option>
-                                            <option value="2022-2023">2022-2023</option>
-                                            <option value="2021-2022">2021-2022</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-6 mb-3">
-                                        <label for="rollNumber" class="form-label">Roll Number</label>
-                                        <input type="text" class="form-control" id="rollNumber">
-                                    </div>
-                                    <div class="col-md-6 mb-3">
-                                        <label for="house" class="form-label">House</label>
-                                        <select class="form-select" id="house">
-                                            <option value="">Select House</option>
-                                            <option value="red">Red House</option>
-                                            <option value="blue">Blue House</option>
-                                            <option value="green">Green House</option>
-                                            <option value="yellow">Yellow House</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="text-end">
-                                    <button type="button" class="btn btn-primary">Save Changes</button>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Search box example</p>
+                            <div class="d-inline-block text-start w-75">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    <input type="text" class="form-control" placeholder="Search...">
                                 </div>
                             </div>
                         </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>View Student List</h5>
+                        <p>Once you've selected a class, the student list will display all students in that class. The list shows:</p>
+                        <ul>
+                            <li>Student ID</li>
+                            <li>Student Name</li>
+                            <li>Class Information</li>
+                        </ul>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Student list example</p>
+                            <div class="d-inline-block text-start w-100">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>STD10050</td>
+                                            <td>FRANK DEBRA J.H.</td>
+                                            <td>J.H.S 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>STD10053</td>
+                                            <td>SUSANA ARTHUR J.H.</td>
+                                            <td>J.H.S 1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Details Section -->
+                <div class="help-section" id="details">
+                    <h3><i class="fas fa-user feature-icon"></i>Viewing Student Details</h3>
+                    <p>To view detailed information about a student:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Select a Student</h5>
+                        <p>Click on a student's name in the student list. Their details will appear on the right side of the screen (or below on mobile devices).</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Review Student Information</h5>
+                        <p>The student details section shows important information such as:</p>
+                        <ul>
+                            <li>First and Last name</li>
+                            <li>Student ID</li>
+                            <li>Class/Form</li>
+                            <li>Gender</li>
+                            <li>Residence Type</li>
+                            <li>Phone Number</li>
+                            <li>Program Type</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip">
+                        <strong><i class="fas fa-tip me-1"></i>Tip:</strong> Required fields are marked with an asterisk (*). You must complete these fields when adding or editing student information.
+                    </div>
+                </div>
+
+                <!-- Adding Photos Section -->
+                <div class="help-section" id="photos">
+                    <h3><i class="fas fa-camera feature-icon"></i>Adding Student Photos</h3>
+                    <p>You can add photos to student profiles in two ways:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Upload from Your Device</h5>
+                        <p>To upload a photo from your computer or mobile device:</p>
+                        <ol>
+                            <li>Scroll to the bottom of the student details section</li>
+                            <li>Click the <strong>"Choose File"</strong> button</li>
+                            <li>Select the image file from your device</li>
+                            <li>Click <strong>"Upload"</strong> to save the photo</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Take a Photo with Your Camera</h5>
+                        <p>To take a new photo using your device's camera:</p>
+                        <ol>
+                            <li>Click the <strong>"Start Camera"</strong> button</li>
+                            <li>Allow the browser to access your camera when prompted</li>
+                            <li>Position the student in the frame</li>
+                            <li>Click <strong>"Take Photo"</strong> to capture the image</li>
+                            <li>Click <strong>"Stop Camera"</strong> when finished</li>
+                        </ol>
+                    </div>
+
+                    <div class="warning">
+                        <strong><i class="fas fa-exclamation-triangle me-1"></i>Important:</strong> Make sure you have permission to take and store student photos according to your institution's privacy policy.
+                    </div>
+                </div>
+
+                <!-- Information Tabs Section -->
+                <div class="help-section" id="tabs">
+                    <h3><i class="fas fa-folder feature-icon"></i>Information Tabs</h3>
+                    <p>Each student's profile contains multiple tabs with different types of information:</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-user-graduate me-2"></i>Student Tab</h5>
+                                    <p class="card-text">Contains basic student information like name, ID, class, and contact details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-male me-2"></i>Father Tab</h5>
+                                    <p class="card-text">Contains information about the student's father, including contact details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-female me-2"></i>Mother Tab</h5>
+                                    <p class="card-text">Contains information about the student's mother, including contact details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-user-friends me-2"></i>Guardian Tab</h5>
+                                    <p class="card-text">Contains information about the student's guardian if different from parents.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Switch Between Tabs</h5>
+                        <p>Click on any tab to view the corresponding information. The active tab will be highlighted.</p>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Tab navigation example</p>
+                            <div class="d-inline-block">
+                                <ul class="nav nav-tabs">
+                                    <li class="nav-item">
+                                        <a class="nav-link active" href="#">Student</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Father</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Mother</a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a class="nav-link" href="#">Guardian</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Troubleshooting Section -->
+                <div class="help-section" id="troubleshooting">
+                    <h3><i class="fas fa-tools feature-icon"></i>Troubleshooting</h3>
+                    <p>Here are solutions to common issues you might encounter:</p>
+
+                    <div class="accordion" id="helpAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    No students appear in the list
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Make sure you've selected a class from the dropdown menu. If the problem persists, contact your system administrator to verify that students are properly enrolled in the selected class.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Camera not working for photos
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Ensure that you've allowed browser access to your camera. Check your browser settings and privacy permissions. If using a work computer, your organization might restrict camera access.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Can't edit student information
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    You may not have editing permissions. Contact your system administrator to verify your user role has appropriate permissions to edit student information.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note mt-4">
+                        <strong><i class="fas fa-life-ring me-1"></i>Need more help?</strong> Contact the AcademEA support team at support@eatechnologies.tech or call (233)50 128 2006 between 8am and 5pm GMT.
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>AcademEA School Management System</h5>
+                    <p>Simplifying education management for institutions across Ghana</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p>© 2025 AcademEA. All rights reserved.</p>
+                    <p>Version 3.2.1</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="vendor/datatables/js/jquery.dataTables.min.js"></script>
     <script>
-        $(document).ready(function() {
-            // Initialize DataTable
-            $('#tblStudent').DataTable({
-                pageLength: 5,
-                lengthMenu: [[5, 10, 20, -1], [5, 10, 20, 'All']]
-            });
-
-            // Sample student data
-            const students = {
-                '1001': {
-                    name: 'John Smith',
-                    firstName: 'John',
-                    lastName: 'Smith',
-                    dob: '2012-05-15',
-                    gender: 'male',
-                    address: '123 Main St, Anytown, USA',
-                    fatherName: 'Robert Smith',
-                    fatherPhone: '+1 555-1234',
-                    fatherEmail: 'robert.smith@example.com',
-                    fatherOccupation: 'Engineer',
-                    motherName: 'Mary Smith',
-                    motherPhone: '+1 555-5678',
-                    motherEmail: 'mary.smith@example.com',
-                    motherOccupation: 'Teacher',
-                    guardianName: 'James Wilson',
-                    guardianPhone: '+1 555-9012',
-                    guardianEmail: 'james.wilson@example.com',
-                    guardianRelationship: 'Uncle',
-                    studentClass: '5',
-                    academicYear: '2023-2024',
-                    rollNumber: '23C005',
-                    house: 'blue'
-                },
-                '1002': {
-                    name: 'Emily Johnson',
-                    firstName: 'Emily',
-                    lastName: 'Johnson',
-                    dob: '2013-08-22',
-                    gender: 'female',
-                    address: '456 Oak Ave, Somewhere, USA',
-                    fatherName: 'Michael Johnson',
-                    fatherPhone: '+1 555-3456',
-                    fatherEmail: 'michael.johnson@example.com',
-                    fatherOccupation: 'Doctor',
-                    motherName: 'Susan Johnson',
-                    motherPhone: '+1 555-7890',
-                    motherEmail: 'susan.johnson@example.com',
-                    motherOccupation: 'Nurse',
-                    guardianName: 'Susan Johnson',
-                    guardianPhone: '+1 555-7890',
-                    guardianEmail: 'susan.johnson@example.com',
-                    guardianRelationship: 'Mother',
-                    studentClass: '4',
-                    academicYear: '2023-2024',
-                    rollNumber: '23C012',
-                    house: 'red'
-                },
-                '1003': {
-                    name: 'Michael Williams',
-                    firstName: 'Michael',
-                    lastName: 'Williams',
-                    dob: '2011-12-03',
-                    gender: 'male',
-                    address: '789 Pine Rd, Nowhere, USA',
-                    fatherName: 'David Williams',
-                    fatherPhone: '+1 555-2345',
-                    fatherEmail: 'david.williams@example.com',
-                    fatherOccupation: 'Accountant',
-                    motherName: 'Lisa Williams',
-                    motherPhone: '+1 555-6789',
-                    motherEmail: 'lisa.williams@example.com',
-                    motherOccupation: 'Lawyer',
-                    guardianName: 'David Williams',
-                    guardianPhone: '+1 555-2345',
-                    guardianEmail: 'david.williams@example.com',
-                    guardianRelationship: 'Father',
-                    studentClass: '6',
-                    academicYear: '2023-2024',
-                    rollNumber: '23C008',
-                    house: 'green'
-                },
-                '1004': {
-                    name: 'Sarah Brown',
-                    firstName: 'Sarah',
-                    lastName: 'Brown',
-                    dob: '2012-02-18',
-                    gender: 'female',
-                    address: '321 Elm St, Anytown, USA',
-                    fatherName: 'Thomas Brown',
-                    fatherPhone: '+1 555-4567',
-                    fatherEmail: 'thomas.brown@example.com',
-                    fatherOccupation: 'Architect',
-                    motherName: 'Jennifer Brown',
-                    motherPhone: '+1 555-8901',
-                    motherEmail: 'jennifer.brown@example.com',
-                    motherOccupation: 'Designer',
-                    guardianName: 'Thomas Brown',
-                    guardianPhone: '+1 555-4567',
-                    guardianEmail: 'thomas.brown@example.com',
-                    guardianRelationship: 'Father',
-                    studentClass: '5',
-                    academicYear: '2023-2024',
-                    rollNumber: '23C015',
-                    house: 'yellow'
-                },
-                '1005': {
-                    name: 'David Jones',
-                    firstName: 'David',
-                    lastName: 'Jones',
-                    dob: '2014-07-09',
-                    gender: 'male',
-                    address: '654 Maple Dr, Somewhere, USA',
-                    fatherName: 'Richard Jones',
-                    fatherPhone: '+1 555-5678',
-                    fatherEmail: 'richard.jones@example.com',
-                    fatherOccupation: 'Business Owner',
-                    motherName: 'Patricia Jones',
-                    motherPhone: '+1 555-9012',
-                    motherEmail: 'patricia.jones@example.com',
-                    motherOccupation: 'Professor',
-                    guardianName: 'Richard Jones',
-                    guardianPhone: '+1 555-5678',
-                    guardianEmail: 'richard.jones@example.com',
-                    guardianRelationship: 'Father',
-                    studentClass: '3',
-                    academicYear: '2023-2024',
-                    rollNumber: '23C022',
-                    house: 'blue'
-                }
-            };
-
-            // Handle row click to populate form
-            $('#tblStudent tbody').on('click', 'tr', function() {
-                const studentId = $(this).data('id');
-                const student = students[studentId];
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('.help-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
                 
-                if (student) {
-                    $('#studentName').text(student.name);
-                    
-                    // Personal tab
-                    $('#firstName').val(student.firstName);
-                    $('#lastName').val(student.lastName);
-                    $('#dob').val(student.dob);
-                    $('#gender').val(student.gender);
-                    $('#address').val(student.address);
-                    
-                    // Father tab
-                    $('#fatherName').val(student.fatherName);
-                    $('#fatherPhone').val(student.fatherPhone);
-                    $('#fatherEmail').val(student.fatherEmail);
-                    $('#fatherOccupation').val(student.fatherOccupation);
-                    
-                    // Mother tab
-                    $('#motherName').val(student.motherName);
-                    $('#motherPhone').val(student.motherPhone);
-                    $('#motherEmail').val(student.motherEmail);
-                    $('#motherOccupation').val(student.motherOccupation);
-                    
-                    // Guardian tab
-                    $('#guardianName').val(student.guardianName);
-                    $('#guardianPhone').val(student.guardianPhone);
-                    $('#guardianEmail').val(student.guardianEmail);
-                    $('#guardianRelationship').val(student.guardianRelationship);
-                    
-                    // Academic tab
-                    $('#studentClass').val(student.studentClass);
-                    $('#academicYear').val(student.academicYear);
-                    $('#rollNumber').val(student.rollNumber);
-                    $('#house').val(student.house);
-                }
-            });
-
-            // Class filter functionality
-            $('#classFilter').change(function() {
-                const selectedClass = $(this).val();
-                if (selectedClass) {
-                    $('#tblStudent tbody tr').each(function() {
-                        const rowClass = $(this).find('td:eq(2)').text();
-                        if (rowClass.includes(selectedClass)) {
-                            $(this).show();
-                        } else {
-                            $(this).hide();
-                        }
-                    });
-                } else {
-                    $('#tblStudent tbody tr').show();
-                }
+                // Update active class
+                document.querySelectorAll('.help-nav .nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
             });
         });
     </script>
