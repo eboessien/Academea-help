@@ -1,3 +1,457 @@
-<div class="block-header mt-3">
-  <h4 class="mb-0">Current Students</h4>
-</div>
+ <style>
+        :root {
+            --primary: #4e73df;
+            --secondary: #858796;
+            --success: #1cc88a;
+            --info: #36b9cc;
+            --warning: #f6c23e;
+            --danger: #e74a3b;
+            --light: #f8f9fc;
+            --dark: #5a5c69;
+        }
+        
+        body {
+            background-color: #f8f9fc;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .help-header {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+        
+        .help-section {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+        
+        .help-section h3 {
+            color: var(--primary);
+            border-bottom: 2px solid var(--light);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .step-card {
+            border-left: 4px solid var(--primary);
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            background: var(--light);
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: var(--primary);
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .screenshot {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            background: white;
+            margin: 15px 0;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+        }
+        
+        .note {
+            background: #e8f4fd;
+            border-left: 4px solid var(--info);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip {
+            background: #f0f9f0;
+            border-left: 4px solid var(--success);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .warning {
+            background: #fef7f7;
+            border-left: 4px solid var(--danger);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .feature-icon {
+            color: var(--primary);
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .help-nav {
+            position: sticky;
+            top: 20px;
+        }
+
+        /* Image placeholder styles */
+        .image-placeholder {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            max-height: 460px;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .image-placeholder img {
+            width: 100%;
+            height: auto;
+            object-fit: cover;
+            display: block;
+        }
+        
+        @media (max-width: 768px) {
+            .help-nav {
+                position: static;
+                margin-bottom: 30px;
+            }
+        }
+    </style>
+    <div class="help-container">
+        <div class="row">
+            <!-- Sidebar Navigation -->
+            <div class="col-lg-3">
+                <div class="help-section help-nav">
+                    <h4>Contents</h4>
+                    <div class="nav flex-column">
+                        <a class="nav-link active" href="#intro">Introduction</a>
+                        <a class="nav-link" href="#viewing">Viewing Students</a>
+                        <a class="nav-link" href="#details">Student Details</a>
+                        <a class="nav-link" href="#photos">Adding Photos</a>
+                        <a class="nav-link" href="#tabs">Information Tabs</a>
+                        <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Content -->
+            <div class="col-lg-9">
+                <!-- Header -->
+                <div class="help-header text-center">
+                    <h1 class="text-primary"><i class="fas fa-user-graduate me-2"></i>Current Students Guide</h1>
+                    <p class="lead">Learn how to effectively manage and view current student information in AcademEA</p>
+
+                            <img id="page-screenshot" src="/assets/images/current-student-a-particular-class-selected.jpg" alt="Page screenshot" class="img-fluid rounded" />
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Introduction Section -->
+                <div class="help-section" id="intro">
+                    <h3><i class="fas fa-info-circle feature-icon"></i>Introduction to Current Students</h3>
+                    <p>The <strong>Current Students</strong> section allows you to view and manage all students currently enrolled in your institution. This powerful tool helps you access student information quickly and efficiently.</p>
+                    
+                    <div class="note">
+                        <strong><i class="fas fa-lightbulb me-1"></i>Note:</strong> You must have appropriate permissions to view and edit student information. Contact your system administrator if you need access.
+                    </div>
+
+                    <p>In this guide, you'll learn how to:</p>
+                    <ul>
+                        <li>Select a class to view its students</li>
+                        <li>Search for specific students</li>
+                        <li>View detailed student information</li>
+                        <li>Add student photos</li>
+                        <li>Navigate between different information tabs</li>
+                    </ul>
+                </div>
+
+                <!-- Viewing Students Section -->
+                <div class="help-section" id="viewing">
+                    <h3><i class="fas fa-list feature-icon"></i>Viewing Students by Class</h3>
+                    <p>To view students in a specific class, follow these steps:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Select a Class</h5>
+                        <p>Use the <strong>"Choose Class"</strong> dropdown menu to select the class you want to view. The student list will automatically update to show only students from that class.</p>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Class selection dropdown</p>
+                            <div class="d-inline-block text-start">
+                              
+                                 <img src="/assets/images/current-student-select-class.jpg" alt="class select">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Search for a Student</h5>
+                        <p>If you're looking for a specific student, use the <strong>Search box</strong> above the student list. You can search by:</p>
+                        <ul>
+                            <li>Student ID</li>
+                            <li>First or Last name</li>
+                            <li>Other identifying information</li>
+                        </ul>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Search box example</p>
+                            <div class="d-inline-block text-start w-75">
+                                <div class="input-group">
+                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
+                                    <input type="text" class="form-control" placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>View Student List</h5>
+                        <p>Once you've selected a class, the student list will display all students in that class. The list shows:</p>
+                        <ul>
+                            <li>Student ID</li>
+                            <li>Student Name</li>
+                            <li>Class Information</li>
+                        </ul>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Student list example</p>
+                            <div class="d-inline-block text-start w-100">
+                                <table class="table table-bordered">
+                                    <thead class="table-light">
+                                        <tr>
+                                            <th>#</th>
+                                            <th>ID</th>
+                                            <th>Name</th>
+                                            <th>Class</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>STD10050</td>
+                                            <td>FRANK DEBRA J.H.</td>
+                                            <td>J.H.S 1</td>
+                                        </tr>
+                                        <tr>
+                                            <td>2</td>
+                                            <td>STD10053</td>
+                                            <td>SUSANA ARTHUR J.H.</td>
+                                            <td>J.H.S 1</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Student Details Section -->
+                <div class="help-section" id="details">
+                    <h3><i class="fas fa-user feature-icon"></i>Viewing Student Details</h3>
+                    <p>To view detailed information about a student:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Select a Student</h5>
+                        <p>Click on a student's name in the student list. Their details will appear on the right side of the screen (or below on mobile devices).</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Review Student Information</h5>
+                        <p>The student details section shows important information such as:</p>
+                        <ul>
+                            <li>First and Last name</li>
+                            <li>Student ID</li>
+                            <li>Class/Form</li>
+                            <li>Gender</li>
+                            <li>Residence Type</li>
+                            <li>Phone Number</li>
+                            <li>Program Type</li>
+                        </ul>
+                    </div>
+
+                    <div class="tip">
+                        <strong><i class="fas fa-tip me-1"></i>Tip:</strong> Required fields are marked with an asterisk (*). You must complete these fields when adding or editing student information.
+                    </div>
+                </div>
+
+                <!-- Adding Photos Section -->
+                <div class="help-section" id="photos">
+                    <h3><i class="fas fa-camera feature-icon"></i>Adding Student Photos</h3>
+                    <p>You can add photos to student profiles in two ways:</p>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Upload from Your Device</h5>
+                        <p>To upload a photo from your computer or mobile device:</p>
+                        <ol>
+                            <li>Scroll to the bottom of the student details section</li>
+                            <li>Click the <strong>"Choose File"</strong> button</li>
+                            <li>Select the image file from your device</li>
+                            <li>Click <strong>"Upload"</strong> to save the photo</li>
+                        </ol>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Take a Photo with Your Camera</h5>
+                        <p>To take a new photo using your device's camera:</p>
+                        <ol>
+                            <li>Click the <strong>"Start Camera"</strong> button</li>
+                            <li>Allow the browser to access your camera when prompted</li>
+                            <li>Position the student in the frame</li>
+                            <li>Click <strong>"Take Photo"</strong> to capture the image</li>
+                            <li>Click <strong>"Stop Camera"</strong> when finished</li>
+                        </ol>
+                    </div>
+
+                    <div class="warning">
+                        <strong><i class="fas fa-exclamation-triangle me-1"></i>Important:</strong> Make sure you have permission to take and store student photos according to your institution's privacy policy.
+                    </div>
+                </div>
+
+                <!-- Information Tabs Section -->
+                <div class="help-section" id="tabs">
+                    <h3><i class="fas fa-folder feature-icon"></i>Information Tabs</h3>
+                    <p>Each student's profile contains multiple tabs with different types of information:</p>
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-user-graduate me-2"></i>Student Tab</h5>
+                                    <p class="card-text">Contains basic student information like name, ID, class, and contact details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-male me-2"></i>Father Tab</h5>
+                                    <p class="card-text">Contains information about the student's father, including contact details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-female me-2"></i>Mother Tab</h5>
+                                    <p class="card-text">Contains information about the student's mother, including contact details.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="card mb-3">
+                                <div class="card-body">
+                                    <h5 class="card-title"><i class="fas fa-user-friends me-2"></i>Guardian Tab</h5>
+                                    <p class="card-text">Contains information about the student's guardian if different from parents.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Switch Between Tabs</h5>
+                        <p>Click on any tab to view the corresponding information. The active tab will be highlighted.</p>
+                        <div class="screenshot text-center bg-light py-4">
+                            <p class="text-muted"><i class="fas fa-image me-1"></i>Tab navigation example</p>
+                            <div class="d-inline-block">
+                               <img src="/assets/images/current-student-tabs.jpg" alt="current-student-tabs">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Troubleshooting Section -->
+                <div class="help-section" id="troubleshooting">
+                    <h3><i class="fas fa-tools feature-icon"></i>Troubleshooting</h3>
+                    <p>Here are solutions to common issues you might encounter:</p>
+
+                    <div class="accordion" id="helpAccordion">
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+                                    No students appear in the list
+                                </button>
+                            </h2>
+                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Make sure you've selected a class from the dropdown menu. If the problem persists, contact your system administrator to verify that students are properly enrolled in the selected class.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+                                    Camera not working for photos
+                                </button>
+                            </h2>
+                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    Ensure that you've allowed browser access to your camera. Check your browser settings and privacy permissions. If using a work computer, your organization might restrict camera access.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+                                    Can't edit student information
+                                </button>
+                            </h2>
+                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
+                                <div class="accordion-body">
+                                    You may not have editing permissions. Contact your system administrator to verify your user role has appropriate permissions to edit student information.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="note mt-4">
+                        <strong><i class="fas fa-life-ring me-1"></i>Need more help?</strong> Contact the AcademEA support team at support@eatechnologies.tech or call (233)50 128 2006 between 8am and 5pm GMT.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // Simple smooth scrolling for navigation links
+        document.querySelectorAll('.help-nav .nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 20,
+                    behavior: 'smooth'
+                });
+                
+                // Update active class
+                document.querySelectorAll('.help-nav .nav-link').forEach(navLink => {
+                    navLink.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

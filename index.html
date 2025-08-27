@@ -27,7 +27,7 @@
 	</div>
 	<ul class="nav navbar-nav">
 	  <li class="nav-item mr-8"><a class="btn btn-secondary btn-header d-sm-block d-none" href="https://1.envato.market/MGEaN" target="_blank"><i class="icon-bag3"></i> Portfolio</a></li>
-			<li class="nav-item mr-8"><a class="btn btn-success text-white" href=" https://spruko.com/support" target="_blank"><i
+			<li class="nav-item mr-8"><a class="btn btn-success text-white" href=" https://EA.com/support" target="_blank"><i
 						class="icon-help2"></i>Support</a></li>
 	  <li class="nav-item"><a class="btn btn-danger text-white mr-3 btn-header" href="" target="_blank"><i class="icon-bag3"></i> Licenses</a></li>
 	</ul>
@@ -54,10 +54,18 @@
 
     // Router: listen to hash changes
     function router() {
-      let hash = location.hash.replace("#", "") || "dashboard"; // default page
+      let hash = location.hash.replace("#", "") || "dashboard";
+
+      //If an element with this ID already exists, just scroll to it
+      const section = document.getElementById(hash);
+      if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+        return;
+      }
+
+      //Otherwise, load it dynamically
       loadPage(hash);
     }
-
     // Listen for navigation
     window.addEventListener("hashchange", router);
     window.addEventListener("load", router);
