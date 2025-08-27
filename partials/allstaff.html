@@ -1,170 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <link rel="stylesheet" href="styles.css" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Academea Help</title>
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f9ff;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1, h2{
+            color: #1a4dab;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 10px;
+        }
+
+        hr {
+            border: none;
+            border-top: 3px solid #1a4dab;
+            margin-bottom: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #ffffff;
+            border: 1px solid #cce0ff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 20px auto;
+            border: 1px solid #cce0ff;
+            border-radius: 6px;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 15px;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+        }
+    </style>
 </head>
+
 <body>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+    <h1>AcademEA Help</h1><hr>
+<h2>ALL STAFF</h2>
+    <section>
+     
+        <p>The All staff page is use to list all current staff in system. In addition some management task can be 
+performed here. </p><br>
+        <img src="/assets/images/all-staff.jpg" alt="menu"><br><br><br>
+    
+        <p>1. Print student list. <br>
+      2. Copy the data in the list. <br>
+      3. Export the list to Ms Excel. <br>
+      4. Export the list to PDF. <br>
+      5. Move selected staff to old staff database.</p><br><br><br>
 
-<div class="container mt-4">
-  <h4 class="mb-3">All Staff Members</h4>
-  <p class="text-muted">All current staff</p>
+      <h3>Hide and Show Columns</h3>
 
-  <!-- Hide/Show Columns -->
-  <div class="mb-3">
-    <strong>Hide/Show Columns</strong><br>
-    <div class="row g-2">
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colStaffId"> Staff ID</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colFirstName"> First Name</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colOtherNames"> Other Names</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colLastName"> Last Name</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colGender"> Gender</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colDepartment"> Department</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colPhone"> Phone</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colDesignation"> Designation</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colDOB"> Date of Birth</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colDateEmployed"> Date Employed</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colPostalAddr"> Postal Address</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colEmail"> Email</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colQualification"> Qualification</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colEducationLevel"> Education Level</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colAddress"> Address</div>
-      <div class="col-6 col-md-2"><input type="checkbox" checked id="colMaritalStatus"> Marital Status</div>
-    </div>
-  </div>
+      <p>On the All Student Page you can hide or show is column you want make visible. Assume you want to 
+only the first name, last name and class of students. You will have to check the checkboxes the 
+represent a particular column to hide it. Checking it again will now make the column visible.</p><br>
+<img src="/assets/images/all-staff-filter.jpg" alt="menu">
 
-  <!-- Staff Table -->
-  <div class="table-responsive">
-    <table class="table table-bordered table-hover align-middle" id="staffTable">
-      <thead class="table-light">
-        <tr>
-          <th class="colStaffId">Staff ID</th>
-          <th class="colFirstName">First Name</th>
-          <th class="colOtherNames">Other Names</th>
-          <th class="colLastName">Last Name</th>
-          <th class="colGender">Gender</th>
-          <th class="colDepartment">Department</th>
-          <th class="colPhone">Phone</th>
-          <th class="colDesignation">Designation</th>
-          <th class="colDOB">Date of Birth</th>
-          <th class="colDateEmployed">Date Employed</th>
-          <th class="colPostalAddr">Postal Address</th>
-          <th class="colEmail">Email</th>
-          <th class="colQualification">Qualification</th>
-          <th class="colEducationLevel">Education Level</th>
-          <th class="colAddress">Address</th>
-          <th class="colMaritalStatus">Marital Status</th>
-        </tr>
-      </thead>
-      <tbody>
-        <!-- Staff rows will be dynamically inserted here -->
-      </tbody>
-    </table>
-  </div>
-</div>
+    </section>
 
-<style>
-    .container {
-  background: #fff;
-  border-radius: 12px;
-  box-shadow: 0 2px 12px rgba(24, 1, 1, 0.07);
-  padding: 32px 18px;
-  margin-top: 32px;
-}
-
-/* Table styling */
-.table {
-  border-radius: 8px;
-  overflow: hidden;
-  background: #fafbfc;
-  box-shadow: 0 1px 6px rgba(0,0,0,0.04);
-}
-
-.table thead {
-  background: #f5f7fa;
-  font-weight: 600;
-}
-
-.table th, .table td {
-  vertical-align: middle;
-  border-color: #e9ecef;
-  font-size: 1em;
-  padding: 0.75em 0.5em;
-}
-
-.table-hover tbody tr:hover {
-  background: #e3f2fd;
-}
-@media (max-width: 768px) {
-  .container {
-    padding: 12px 2px;
-    margin-top: 12px;
-  }
-  .table th, .table td {
-    font-size: 0.95em;
-    padding: 0.4em;
-  }
-}
-
-/* Checkbox row styling */
-.row.g-2 > div {
-  margin-bottom: 8px;
-}
-
-strong {
-  font-size: 1.1em;
-  color: #1976d2;
-}
-</style>
-
-<script>
-// Example: Hide/show columns
-const columns = [
-  "StaffId", "FirstName", "OtherNames", "LastName", "Gender", "Department", "Phone",
-  "Designation", "DOB", "DateEmployed", "PostalAddr", "Email", "Qualification",
-  "EducationLevel", "Address", "MaritalStatus"
-];
-columns.forEach(col => {
-  document.getElementById('col' + col).addEventListener('change', function() {
-    document.querySelectorAll('.col' + col).forEach(cell => {
-      cell.style.display = this.checked ? '' : 'none';
-    });
-  });
-});
-
-// Example: Add staff rows dynamically (replace with real data)
-const staffData = [
-  // { staffId: "10001", firstName: "John", otherNames: "Doe", lastName: "Smith", gender: "Male", ... }
-];
-function renderStaffTable() {
-  const tbody = document.querySelector('#staffTable tbody');
-  tbody.innerHTML = '';
-  staffData.forEach(staff => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-      <td class="colStaffId">${staff.staffId || ''}</td>
-      <td class="colFirstName">${staff.firstName || ''}</td>
-      <td class="colOtherNames">${staff.otherNames || ''}</td>
-      <td class="colLastName">${staff.lastName || ''}</td>
-      <td class="colGender">${staff.gender || ''}</td>
-      <td class="colDepartment">${staff.department || ''}</td>
-      <td class="colPhone">${staff.phone || ''}</td>
-      <td class="colDesignation">${staff.designation || ''}</td>
-      <td class="colDOB">${staff.dob || ''}</td>
-      <td class="colDateEmployed">${staff.dateEmployed || ''}</td>
-      <td class="colPostalAddr">${staff.postalAddr || ''}</td>
-      <td class="colEmail">${staff.email || ''}</td>
-      <td class="colQualification">${staff.qualification || ''}</td>
-      <td class="colEducationLevel">${staff.educationLevel || ''}</td>
-      <td class="colAddress">${staff.address || ''}</td>
-      <td class="colMaritalStatus">${staff.maritalStatus || ''}</td>
-    `;
-    tbody.appendChild(row);
-  });
-}
-renderStaffTable();
-</script>
 </body>
 </html>
