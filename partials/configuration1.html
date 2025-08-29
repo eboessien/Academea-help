@@ -7,6 +7,19 @@
             padding: 20px;
             line-height: 1.6;
         }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
 
         h1, h2, h3 {
             color: #1a4dab;
@@ -129,7 +142,47 @@
                 margin: 20px auto;
             }
         }
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+                    .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
     </style>
+        <div class="container">
+        <div class="help-nav">
+            <h2><i class="fas fa-cogs"></i> Configuration Help Pages</h2>
+            <div class="config-links">
+                <a href="#class">Class / Form Setup</a>
+                <a href="#credittype">Credit Type Setup</a>
+                <a href="#department">Department Setup</a>
+                <a href="#education">Education Level Setup</a>
+                <a href="#feecode">Fee Code Setup</a>
+                <a href="#expensetype">Expense Type Setup</a>
+                <a href="#house">House Setup</a>
+                <a href="#incometype">Income Type Setup</a>
+                <a href="#nationality">Nationality Setup</a>
+            </div>
+        </div>
     <section>
         <h1>CONFIGURATION (SYSTEM SETUP)</h1>
         <hr>
@@ -140,13 +193,12 @@
        
     </section>
 
-    <section>
+    <section>        <!-- class & form Setup Help -->
+        <div id="class" class="help-content">
+
         <h2>CLASS/FORM SETUP</h2>
         <p>To add a class click on the Class menu item under the Configuration menu. This opens up the class page.</p>
-        
         <img src="/assets/images/configuration-class-setup - Copy.jpg" alt="Class Setup Page">
-     
-
         <h3>Add Class</h3>
         <p>To add a class, input the details of the class in the add class form on the right side of the page and class 
         on submit.</p>
@@ -198,9 +250,12 @@
 
         <p>4. To copy the data for the list of classes, click on the copy button.</p>
         <img src="/assets/images/configuration-copy-icon.jpg" alt="Copy Icon">
+        </div>
     </section>
 
     <section>
+                <!-- Credit type  Help -->
+        <div id="credit" class="help-content">
         <h2>CREDIT TYPE SETUP</h2>
         <img src="/assets/images/configuration-credit-type.png" alt="Credit Type Setup">
 
@@ -221,9 +276,12 @@
 
         <h3>Searching</h3>
         <p>Use the search bar above the list to quickly find a specific credit type</p>
+        </div>
     </section>
 
     <section>
+                <!-- Departmen setup -->
+        <div id="department" class="help-content">
         <h2>Department Management</h2>
         <img src="/assets/images/configuration-department.png" alt="Department Management">
         
@@ -238,9 +296,12 @@
 
         <h3>Removing Department</h3>
         <p>To delete a department, use the delete option next to its name in the list.</p>
+        </div>
     </section>
 
     <section>
+                <!-- Education level Setup -->
+        <div id="education" class="help-content">
         <h2>Education Level</h2>
         <img src="/assets/images/configuration-education-level.png" alt="Education Level Setup">
         
@@ -263,9 +324,12 @@
         </ol>
 
         <p><h3>"Cancel":</h3> Clears the form without saving any changes, cancelling either an Add or Edit operation.</p>
+        </div>
     </section>
 
     <section>
+        <!-- Fee Code Setup -->
+        <div id="feecode" class="help-content">
         <h2>Fee Code</h2>
         <img src="/assets/images/configuration-fee-code.png" alt="Fee Code Setup">
         
@@ -280,10 +344,12 @@
 
         <p><h3>The "Search"</h3> box will filter the list once codes are added.</p>
         <p><h3>"Cancel"</h3> clears the form.</p>
+        </div>
     </section>
 
     <section>
-        
+        <!-- Expense Type Setup -->
+        <div id="expensetype" class="help-content">
         <h2>Expence Type</h2>
         <img src="/assets/images/configuration-expense-type.png" alt="Expense Type Setup">
 
@@ -298,11 +364,12 @@
 
         <p><h3>"Generate Report":</h3> Click to create a report of all expenses.</p>
         <p><h3>"Reset"</h3>clears the form.</p>
-
+        </div>
     </section>
 
     <section>
-
+        <!-- House Setup -->
+        <div id="house" class="help-content">
          <h2>House</h2>
         <img src="/assets/images/configuration-house.png" alt="House Setup">
 
@@ -310,12 +377,13 @@
         <p>The List: Shows all existing houses and their colors.</p>
         <p>"All" and "None" are likely special options for filters elsewhere.</p>
         <p>"Generate Report": Click to create a printable or downloadable list of all houses</p>
-
+</div>
     </section>
 
 
     <section>
-
+        <!-- Income Type Setup -->
+        <div id="incometype" class="help-content">
         <h2>Income Type</h2>
         <img src="/assets/images/configuration-income-type.png" alt="Income Type Setup">
 
@@ -328,12 +396,13 @@
         <p>Delete: Click the bin to remove.</p>
         <h3></h3>
         <p>Search: Use the search box to find a fee type</p>
-
+        </div>
     </section>
 
 
     <section>
-
+                <!-- nationatily Setup Help -->
+        <div id="nationality" class="help-content">
         <h2>Nationality </h2>
         <img src="/assets/images/configuration-income-type.png" alt="Income Type Setup">
 
@@ -346,5 +415,5 @@
         <p>Delete: Click the bin to remove.</p>
         <h3></h3>
         <p>Search: Use the box to find a nationality.</p>
-        
+        </div>
     </section>
