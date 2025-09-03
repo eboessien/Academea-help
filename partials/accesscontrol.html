@@ -1,0 +1,684 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Control Help - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .form-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        
+        .form-preview .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-preview label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-preview select, .form-preview input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-preview button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .permission-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .permissions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AcademEA Configuration Help</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-question-circle"></i> Support</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Access Control Help -->
+        <div id="access-control" class="help-content">
+            <h1><i class="fas fa-user-shield"></i> Access Control Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About Access Control</h2>
+                <p>The Access Control module allows you to manage user permissions and security within the AcademEA system. This feature ensures that staff members have appropriate access levels based on their roles and responsibilities.</p>
+                
+                <p>The Access Control module consists of three main components:</p>
+                <ul>
+                    <li><strong>User Groups:</strong> Define roles with specific permission sets</li>
+                    <li><strong>User Access:</strong> Manage permissions for different user groups</li>
+                    <li><strong>Users:</strong> Create and manage individual user accounts</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-map-signs"></i> How to Navigate to Access Control</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Log in to your AcademEA account with administrative privileges.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>From the main menu, navigate to <strong>System Setup</strong>.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Within System Setup, select <strong>Access Control</strong>.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>You will be directed to the Access Control dashboard with options for User Groups, User Access, and Users.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Navigation Path Preview</h3>
+                    <div class="image-placeholder">
+                         <img src="/assets/images/access_nav.png" alt="navigation path screenshot">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Groups Section -->
+            <div class="help-section">
+                <h2><i class="fas fa-users"></i> User Groups</h2>
+                <p>User Groups allow you to define roles with specific permission sets. Common groups include Administrator, Accountant, Instructor, and Cashier.</p>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-plus-circle"></i> How to Create a User Group</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Access Control → User Groups.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Click the <strong>Add</strong> button to create a new group.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Enter a name for the new group in the "Group Name" field.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Click <strong>Submit</strong> to save the new group or <strong>Reset</strong> to clear the form.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>User Group Creation Interface</h4>
+                        <div class="image-placeholder">
+                           <img src="/assets/images/usergroup_form.png" alt="usergroup_form">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-list"></i> Viewing Existing User Groups</h3>
+                    <p>The system comes with predefined user groups, but you can create custom groups as needed.</p>
+                    
+                    <div class="ui-preview">
+                        <h4>User Groups List</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/usergroup.png" alt="list image">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- User Access Section -->
+            <div class="help-section">
+                <h2><i class="fas fa-key"></i> User Access</h2>
+                <p>The User Access section allows you to define permissions for each user group, controlling what features and data they can access.</p>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-edit"></i> How to Configure User Access Permissions</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Access Control → User Access.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Select the user group you want to configure from the dropdown menu.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Check or uncheck the permissions you want to grant or revoke for that group.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Click <strong>Update</strong> to save your changes.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>User Access Permissions Interface</h4>
+                        <div class="image-placeholder">
+                             <img src="/assets/images/accesstype.png" alt="">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-tasks"></i> Available Permissions</h3>
+                    <p>The system offers a wide range of permissions that can be assigned to user groups:</p>
+                    
+                    <div class="permissions-grid">
+                        <div class="permission-item">
+                            <h4>Student Management</h4>
+                            <ul>
+                                <li>View All Students</li>
+                                <li>View Pass Student Details</li>
+                                <li>Promote Students</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="permission-item">
+                            <h4>Financial Operations</h4>
+                            <ul>
+                                <li>Receive Fees</li>
+                                <li>Print Bill</li>
+                                <li>View Fee Summary</li>
+                                <li>View Student Payment Status</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="permission-item">
+                            <h4>Academic Operations</h4>
+                            <ul>
+                                <li>Manage Subjects</li>
+                                <li>View BroadSheet</li>
+                                <li>View Cummulative Record</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="permission-item">
+                            <h4>System Administration</h4>
+                            <ul>
+                                <li>Manage System Setup</li>
+                                <li>Manage User Connectivity</li>
+                                <li>Use Administrative Tool</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Users Section -->
+            <div class="help-section">
+                <h2><i class="fas fa-user"></i> Users</h2>
+                <p>The Users section allows you to create and manage individual user accounts for staff members.</p>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-user-plus"></i> How to Add a New User</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Access Control → Users → Add User.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Select a staff member from the dropdown or enter their details manually.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Enter a User ID and Email address for the new user.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the appropriate Security Group from the dropdown.</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>Set a strong password that meets the system requirements.</p>
+                        </div>
+                        <div class="step" data-number="6">
+                            <p>Confirm the password and set the account status to Active.</p>
+                        </div>
+                        <div class="step" data-number="7">
+                            <p>Click <strong>Submit</strong> to create the user or <strong>Cancel</strong> to discard.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>Add User Interface</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/add_users.png" alt="add_users">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-list-alt"></i> How to View and Manage Users</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Access Control → Users → Display Users.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Use the search function to find specific users or browse the list.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Click the edit icon to modify user details or permissions.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Click the delete icon to remove a user (requires confirmation).</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>User Management Interface</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/usergroup_edit.png" alt="users_list">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="note">
+                    <h3><i class="fas fa-lightbulb"></i> Password Requirements</h3>
+                    <p>When creating user accounts, passwords must meet the following security requirements:</p>
+                    <ul>
+                        <li>At least 8 characters</li>
+                        <li>1 lowercase and 1 uppercase letter</li>
+                        <li>1 number (0-9)</li>
+                        <li>1 special character (!@#$%^&*)</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-lightbulb"></i> Best Practices for Access Control</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p><strong>Principle of Least Privilege:</strong> Grant users only the permissions they need to perform their job functions.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p><strong>Regular Audits:</strong> Periodically review user accounts and permissions to ensure they're still appropriate.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p><strong>Strong Passwords:</strong> Enforce password complexity requirements and regular password changes.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p><strong>Deactivate Inactive Accounts:</strong> Disable accounts for staff members who no longer need system access.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                <ul>
+                    <li>Only users with administrative privileges can access the Access Control module.</li>
+                    <li>Changes to user permissions take effect immediately after saving.</li>
+                    <li>It's recommended to test new permission sets before applying them to multiple users.</li>
+                    <li>Keep backup administrator accounts in case of accidental lockout.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>User cannot access certain features</td>
+                            <td>Insufficient permissions assigned to their user group</td>
+                            <td>Check and update the user group permissions in User Access</td>
+                        </tr>
+                        <tr>
+                            <td>Password not accepted</td>
+                            <td>Password doesn't meet complexity requirements</td>
+                            <td>Ensure password meets all requirements (length, character types)</td>
+                        </tr>
+                        <tr>
+                            <td>User account not appearing in list</td>
+                            <td>Account may be inactive or filtered out</td>
+                            <td>Check active status and search filters</td>
+                        </tr>
+                        <tr>
+                            <td>Cannot modify certain permissions</td>
+                            <td>Your account may lack necessary privileges</td>
+                            <td>Contact a system administrator with higher privileges</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                <p>If you encounter issues with the Access Control module or need help with advanced configurations, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AcademEA Management System. All rights reserved.</p>
+            <p>Help Documentation v1.4 | Last updated: September 3, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+                step.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.config-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
