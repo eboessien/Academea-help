@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship, Bursary & Discount Help - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AcademEA Configuration Help</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-question-circle"></i> Support</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+        <!-- Scholarship, Bursary & Discount Help -->
+        <div id="scholarship" class="help-content">
+            <h1><i class="fas fa-award"></i> Scholarship, Bursary & Discount Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About Scholarship, Bursary & Discount</h2>
+                <p>The Scholarship, Bursary & Discount module allows you to manage financial assistance programs for students. This feature enables you to apply different types of financial credits to student accounts, helping to track scholarships, bursaries, and discounts offered by your institution.</p>
+                
+                <p>Financial assistance can be applied to individual students or groups of students, and can be set for specific academic years and terms.</p>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-tasks"></i> How to Apply a Scholarship, Bursary or Discount</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Navigate to Headquarters > Scholarship, Bursary & Discount from the main menu.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>Select one or more students from the student list by checking the boxes next to their names.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Click the "Apply Credit" button to open the credit application form.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>Select the credit type (Scholarship, Bursary, or Discount) from the dropdown menu.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p>Enter the amount or percentage value for the credit.</p>
+                    </div>
+                    <div class="step" data-number="6">
+                        <p>Select the applicable academic year and term.</p>
+                    </div>
+                    <div class="step" data-number="7">
+                        <p>Add any notes or references if needed.</p>
+                    </div>
+                    <div class="step" data-number="8">
+                        <p>Click "Submit" to apply the credit to the selected students.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Student Selection Interface Preview</h3>
+                     <div class="image-placeholder">
+                        <p class="caption"><img src="/assets/images/selection.png" alt="student selection interface"></p>
+                     </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Credit Application Form Preview</h3>
+                    <div class="image-placeholder">
+                        <img src="/assets/images/application.png" alt="application form interface">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-eye"></i> Viewing Applied Credits</h2>
+                <p>To view credits that have already been applied to students:</p>
+                
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Navigate to Headquarters > Scholarship, Bursary & Discount.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>Use the search function to find a specific student or browse the list.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Click on a student's name to view their credit history.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>The credit history will show all applied scholarships, bursaries, and discounts with details.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Credit History Interface Preview</h3>
+                    <div class="image-placeholder">
+                      <img src="/assets/images/credithistory.png" alt="credit history interface">
+                        <p class="caption">Screenshot showing a student's credit history with applied credits and details</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-edit"></i> Modifying or Removing Credits</h2>
+                <p>To edit or remove an applied credit:</p>
+                
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Navigate to the student's credit history as described above.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>Locate the credit entry you wish to modify.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Click the edit icon (pencil) to modify the credit details.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>Click the delete icon (trash) to remove the credit (you will be asked to confirm).</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p>Make your changes and click "Save" to apply modifications.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Credit Management Actions Preview</h3>
+                    <div class="image-placeholder">
+                        <img src="/assets/images/action.png" alt="action icons interface">
+                </div>
+            </div>
+        
+            
+            <div class="note">
+                <h3><i class="fas fa-lightbulb"></i> Important Notes</h3>
+                <ul>
+                    <li>Credits applied will automatically adjust the student's fee balance.</li>
+                    <li>Some credits may have expiration dates or specific terms of use.</li>
+                    <li>System administrators can set up credit types with specific rules and limitations.</li>
+                    <li>All credit applications are logged for audit purposes.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-cog"></i> Configuration Options</h2>
+                <p>Administrators can configure various aspects of the financial assistance system:</p>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Description</th>
+                            <th>Access Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Credit Types</td>
+                            <td>Define different types of financial assistance (e.g., Merit Scholarship, Need-Based Bursary, Sibling Discount)</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Amount Rules</td>
+                            <td>Set fixed amounts, percentages, or formulas for calculating financial assistance</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Eligibility Criteria</td>
+                            <td>Define conditions that students must meet to qualify for specific financial assistance</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Application Limits</td>
+                            <td>Set maximum amounts or usage limits for different credit types</td>
+                            <td>Administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Approval Workflows</td>
+                            <td>Configure multi-level approval processes for financial assistance applications</td>
+                            <td>Administrator</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="ui-preview">
+                    <h3>Credit Configuration Interface Preview</h3>
+                    <div class="image-placeholder">
+                        <img src="/assets/images/credit_type.png" alt="credit type configuration interface">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-question-circle"></i> Need More Help?</h3>
+                <p>If you require further assistance with the Scholarship, Bursary & Discount module, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AcademEA Management System. All rights reserved.</p>
+            <p>Help Documentation v1.1 | Last updated: September 1, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+                step.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.config-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

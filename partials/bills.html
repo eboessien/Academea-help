@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Billing Module Help - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .form-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        
+        .form-preview .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-preview label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-preview select, .form-preview input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-preview button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .permission-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .permissions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AcademEA Configuration Help</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-question-circle"></i> Support</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+
+        <!-- Billing Module Help -->
+        <div id="billing" class="help-content">
+            <h1><i class="fas fa-file-invoice-dollar"></i> Billing Module Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About the Billing Module</h2>
+                <p>The Billing module in AcademEA provides comprehensive tools for creating, managing, and applying fees to students. It allows you to set up custom fee structures, apply bills to individual students or groups, and manage billing cycles.</p>
+                
+                <p>This help documentation covers the following specific features of the Billing module:</p>
+                <ul>
+                    <li><strong>Bill Setup:</strong> Create and manage fee structures and billing items</li>
+                    <li><strong>Bill Students:</strong> Apply bills to multiple students at once</li>
+                    <li><strong>Bill Individual Student:</strong> Apply custom bills to specific students</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-map-signs"></i> How to Navigate to Billing Module</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Log in to your AcademEA account with appropriate privileges.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>From the main menu, navigate to <strong>Billing</strong>.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>You will see options for Bill Setup, Bill Students, and Bill Individual Student.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>Select the specific feature you want to use.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Billing Module Navigation</h3>
+                    <div class="image-placeholder">
+                         <img src="/assets/images/billing_nav.png" alt="billing navigation screenshot">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bill Setup Section -->
+            <div class="help-section">
+                <h2><i class="fas fa-cog"></i> Bill Setup</h2>
+                <p>The Bill Setup feature allows you to create and manage fee structures that can be applied to students. You can define fee codes, types, amounts, and specify which students the fees apply to.</p>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-plus-circle"></i> How to Add a New Fee</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Billing → Bill Setup.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Click on "Add Fees" to create a new billing item.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Enter a unique Fee Code for identification.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the Fee Type from the dropdown menu.</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>Enter a descriptive Fee Name.</p>
+                        </div>
+                        <div class="step" data-number="6">
+                            <p>Select the applicable Academic Year and Term.</p>
+                        </div>
+                        <div class="step" data-number="7">
+                            <p>Enter the Amount for the fee.</p>
+                        </div>
+                        <div class="step" data-number="8">
+                            <p>Set the Active status to "Yes" to make the fee available for use.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>Add Fees Interface - Part 1</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/addbill_1.png" alt="add bill screenshot">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-filter"></i> How to Specify Fee Applicability</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>In the "This bill item applies to the following" section, specify which students the fee should apply to.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Select the applicable Residence type (Day, Boarding, or both).</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Select the applicable Gender (Male, Female, or both).</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the applicable Student Type (Local, International, or both).</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>Select the specific classes this fee applies to, or choose "Select All" to apply to all classes.</p>
+                        </div>
+                        <div class="step" data-number="6">
+                            <p>Click "Save Item" to save the fee structure or "Clear" to start over.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>Add Fees Interface - Part 2</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/addbill_2.png" alt="add bill screenshot">
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-search"></i> How to Find and Manage Existing Bills</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Use the "Find Bill" section to search for existing fee structures.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Select the Academic Year and Term to filter bills.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Click "Apply Bill" to view bills matching your criteria.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>The system will display a list of bills with details including Fee Code, Name, Amount, Class, Term, and applicability criteria.</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>Use the action buttons to edit or delete existing bills.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>Find Bill Interface</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/addbill_3.png" alt="add bill screenshot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bill Students Section -->
+            <div class="help-section">
+                <h2><i class="fas fa-users"></i> Bill Students</h2>
+                <p>The Bill Students feature allows you to apply fee structures to multiple students at once based on selected criteria.</p>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-tasks"></i> How to Bill Multiple Students</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Billing → Bill Students.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>The system will display a list of all students.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Use the search function to find specific students or browse the list.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the students you want to bill by checking the boxes next to their names.</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>Click "Bill Student" to proceed with billing the selected students.</p>
+                        </div>
+                        <div class="step" data-number="6">
+                            <p>Select the appropriate bill from the available options.</p>
+                        </div>
+                        <div class="step" data-number="7">
+                            <p>Select the Term and Academic Year for the billing.</p>
+                        </div>
+                        <div class="step" data-number="8">
+                            <p>Click "Apply Bill" to apply the selected bill to all chosen students.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>Bill Students Interface</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/billsetup.png" alt="add bill screenshot">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Bill Individual Student Section -->
+            <div class="help-section">
+                <h2><i class="fas fa-user"></i> Bill Individual Student</h2>
+                <p>The Bill Individual Student feature allows you to apply custom bills to specific students, which is useful for special cases or one-time charges.</p>
+                
+                <div class="help-section">
+                    <h3><i class="fas fa-tasks"></i> How to Bill an Individual Student</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Navigate to Billing → Bill Individual Student.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Select the student you want to bill from the list or use the search function.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>The system will display the student's name, ID, and class.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the bill you want to apply from the "Select Bill" dropdown.</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>Select the Term and Academic Year for the billing.</p>
+                        </div>
+                        <div class="step" data-number="6">
+                            <p>Review the fee details including the fee name and amount.</p>
+                        </div>
+                        <div class="step" data-number="7">
+                            <p>Click "Apply Bill" to apply the selected bill to the student.</p>
+                        </div>
+                        <div class="step" data-number="8">
+                            <p>If immediate payment is being made, click "Make Payment" to process the payment.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="ui-preview">
+                        <h4>Bill Individual Student Interface</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/billstudent.png" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-lightbulb"></i> Best Practices for Billing Management</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p><strong>Clear Fee Codes:</strong> Use descriptive and consistent fee codes for easy identification.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p><strong>Regular Reviews:</strong> Regularly review and update fee structures to reflect current rates.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p><strong>Specific Applicability:</strong> Be specific about which students fees apply to avoid incorrect billing.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p><strong>Document Changes:</strong> Keep records of changes to fee structures for reference.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                <ul>
+                    <li>Only users with appropriate permissions can create and apply bills.</li>
+                    <li>All billing activities are logged for audit purposes.</li>
+                    <li>Always verify fee applicability before applying bills to students.</li>
+                    <li>Inactive fees will not be available for application to students.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cannot create or apply bills</td>
+                            <td>Insufficient permissions</td>
+                            <td>Check your user permissions or contact system administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Fee not appearing in dropdown</td>
+                            <td>Fee may be inactive or not applicable to selected students</td>
+                            <td>Check fee status and applicability criteria</td>
+                        </tr>
+                        <tr>
+                            <td>Student not appearing in list</td>
+                            <td>Student may be inactive or filtered out</td>
+                            <td>Check student status and filters</td>
+                        </tr>
+                        <tr>
+                            <td>Incorrect amount being applied</td>
+                            <td>Fee structure may have been updated</td>
+                            <td>Verify the current fee amount in Bill Setup</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                <p>If you encounter issues with the Billing module or need help with fee management, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AcademEA Management System. All rights reserved.</p>
+            <p>Help Documentation v1.6 | Last updated: September 5, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+                step.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.config-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
