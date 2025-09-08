@@ -1,0 +1,927 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AcademEA Help Center</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .form-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        
+        .form-preview .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-preview label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-preview select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-preview button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AcademEA Configuration Help</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-question-circle"></i> Support</a></li>
+                    <li><a href="https://eatechnologies.tech/contact"><i class="fas fa-envelope"></i> Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+        
+        <!-- Print Bill Help -->
+        <div id="print-bill" class="help-content">
+            <h1><i class="fas fa-file-invoice-dollar"></i> Print Bill Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About Print Bill</h2>
+                <p>The Print Bill feature allows you to generate and print termly bills for students. These bills include tuition fees, additional charges, payments made, and any outstanding balances.</p>
+                
+                <p>You can generate bills for individual students, entire classes, or specific groups of students based on your selection criteria.</p>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-map-signs"></i> How to Navigate to Print Bill</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Log in to your AcademEA account with appropriate administrative privileges.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>From the main menu on the left side of the page, locate and click on the <strong>Accounts</strong> section.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Within the Accounts menu, find and select <strong>Print Bill</strong>.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>You will be directed to the Print Bill page where you can select criteria and generate bills.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Navigation Path Preview</h3>
+                    <div class="image-placeholder">
+                        <img src="/assets/images/print_bill_nav.png" alt="navigation path to Print Bill">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-tasks"></i> How to Generate and Print Bills</h2>
+                <p>Once you've navigated to the Print Bill page, follow these steps to generate bills:</p>
+                
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>You will see a form with selection criteria options as shown in the preview below.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>Select the appropriate <strong>Class</strong> from the dropdown menu.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Choose the relevant <strong>Term</strong> from the term dropdown.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>Select the <strong>Academic Year</strong> from the year dropdown.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p>Click the <strong>Print Bill</strong> button to generate and print the bills.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <img src="/assets/images/print_bill_ui.png" alt="ui for print bill">
+                    <p class="caption">Form interface for selecting bill criteria</p>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-cogs"></i> Advanced Options</h2>
+                <p>The Print Bill feature includes several advanced options for customizing your bills:</p>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Individual Student Bills</td>
+                            <td>Generate a bill for a specific student rather than an entire class</td>
+                            <td>When parents request a copy of their child's bill</td>
+                        </tr>
+                        <tr>
+                            <td>Custom Charges</td>
+                            <td>Add or edit additional charges before printing</td>
+                            <td>When you need to include special fees or adjustments</td>
+                        </tr>
+                        <tr>
+                            <td>Multiple Format Output</td>
+                            <td>Save bills as PDF, Excel, or print directly</td>
+                            <td>When you need digital copies for records or emailing</td>
+                        </tr>
+                        <tr>
+                            <td>Batch Printing</td>
+                            <td>Print bills for an entire class or grade level at once</td>
+                            <td>Beginning-of-term billing for all students</td>
+                        </tr>
+                        <tr>
+                            <td>Bill Templates</td>
+                            <td>Choose from different bill layout templates</td>
+                            <td>When you want to customize the look of bills</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-lightbulb"></i> Tips for Effective Bill Printing</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p><strong>Preview before printing:</strong> Always check the bill preview to ensure all information is correct and properly formatted.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p><strong>Use high-quality paper:</strong> For official bills, use your institution's letterhead or high-quality paper.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p><strong>Check printer settings:</strong> Ensure your printer has enough ink and paper before starting large print jobs.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p><strong>Save digital copies:</strong> Always save PDF copies of bills for your records before printing.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p><strong>Verify data accuracy:</strong> Double-check that all fees, payments, and balances are up-to-date.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                <ul>
+                    <li>Bills can only be generated after fee structures have been set up for the selected term.</li>
+                    <li>Some billing features may require administrative privileges to access.</li>
+                    <li>Custom bill templates may need to be configured in the System Setup section.</li>
+                    <li>Always verify the selected term and academic year before printing to avoid errors.</li>
+                    <li>Ensure all payments have been properly recorded before generating bills.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>No students appear in bill</td>
+                            <td>Incorrect class, term, or year selection</td>
+                            <td>Verify your selection criteria and try again</td>
+                        </tr>
+                        <tr>
+                            <td>Missing fee information</td>
+                            <td>Fee structure not set up for selected term</td>
+                            <td>Ensure fee structures have been configured before generating bills</td>
+                        </tr>
+                        <tr>
+                            <td>Incorrect balance calculations</td>
+                            <td>Payments not properly recorded</td>
+                            <td>Verify all payments have been correctly entered into the system</td>
+                        </tr>
+                        <tr>
+                            <td>Formatting issues in printout</td>
+                            <td>Printer settings or browser compatibility</td>
+                            <td>Check printer settings, try printing as PDF first</td>
+                        </tr>
+                        <tr>
+                            <td>Cannot access Print Bill</td>
+                            <td>Insufficient user permissions</td>
+                            <td>Contact your system administrator for access rights</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                <p>If you encounter issues with the Print Bill feature or need help with advanced configurations, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
+    </div>
+
+        <!-- Reprint Receipt Help -->
+        <div id="reprint-receipt" class="help-content">
+            <h1><i class="fas fa-receipt"></i> Reprint Receipt Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About Reprint Receipt</h2>
+                <p>The Reprint Receipt feature allows you to search for and reprint fee receipts that have already been issued. This is useful when a receipt has been lost, damaged, or needs to be duplicated for record-keeping purposes.</p>
+                
+                <p>You can search for receipts by receipt number, student details, or date range, and reprint them with the original information intact.</p>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-map-signs"></i> How to Navigate to Reprint Receipt</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Log in to your AcademEA account with appropriate administrative privileges.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>From the main menu, navigate to <strong>Staff</strong> > <strong>Reports</strong>.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>From the Reports submenu, select <strong>Reprint Fee Receipt</strong>.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>You will be directed to the Reprint Receipt page where you can search for and reprint receipts.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Navigation Path Preview</h3>
+                    <div class="image-placeholder">
+                        <img src="/assets/images/reprint_recall_nav.png" alt="navigation path to Reprint Receipt">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-tasks"></i> How to Search and Reprint Receipts</h2>
+                <p>Once you've navigated to the Reprint Receipt page, follow these steps:</p>
+                
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Enter the <strong>Receipt Number</strong> in the search field if you know it.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>Alternatively, use the <strong>Filter by</strong> options to search by other criteria such as student name, date, or class.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Click the <strong>Search</strong> button to find matching receipts.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>Review the search results in the table below.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p>Click the <strong>Action</strong> button next to the receipt you want to reprint.</p>
+                    </div>
+                    <div class="step" data-number="6">
+                        <p>Select <strong>Print</strong> or <strong>Reprint</strong> from the action menu.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <img src="/assets/images/reprint_ui.png" alt="Reprint Receipt interface">
+                    <p class="caption">Reprint Receipt search interface</p>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-cogs"></i> Advanced Search Options</h2>
+                <p>The Reprint Receipt feature includes several search and filter options:</p>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Receipt Number Search</td>
+                            <td>Search by specific receipt number</td>
+                            <td>When you know the exact receipt number</td>
+                        </tr>
+                        <tr>
+                            <td>Date Range Filter</td>
+                            <td>Filter receipts by date range</td>
+                            <td>When searching for receipts from a specific period</td>
+                        </tr>
+                        <tr>
+                            <td>Student ID/Name Search</td>
+                            <td>Search by student identifier</td>
+                            <td>When you need all receipts for a specific student</td>
+                        </tr>
+                        <tr>
+                            <td>Class Filter</td>
+                            <td>Filter by student class</td>
+                            <td>When you need receipts for an entire class</td>
+                        </tr>
+                        <tr>
+                            <td>Payment Method Filter</td>
+                            <td>Filter by Momo, Cheque, or Cash</td>
+                            <td>When reconciling specific payment methods</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-lightbulb"></i> Tips for Reprinting Receipts</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p><strong>Verify receipt details:</strong> Always check that all information on the receipt is correct before reprinting.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p><strong>Use original receipt paper:</strong> For official reprints, use the same security paper as original receipts.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p><strong>Mark as duplicate:</strong> Consider stamping "DUPLICATE" on reprinted receipts to avoid confusion with originals.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p><strong>Keep records:</strong> Maintain a log of all reprinted receipts for auditing purposes.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p><strong>Secure access:</strong> Limit access to receipt reprinting to authorized staff only.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                <ul>
+                    <li>Reprinted receipts contain the same information as the original receipt.</li>
+                    <li>Some institutions may require authorization before reprinting receipts.</li>
+                    <li>Reprinting a receipt does not create a new transaction; it only reproduces existing transaction details.</li>
+                    <li>Always verify the identity of the person requesting a receipt reprint.</li>
+                    <li>Keep track of all reprinted receipts for audit trail purposes.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Receipt not found</td>
+                            <td>Incorrect search criteria or receipt number</td>
+                            <td>Verify search criteria and try again</td>
+                        </tr>
+                        <tr>
+                            <td>No search results</td>
+                            <td>No receipts match the search criteria</td>
+                            <td>Broaden search criteria or check date range</td>
+                        </tr>
+                        <tr>
+                            <td>Cannot reprint receipt</td>
+                            <td>Insufficient permissions or technical issue</td>
+                            <td>Contact system administrator or IT support</td>
+                        </tr>
+                        <tr>
+                            <td>Incorrect information on receipt</td>
+                            <td>Original transaction was recorded incorrectly</td>
+                            <td>Use the Recall Fees feature to correct the transaction first</td>
+                        </tr>
+                        <tr>
+                            <td>Printer issues</td>
+                            <td>Printer setup or connection problems</td>
+                            <td>Check printer connection and settings</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                <p>If you encounter issues with the Reprint Receipt feature or need help with advanced configurations, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
+
+        <!-- Recall Fees Help -->
+        <div id="recall-fees" class="help-content">
+            <h1><i class="fas fa-undo-alt"></i> Recall Fees Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About Recall Fees</h2>
+                <p>The Recall Fees feature allows you to review, adjust, and reverse fee transactions that have been recorded in the system. This is essential for correcting errors, processing refunds, or adjusting payments that were recorded incorrectly.</p>
+                
+                <p>With this feature, you can search for specific transactions, view their details, and make necessary adjustments while maintaining a complete audit trail of all changes.</p>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-map-signs"></i> How to Navigate to Recall Fees</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Log in to your AcademEA account with appropriate administrative privileges.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>From the main menu, navigate to <strong>Staff</strong> > <strong>Reports</strong>.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>From the Reports submenu, select <strong>Recall Fees</strong>.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>You will be directed to the Recall Fees page where you can search for and adjust fee transactions.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <h3>Navigation Path Preview</h3>
+                    <div class="image-placeholder">
+                        <img src="/assets/images/reprint_recall_nav.png" alt="navigation path to Recall Fees">
+                    </div>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-tasks"></i> How to Search and Adjust Fee Transactions</h2>
+                <p>Once you've navigated to the Recall Fees page, follow these steps:</p>
+                
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p>Enter the <strong>Receipt Number</strong> in the search field if you know it.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p>Alternatively, use the available filters to search by other criteria such as date, student name, or class.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p>Click the <strong>Search</strong> button to find matching transactions.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p>Review the search results in the table below.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p>Click the <strong>Action</strong> button next to the transaction you want to adjust.</p>
+                    </div>
+                    <div class="step" data-number="6">
+                        <p>Select the appropriate action (Adjust, Reverse, or View Details).</p>
+                    </div>
+                    <div class="step" data-number="7">
+                        <p>Make the necessary changes and provide a reason for the adjustment.</p>
+                    </div>
+                    <div class="step" data-number="8">
+                        <p>Confirm the changes to update the transaction.</p>
+                    </div>
+                </div>
+                
+                <div class="ui-preview">
+                    <img src="/assets/images/recall_ui.png" alt="Recall Fees interface">
+                    <p class="caption">Recall Fees search and adjustment interface</p>
+                </div>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-cogs"></i> Adjustment Options</h2>
+                <p>The Recall Fees feature offers several adjustment options:</p>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Option</th>
+                            <th>Description</th>
+                            <th>Use Case</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Partial Adjustment</td>
+                            <td>Modify part of a transaction amount</td>
+                            <td>When only a portion of the payment needs correction</td>
+                        </tr>
+                        <tr>
+                            <td>Full Reversal</td>
+                            <td>Completely reverse a transaction</td>
+                            <td>When a payment was recorded in error or needs refund</td>
+                        </tr>
+                        <tr>
+                            <td>Payment Method Change</td>
+                            <td>Change how payment was made (Momo, Cheque, Cash)</td>
+                            <td>When payment method was recorded incorrectly</td>
+                        </tr>
+                        <tr>
+                            <td>Date Correction</td>
+                            <td>Adjust the transaction date</td>
+                            <td>When transaction was recorded with wrong date</td>
+                        </tr>
+                        <tr>
+                            <td>Student Reassignment</td>
+                            <td>Reassign payment to different student</td>
+                            <td>When payment was applied to wrong student account</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-lightbulb"></i> Best Practices for Fee Adjustments</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p><strong>Document reasons:</strong> Always provide a clear reason for any fee adjustment for audit purposes.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p><strong>Verify original transaction:</strong> Double-check the original transaction details before making adjustments.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p><strong>Get authorization:</strong> Ensure you have proper authorization for fee adjustments based on your institution's policies.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p><strong>Notify relevant parties:</strong> Inform affected students or parents about adjustments when necessary.</p>
+                    </div>
+                    <div class="step" data-number="5">
+                        <p><strong>Review impact:</strong> Check how adjustments affect student balances and financial reports.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                <ul>
+                    <li>Fee adjustments may affect financial reports and student balances.</li>
+                    <li>All adjustments are logged with user ID, timestamp, and reason for audit purposes.</li>
+                    <li>Some adjustments may require additional authorization based on amount or type.</li>
+                    <li>Reversing transactions may affect related records like receipts and invoices.</li>
+                    <li>Always verify the impact of adjustments on financial statements.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cannot find transaction</td>
+                            <td>Incorrect search criteria or transaction not in system</td>
+                            <td>Verify search criteria or check if transaction exists</td>
+                        </tr>
+                        <tr>
+                            <td>Adjustment option not available</td>
+                            <td>Insufficient permissions or transaction cannot be modified</td>
+                            <td>Contact system administrator for assistance</td>
+                        </tr>
+                        <tr>
+                            <td>Error during adjustment</td>
+                            <td>System error or conflicting data</td>
+                            <td>Check for system updates or contact technical support</td>
+                        </tr>
+                        <tr>
+                            <td>Unexpected balance changes</td>
+                            <td>Adjustment affected related transactions</td>
+                            <td>Review transaction history and make additional adjustments if needed</td>
+                        </tr>
+                        <tr>
+                            <td>Cannot reverse transaction</td>
+                            <td>Transaction is too old or has been reconciled</td>
+                            <td>Follow institutional procedures for reversing reconciled transactions</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                <p>If you encounter issues with the Recall Fees feature or need help with advanced configurations, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 AcademEA Management System. All rights reserved.</p>
+            <p>Help Documentation v1.3 | Last updated: September 8, 2025</p>
+        </div>
+    </footer>
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+                step.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.config-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
