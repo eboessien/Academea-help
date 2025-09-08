@@ -6,6 +6,67 @@
   <link rel="stylesheet" href="assets/plugins/bootstrap/css/bootstrap.min.css">
   <link rel="stylesheet" href="assets/css/main.css">
   <link rel="stylesheet" href="assets/css/themes/all-themes.css">
+  <style>
+    .menu.main-sidebar {
+  height: 80vh;     
+  overflow-y: auto;
+  scroll-behavior: auto;
+}
+    .sidebar .has-submenu > a {
+    position: relative;
+    cursor: pointer;
+  }
+  .sidebar .has-submenu > a::after {
+    content: "▾";
+    position: absolute;
+    right: 15px;
+    font-size: 12px;
+  }
+  .sidebar .submenu {
+    display: none;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    background: #f1f3f4;
+  }
+  .sidebar .submenu li a {
+    display: block;
+    padding: 10px 30px;
+    font-size: 14px;
+  }
+  .sidebar .has-submenu.open > .submenu {
+    display: block;
+  }
+  .sidebar .has-submenu.open > a::after {
+    transform: rotate(180deg);
+  }
+
+/* Parent links */
+.sidebar .list li a:hover {
+  background: #007bff;   /* Bootstrap blue */
+  color: #fff;
+}
+
+/* Submenu links */
+.sidebar .submenu li a:hover {
+  background: #0056b3;   /* darker blue for submenu */
+  color: #fff;
+}
+/* Parent links */
+.sidebar .list li a:hover,
+.sidebar .list li.active > a {
+  background: #007bff;   /* Bootstrap blue */
+  color: #fff;
+}
+
+/* Submenu links */
+.sidebar .submenu li a:hover,
+.sidebar .submenu li.active > a {
+  background: #0056b3;   /* darker blue for submenu */
+  color: #fff;
+}
+
+</style>
 </head>
 <body class="theme-blush">
 
@@ -32,60 +93,103 @@
 	  <li class="nav-item"><a class="btn btn-danger text-white mr-3 btn-header" href="" target="_blank"><i class="icon-bag3"></i> Licenses</a></li>
 	</ul>
 </div>
-  <script>
-    // Load a partial file into an element
-    async function loadPartial(id, file) {
-      let el = document.getElementById(id);
-      let res = await fetch(file);
-      let html = await res.text();
-      el.innerHTML = html;
-    }
+<script>
+async function loadPartial(id, file, callback) {
+  let el = document.getElementById(id);
+  let res = await fetch(file);
+  let html = await res.text();
+  el.innerHTML = html;
+  if (callback) callback();
+}
 
-    // Load sidebar and footer once
-    loadPartial("include-sidebar", "partials/sidebar.html");
-    loadPartial("include-footer", "partials/footer.html");
-
-    // Function to load SPA content
-    async function loadPage(page) {
-      let res = await fetch(`partials/${page}.html`);
-      let html = await res.text();
-      document.getElementById("spa-content").innerHTML = html;
-    }
-
-    // Router: listen to hash changes
-    function router() {
-      let hash = location.hash.replace("#", "") || "dashboard";
-
-      //If an element with this ID already exists, just scroll to it
-      const section = document.getElementById(hash);
-      if (section) {
-        section.scrollIntoView({ behavior: "smooth" });
-        return;
-      }
-
-      //Otherwise, load it dynamically
-      loadPage(hash);
-    }
-    // Listen for navigation
-    window.addEventListener("hashchange", router);
-    window.addEventListener("load", router);
-
-    document.querySelectorAll(".submenu > a").forEach(menu => {
-      menu.addEventListener("click", function(e) {
-        e.preventDefault();
-        this.parentElement.classList.toggle("active");
-      });
-    });
-  </script>
-  <script>
+// load sidebar, then init submenu toggles
+loadPartial("include-sidebar", "partials/sidebar.html", () => {
   document.querySelectorAll(".has-submenu > a").forEach(item => {
     item.addEventListener("click", e => {
       e.preventDefault();
-      let parent = item.parentElement;
-      parent.classList.toggle("open");
+      item.parentElement.classList.toggle("open");
     });
   });
+});
+
+// footer
+loadPartial("include-footer", "partials/footer.html");
 </script>
+
+<script>
+async function loadPartial(id, file, callback) {
+  let el = document.getElementById(id);
+  let res = await fetch(file);
+  let html = await res.text();
+  el.innerHTML = html;
+  if (callback) callback();
+}
+
+// Load sidebar and then init
+loadPartial("include-sidebar", "partials/sidebar.html", () => {
+  const mainLinks = document.querySelectorAll(".sidebar .list > li > a");
+  const subLinks = document.querySelectorAll(".submenu li a");
+
+  // Handle main menu clicks
+  mainLinks.forEach(item => {
+    item.addEventListener("click", e => {
+      const parent = item.parentElement;
+
+      // Only block default if this menu has a submenu
+      if (parent.classList.contains("has-submenu")) {
+        e.preventDefault();
+
+        // Close other submenus
+        document.querySelectorAll(".has-submenu.open").forEach(openItem => {
+          if (openItem !== parent) openItem.classList.remove("open");
+        });
+
+        // Toggle submenu
+        parent.classList.toggle("open");
+      }
+
+      // Clear all active states
+      document.querySelectorAll(".sidebar .list li").forEach(li => li.classList.remove("active"));
+
+      // Highlight the clicked main menu
+      parent.classList.add("active");
+    });
+  });
+
+  // Handle submenu clicks
+  subLinks.forEach(link => {
+    link.addEventListener("click", e => {
+      // Remove all submenu actives
+      document.querySelectorAll(".submenu li").forEach(li => li.classList.remove("active"));
+
+      // Highlight clicked submenu
+      link.parentElement.classList.add("active");
+
+      // Keep parent active
+      link.closest(".has-submenu").classList.add("active");
+    });
+  });
+});
+
+// Load footer
+loadPartial("include-footer", "partials/footer.html");
+
+// SPA router stays as-is
+function router() {
+  let hash = location.hash.replace("#", "") || "dashboard";
+  loadPage(hash);
+}
+window.addEventListener("hashchange", router);
+window.addEventListener("load", router);
+
+async function loadPage(page) {
+  let res = await fetch(`partials/${page}.html`);
+  let html = await res.text();
+  document.getElementById("spa-content").innerHTML = html;
+}
+</script>
+
+
 
 </body>
 </html>
