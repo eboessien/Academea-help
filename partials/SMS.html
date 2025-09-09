@@ -1,0 +1,296 @@
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #1a4dab;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a4dab;
+            display: inline-block;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            border-top: 3px solid #1a4dab;
+            margin-bottom: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #ecf0fa;
+            border: 1px solid #a2c3f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Enhanced image styling */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 25px auto;
+            border: 1px solid #b0c1da;
+            border-radius: 8px;
+            /* Enhanced styling to make images stand out */
+            box-shadow: 0 6px 18px rgba(26, 77, 171, 0.2);
+            /* Add subtle separation from background */
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+            background-color: #fff;
+            padding: 4px;
+        }
+
+        /* Numbered steps for procedures */
+        .step-list {
+            counter-reset: step-counter;
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            list-style-type: none;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .step-list li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #1a4dab;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        /* Section headers with subtle background */
+        h2 {
+            background-color: rgba(26, 77, 171, 0.1);
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a4dab;
+        }
+
+        h3 {
+            color: #2c5282;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #a2c3f5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+            
+            img {
+                margin: 20px auto;
+            }
+        }
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+                    .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+    </style>
+
+   <div class="container">
+        <div class="help-nav">
+            <h2><i class="fas fa-cogs"></i> SMS Help Pages</h2>
+            <div class="config-links">
+                <a href="#send">Send SMS</a>
+                <a href="#arrears">SMS Arrears</a>
+                <a href="#balance">Check Balance</a>
+                <a href="#messagestatus">Message Status</a>
+                <a href="#config">SMS Configuration</a>
+                <a href="#temp">SMS Templates</a>
+            </div>
+        </div>
+   </div>
+
+<section>
+
+    <h1>SMS</h1>
+        <p>The SMS section can be accessed on the side menu</p>
+        <img src="/assets/images/SMS-menu.png" alt="SMS Menu">
+
+</section>
+
+<section>
+    <div id="send" class="help-content">
+    <h2> Send SMS</h2>
+        <img src="/assets/images/SMS-send.png" alt="Send SMS">
+
+        <p>This feature allows you to send SMS messages to selected parents or guardians.</p>
+        <ol class="step-list">
+            <li>Navigate to the "Send SMS" section from the SMS menu.</li>
+            <li>Select the recipients by choosing specific classes or individual students.</li>
+                <img src="/assets/images/SMS-send-class.png" alt="Send SMS">
+            <li>Enter any additional numbers separated by commas to receive the message (e.g., 0200000001,0244000001).</li>
+            <li>Compose your message in the provided text area.</li>
+                <img src="/assets/images/SMS-send-message.png" alt="Send SMS">
+            <li>Optionally, check 'Add All Parents From Selected Class' to include all parents automatically.</li>
+            <li>Review your message and ensure all details are correct.</li>
+            <li>Click the "Send" button to dispatch the SMS to the selected recipients.</li>
+
+        </ol>
+</div>
+</section>
+
+<section>
+    <div id="arrears" class="help-content">
+    <h2>SMS Arrears to Parents</h2>
+        <img src="/assets/images/SMS-arrears.png" alt="SMS Arrears">
+
+        <p>This feature allows you to notify parents of students who owe school fees. The system
+automatically lists students with arrears along with their class, amount owed, and parent phone
+number.</p>
+        <ol class="step-list">
+            <li> Select the Class/Form from the dropdown menu.</li>
+                <img src="/assets/images/SMS-arrears-chooseclass.png" alt="SMS Arrears List">
+            <li>Review the table of students with arrears, including ID, name, class, amount, and phone number.</li>
+                <img src="/assets/images/SMS-arrears-list.png" alt="SMS Arrears List">
+            <li> Click 'Send SMS' to notify the parents directly from the system.</li>
+        </ol>
+</div>
+</section>
+
+<section>
+    <div id="balance" class="help-content">
+    <h2>Check Balance</h2>
+    <p>When this option is selected, you will be directed to the following page</p>
+        <img src="/assets/images/SMS-balance.png" alt="SMS Balance">
+        <h2>You have to login you SMS credentials to access your account to check your balance and message Status</h2>
+        </div>
+</section>
+
+<section>
+    <div id="messagestatus" class="help-content">
+    <h2>Message Status</h2>
+    <p>When this option is selected, you will be directed to the following page</p>
+        <img src="/assets/images/SMS-balance.png" alt="SMS Balance">
+        <h2>You have to login you SMS credentials to access your account to check your balance and message Status</h2>
+</div>
+</section>
+
+<section>
+<div id="config" class="help-content">
+    <h2>SMS Configuration (API Setup)</h2>
+    <p>For SMS to work, the system must be connected to an SMS gateway service. This is done in the Configuration section.</p>
+        <ol class="step-list">
+            <p>API ID and API Password: These are provided by your SMS service provider (e.g., Vodafone, MTN, BulkSMS.com).
+                 They act as a username and password to send messages through their gateway.</p>
+            <p>Sender ID: This is the name that will appear on the recipient's phone as the sender (e.g., MountEyeSch).
+                 This often needs to be registered and approved with the provider.</p>
+        </ol>
+    <img src="/assets/images/SMS-config.png" alt="SMS Configuration">
+
+    <h3>To Add/Edit Configuration:</h3>
+    <ol class="step-list">
+        <li>Go to SMS > Configuration.</li>
+        <li>Enter the API ID, API Password, and approved Sender ID provided by your SMS company.</li>
+        <img src="/assets/images/SMS-config-form.png" alt="SMS Configuration">
+        <li>Click "Submit" to save the details and reset toclear details.</li>
+        <img src="/assets/images/SMS-config-submit.png" alt="SMS Configuration">
+
+    </ol>
+    <h2>Important: If you haven't chosen an SMS provider yet, you will need to sign up for one to get these credentials.
+         Without correct configuration, the SMS features will not function.</h2>
+</div>
+</section>
+
+<section>
+    <div id="temp" class="help-content">
+        <h2>SMS Templates</h2>
+        <p>This page helpsreate and manage pre-written messages for quick, consistent communication.</p>
+        <img src="/assets/images/SMS-template.png" alt="SMS Template">
+        <h3>To Add a New Template:</h3>
+        <ol class="step-list">
+            <li>Click "Add" at the top right or look for the creation form.</li>
+            <li>Template Name: Enter a unique, descriptive name (e.g., "Exam Schedule Alert").</li>
+            <li>Template: Type the full body of your standard message.</li>
+            <li>Active: Set the dropdown to "Yes" to activate the template and make it selectable when sending messages.</li>
+            <li>Click "Submit" to save.</li>
+            <img src="/assets/images/SMS-template-save.png" alt="SMS Template">
+        </ol>
+        <h3>When in the "Send SMS" section, you will typically have an option to load a saved template to pre-fill the message box.</h3>
+    </div>
+</section>
+

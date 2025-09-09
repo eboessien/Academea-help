@@ -1,0 +1,239 @@
+    <style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #1a4dab;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a4dab;
+            display: inline-block;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            border-top: 3px solid #1a4dab;
+            margin-bottom: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #ecf0fa;
+            border: 1px solid #a2c3f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Enhanced image styling */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 25px auto;
+            border: 1px solid #b0c1da;
+            border-radius: 8px;
+            /* Enhanced styling to make images stand out */
+            box-shadow: 0 6px 18px rgba(26, 77, 171, 0.2);
+            /* Add subtle separation from background */
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+            background-color: #fff;
+            padding: 4px;
+        }
+
+        /* Numbered steps for procedures */
+        .step-list {
+            counter-reset: step-counter;
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            list-style-type: none;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .step-list li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #1a4dab;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        /* Section headers with subtle background */
+        h2 {
+            background-color: rgba(26, 77, 171, 0.1);
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a4dab;
+        }
+
+        h3 {
+            color: #2c5282;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #a2c3f5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+            
+            img {
+                margin: 20px auto;
+            }
+        }
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+                    .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+    </style>
+   
+
+   <section>
+
+    <h1>Promote Student</h1>
+    <hr>
+    <p>To promote a student to the next class, follow these steps:</p>
+
+    <h2>Crucial First Step: Dealing with Graduating Students (JHS3)</h2>
+    <p> Before you promote any other classes, you must handle the students who are leaving.
+         The current JHS3 class represents your graduating students.
+          You need to archive them into the "Old Students" database to keep your main student list clean and make space for the new JHS3 class.</p>
+    
+    <h3>How to Move JHS3 to Old Students:</h3>
+          <ol class="step-list">
+        <li>Go to the main menu and click on "Move Students to Old" under the Administration section.</li>
+        <img src="/assets/images/administration-menue.png" alt="Promote Student Screenshot">
+
+        <li>You will see a form with two dropdown menus:
+            <img src="/assets/images/old-student.png" alt="Promote Student Screenshot">
+            <ul>
+                <strong>From Class:</strong> Select "JHS 3" from this list. This tells the system which group of students to move.
+                <img src="/assets/images/administration-from-class.png" alt="Promote Student Screenshot">
+                <strong>To Year Group:</strong> Select the academic year they are graduating in (e.g., "2023/2024"). This archives them under that specific year group for future records.
+                <img src="/assets/images/administration-to-year-group.png" alt="Promote Student Screenshot">
+            </ul>
+        </li>
+
+        <li>Click the "Move" button. The system will now transfer all JHS3 students out of the active classes and into the old student database.</li>
+        <img src="/assets/images/administration-move.png" alt="Promote Student Screenshot">
+    </ol>
+    
+   </section>
+
+   <section>
+
+    <h2>How to Promote All Other Classes:</h2>
+
+    <p>Promotion moves students from one active class to the next (e.g., from JHS 2 to the now-empty JHS 3).</p>
+
+            <ol class="step-list">
+        <li>From the main menu, click on "Promote Student"</li>
+        <img src="/assets/images/administration-menue.png" alt="Promote Student Screenshot">
+
+        <li>On the promotion page, you will see another simple form:
+            <img src="/assets/images/promote-student.png" alt="Promote Student Screenshot">
+            <ul>
+                <strong>From Class: </strong>Choose the class you want to promote from (e.g., JHS 2).
+                <img src="/assets/images/administration-from-class.png" alt="Promote Student Screenshot">
+                <strong>To Class: </strong>Choose the class you want to promote them to (e.g., JHS 3).
+                <img src="/assets/images/administration-to-class.png" alt="Promote Student Screenshot">
+            </ul>
+        </li>
+
+        <li>Click the "Promote" button. The system will move all students from the "From Class" into the "To Class".</li>
+        <img src="/assets/images/administration-promote.png" alt="Promote Student Screenshot">
+    </ol>
+
+    <h3>Repeat this process for each class that needs to be promoted:</h3>
+    <p>JHS 2 -> JHS 3</p>
+    <p>JHS 1 -> JHS 2</p>
+    <p>Basic 6 -> JHS 1</p>
+    <p>etc.</p>
+
+    <h2>In a nutshell: Always remember to Move JHS3 out first, then Promote all other classes up. This keeps your student lists perfectly organized for the new year.</h2>
+
+   </section>

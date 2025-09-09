@@ -1,0 +1,190 @@
+<style>
+                * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        h1, h2, h3 {
+            color: #1a4dab;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 2.8em;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #1a4dab;
+            display: inline-block;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            border-top: 3px solid #1a4dab;
+            margin-bottom: 30px;
+            width: 80%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        section {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 25px;
+            background-color: #ecf0fa;
+            border: 1px solid #a2c3f5;
+            border-radius: 8px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            margin-bottom: 40px;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        /* Enhanced image styling */
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 25px auto;
+            border: 1px solid #b0c1da;
+            border-radius: 8px;
+            /* Enhanced styling to make images stand out */
+            box-shadow: 0 6px 18px rgba(26, 77, 171, 0.2);
+            /* Add subtle separation from background */
+            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
+            background-color: #fff;
+            padding: 4px;
+        }
+
+        /* Numbered steps for procedures */
+        .step-list {
+            counter-reset: step-counter;
+            padding-left: 20px;
+        }
+
+        .step-list li {
+            list-style-type: none;
+            margin-bottom: 15px;
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .step-list li:before {
+            counter-increment: step-counter;
+            content: counter(step-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #1a4dab;
+            color: white;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            text-align: center;
+            line-height: 30px;
+            font-weight: bold;
+        }
+
+        /* Section headers with subtle background */
+        h2 {
+            background-color: rgba(26, 77, 171, 0.1);
+            padding: 12px 15px;
+            border-radius: 6px;
+            margin-top: 30px;
+            margin-bottom: 20px;
+            border-left: 4px solid #1a4dab;
+        }
+
+        h3 {
+            color: #2c5282;
+            margin-top: 25px;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+            border-bottom: 1px dashed #a2c3f5;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            section {
+                padding: 18px;
+            }
+
+            p {
+                font-size: 1.1em;
+            }
+            
+            img {
+                margin: 20px auto;
+            }
+        }
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+                    .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+    </style>
+
+    <section>
+
+        <h2>SWAP FEES</h2>
+        <p>Go to the account menu and click on the Swap Fee link. Next key in the receipt of the fee paid that have 
+to credit to another student.</p>
+        <img src="/assets/images/swapfees.png" alt="Swap Fees Screenshot">
+
+        <p>Click on search to display the details of the receipt. Now click on the pencil icon to display the Swap Fee 
+form
+</p>
+        <img src="/assets/images/swapfeesform.png" alt="Swap Fees Form Screenshot">
+
+        <p>Select the class of the student who has to credit with this fee. Now select the name of the student and
+click on swap to credit the student. Once the swap is complete click on the print icon to print the 
+receipt.</p>
+
+    </section>
