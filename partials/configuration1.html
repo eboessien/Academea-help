@@ -1,20 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Configuration Module Help - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-                * {
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
         .help-nav {
             background-color: white;
             padding: 20px;
@@ -22,128 +78,20 @@
             margin: 20px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        h1, h2, h3 {
-            color: #1a4dab;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 10px;
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #1a4dab;
-            display: inline-block;
-            width: 100%;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
         }
-
-        hr {
-            border: none;
-            border-top: 3px solid #1a4dab;
-            margin-bottom: 30px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
+        
+        .help-nav h2 i {
+            margin-right: 10px;
         }
-
-        section {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 25px;
-            background-color: #ecf0fa;
-            border: 1px solid #a2c3f5;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Enhanced image styling */
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 25px auto;
-            border: 1px solid #b0c1da;
-            border-radius: 8px;
-            /* Enhanced styling to make images stand out */
-            box-shadow: 0 6px 18px rgba(26, 77, 171, 0.2);
-            /* Add subtle separation from background */
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
-            background-color: #fff;
-            padding: 4px;
-        }
-
-        /* Numbered steps for procedures */
-        .step-list {
-            counter-reset: step-counter;
-            padding-left: 20px;
-        }
-
-        .step-list li {
-            list-style-type: none;
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .step-list li:before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background-color: #1a4dab;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-weight: bold;
-        }
-
-        /* Section headers with subtle background */
-        h2 {
-            background-color: rgba(26, 77, 171, 0.1);
-            padding: 12px 15px;
-            border-radius: 6px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            border-left: 4px solid #1a4dab;
-        }
-
-        h3 {
-            color: #2c5282;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed #a2c3f5;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            section {
-                padding: 18px;
-            }
-
-            p {
-                font-size: 1.1em;
-            }
-            
-            img {
-                margin: 20px auto;
-            }
-        }
+        
         .config-links {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -166,282 +114,650 @@
             color: white;
             transform: translateY(-2px);
         }
-                    .config-links {
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .help-section h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        section h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            text-align: center;
+        }
+        
+        section h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        section h2 i {
+            margin-right: 10px;
+        }
+        
+        section h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        
+        hr {
+            border: none;
+            border-top: 2px solid #ecf0f1;
+            margin: 20px 0;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .step-list {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
+        }
+        
+        .step-list li {
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .step-list li:last-child {
+            border-bottom: none;
+        }
+        
+        ol.step-list {
+            counter-reset: step-counter;
+            list-style: none;
+            padding-left: 0;
+        }
+        
+        ol.step-list li {
+            counter-increment: step-counter;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        ol.step-list li:before {
+            content: counter(step-counter);
+            position: absolute;
+            left: 10px;
+            top: 8px;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        ul.step-list li {
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        ul.step-list li:before {
+            content: "•";
+            position: absolute;
+            left: 15px;
+            top: 8px;
+            background-color: #3498db;
+            color: white;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .tip-box {
+            background-color: #e8f5e8;
+            border-left: 4px solid #27ae60;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #27ae60;
+        }
+        
+        .warning-box {
+            background-color: #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #d35400;
+        }
+        
+        .note-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #1976d2;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .form-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        
+        .form-preview .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-preview label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-preview select, .form-preview input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-preview button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .permission-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
                 grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
             }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .permissions-grid {
+                grid-template-columns: 1fr;
+            }
+        }
     </style>
-   <div class="container">
+</head>
+<body>
+  
+
+    <div class="container">
         <div class="help-nav">
             <h2><i class="fas fa-cogs"></i> Configuration Help Pages</h2>
             <div class="config-links">
-                <a href="#class">Class / Form Setup</a>
-                <a href="#credittype">Credit Type Setup</a>
-                <a href="#department">Department Setup</a>
-                <a href="#education">Education Level Setup</a>
-                <a href="#feecode">Fee Code Setup</a>
-                <a href="#expensetype">Expense Type Setup</a>
-                <a href="#house">House Setup</a>
-                <a href="#incometype">Income Type Setup</a>
-                <a href="#nationality">Nationality Setup</a>
+                <a href="#class"><i class="fas fa-school"></i> Class / Form Setup</a>
+                <a href="#credittype"><i class="fas fa-credit-card"></i> Credit Type Setup</a>
+                <a href="#department"><i class="fas fa-building"></i> Department Setup</a>
+                <a href="#education"><i class="fas fa-graduation-cap"></i> Education Level Setup</a>
+                <a href="#feecode"><i class="fas fa-tags"></i> Fee Code Setup</a>
+                <a href="#expensetype"><i class="fas fa-receipt"></i> Expense Type Setup</a>
+                <a href="#house"><i class="fas fa-home"></i> House Setup</a>
+                <a href="#incometype"><i class="fas fa-money-bill"></i> Income Type Setup</a>
+                <a href="#nationality"><i class="fas fa-flag"></i> Nationality Setup</a>
             </div>
         </div>
-   </div>
+    </div>
+
     <section>
-        <h1>CONFIGURATION (SYSTEM SETUP)</h1>
+        <h1><i class="fas fa-cogs"></i> CONFIGURATION (SYSTEM SETUP)</h1>
         <hr>
         <p>To setup the system up for use, some system values have to provided by the user. To setup the system 
         click on the Configuration menu and select the item you want to configure.</p>
         
         <img src="/assets/images/configuration-menu.jpg" alt="Configuration Menu">
-       
     </section>
 
-    <section>        <!-- class & form Setup Help -->
+    <section>
+        <!-- class & form Setup Help -->
         <div id="class" class="help-content">
+            <h2><i class="fas fa-school"></i> CLASS/FORM SETUP</h2>
+            <p>To add a class click on the Class menu item under the Configuration menu. This opens up the class page.</p>
+            <img src="/assets/images/configuration-class-setup - Copy.jpg" alt="Class Setup Page">
+            
+            <h3><i class="fas fa-plus-circle"></i> Add Class</h3>
+            <p>To add a class, input the details of the class in the add class form on the right side of the page and class 
+            on submit.</p>
+            <img src="/assets/images/configuration-class-add.jpg" alt="Add Class Form">
+            
+            <p>Once the class is added it appears under the list classes.</p>
+            <img src="/assets/images/configuration-class-list.jpg" alt="Class List">
 
-        <h2>CLASS/FORM SETUP</h2>
-        <p>To add a class click on the Class menu item under the Configuration menu. This opens up the class page.</p>
-        <img src="/assets/images/configuration-class-setup - Copy.jpg" alt="Class Setup Page">
-        <h3>Add Class</h3>
-        <p>To add a class, input the details of the class in the add class form on the right side of the page and class 
-        on submit.</p>
-        <img src="/assets/images/configuration-class-add.jpg" alt="Add Class Form">
-     
-        
-        <p>Once the class is added it appears under the list classes.</p>
-        <img src="/assets/images/configuration-class-list.jpg" alt="Class List">
-   
+            <h3><i class="fas fa-edit"></i> Edit Class</h3>
+            <p>To edit a class, click on the pencil icon by the in row of the class you want to edit, to open up the edit 
+            class form. Now modify the details of the class.</p>
+            <img src="/assets/images/configuration-class-edit.jpg" alt="Edit Class">
 
-        <h3>Edit Class</h3>
-        <p>To edit a class, click on the pencil icon by the in row of the class you want to edit, to open up the edit 
-        class form. Now modify the details of the class.</p>
-        <img src="/assets/images/configuration-class-edit.jpg" alt="Edit Class">
-     
+            <h3><i class="fas fa-trash"></i> Delete Class</h3>
+            <p>To delete a class, click on the delete icon in the row of the class you want to delete. It bring a pop up 
+            that ask you to confirm if you really want to delete the selected class. To delete click on "OK" else click 
+            on "Cancel"</p>
+            <img src="/assets/images/configuration-class-delete.jpg" alt="Delete Class">
 
-        <h3>Delete Class</h3>
-        <p>To delete a class, click on the delete icon in the row of the class you want to delete. It bring a pop up 
-        that ask you to confirm if you really want to delete the selected class. To delete click on "OK" else click 
-        on "Cancel"</p>
-        <img src="/assets/images/configuration-class-delete.jpg" alt="Delete Class">
-    
+            <h3><i class="fas fa-search"></i> Class Search</h3>
+            <p>To search for a class in the list of classes, type the name of the class in the search box, the list of classes 
+            in the class table will be filter to display the class you are searching for.</p>
+            <img src="/assets/images/configuration-class-search.jpg" alt="Class Search">
 
-        <h3>Class Search</h3>
-        <p>To search for a class in the list of classes, type the name of the class in the search box, the list of classes 
-        in the class table will be filter to display the class you are searching for.</p>
-        <img src="/assets/images/configuration-class-search.jpg" alt="Class Search">
+            <h3><i class="fas fa-list"></i> List of Class Pages</h3>
+            <p>The list of class page shows ten (10) classes at a time, to see other classes us the pagination button to 
+            move through the next pages.</p>
+            <img src="/assets/images/configuration-class-pagination.jpg" alt="Class Pagination">
 
+            <h3><i class="fas fa-download"></i> Copy, Print, or Export Data</h3>
+            <img src="/assets/images/configuration-class-export-print.jpg" alt="Export Options">
 
-        <h3>List of Class Pages</h3>
-        <p>The list of class page shows ten (10) classes at a time, to see other classes us the pagination button to 
-        move through the next pages.</p>
-        <img src="/assets/images/configuration-class-pagination.jpg" alt="Class Pagination">
- 
-
-        <h3>Copy, Print, or Export Data</h3>
-        <img src="/assets/images/configuration-class-export-print.jpg" alt="Export Options">
- 
-
-        <p>1. To print the list of classes click on the print button.</p>
-        <img src="/assets/images/configuration-print-icon.jpg" alt="Print Icon">
-
-
-        <p>2. To Export the list of classes to PDF, click on the PDF button.</p>
-        <img src="/assets/images/configuration-pdf-icon.jpg" alt="PDF Icon">
-
-        <p>3. To Export the list of classes to Excel, click on the Excel button.</p>
-        <img src="/assets/images/configuration-excel-icon.jpg" alt="Excel Icon">
-
-        <p>4. To copy the data for the list of classes, click on the copy button.</p>
-        <img src="/assets/images/configuration-copy-icon.jpg" alt="Copy Icon">
+            <ol class="step-list">
+                <li>To print the list of classes click on the print button.
+                    <img src="/assets/images/configuration-print-icon.jpg" alt="Print Icon">
+                </li>
+                <li>To Export the list of classes to PDF, click on the PDF button.
+                    <img src="/assets/images/configuration-pdf-icon.jpg" alt="PDF Icon">
+                </li>
+                <li>To Export the list of classes to Excel, click on the Excel button.
+                    <img src="/assets/images/configuration-excel-icon.jpg" alt="Excel Icon">
+                </li>
+                <li>To copy the data for the list of classes, click on the copy button.
+                    <img src="/assets/images/configuration-copy-icon.jpg" alt="Copy Icon">
+                </li>
+            </ol>
         </div>
     </section>
 
     <section>
-                <!-- Credit type  Help -->
+        <!-- Credit type Help -->
         <div id="credit" class="help-content">
-        <h2>CREDIT TYPE SETUP</h2>
-        <img src="/assets/images/configuration-credit-type.png" alt="Credit Type Setup">
+            <h2><i class="fas fa-credit-card"></i> CREDIT TYPE SETUP</h2>
+            <img src="/assets/images/configuration-credit-type.png" alt="Credit Type Setup">
 
-        <h3>Viewing Credit Types</h3>
-        <p>On the left side, you'll see a list of existing credit types. Each entry shows the name, whether it's active, 
-            and options to edit or delete.</p>
+            <h3><i class="fas fa-eye"></i> Viewing Credit Types</h3>
+            <p>On the left side, you'll see a list of existing credit types. Each entry shows the name, whether it's active, 
+                and options to edit or delete.</p>
             <img src="/assets/images/configuration-credit-type-existing.png" alt="Credit Type Setup">
 
-        <h3>Adding a New Credit Type</h3>
-        <p>On the right side, use the form to add a new credit type:</p>
-        <img src="/assets/images/configuration-credit-type-add.png" alt="Credit Type Setup">
-        <ul class="step-list">
-            <li>Enter the name of the credit.</li>
-            <li>Select whether it's active.</li>
-            <li>Click "Submit" to save or "Cancel" to discard.</li>
-        </ul>
+            <h3><i class="fas fa-plus-circle"></i> Adding a New Credit Type</h3>
+            <p>On the right side, use the form to add a new credit type:</p>
+            <img src="/assets/images/configuration-credit-type-add.png" alt="Credit Type Setup">
+            <ul class="step-list">
+                <li>Enter the name of the credit.</li>
+                <li>Select whether it's active.</li>
+                <li>Click "Submit" to save or "Cancel" to discard.</li>
+            </ul>
 
-        <h3>Editing or Deleting</h3>
-        <p>To update or remove a credit type, use the buttons next to each entry in the list.</p>
-        <img src="/assets/images/configuration-credit-type-edit.png" alt="Credit Type Setup">
+            <h3><i class="fas fa-edit"></i> Editing or Deleting</h3>
+            <p>To update or remove a credit type, use the buttons next to each entry in the list.</p>
+            <img src="/assets/images/configuration-credit-type-edit.png" alt="Credit Type Setup">
 
-        <h3>Searching</h3>
-        <p>Use the search bar above the list to quickly find a specific credit type</p>
-        <img src="/assets/images/configuration-credit-type-search.png" alt="Credit Type Setup">
+            <h3><i class="fas fa-search"></i> Searching</h3>
+            <p>Use the search bar above the list to quickly find a specific credit type</p>
+            <img src="/assets/images/configuration-credit-type-search.png" alt="Credit Type Setup">
         </div>
     </section>
 
     <section>
-                <!-- Departmen setup -->
+        <!-- Department setup -->
         <div id="department" class="help-content">
-        <h2>Department Management</h2>
-        <img src="/assets/images/configuration-department.png" alt="Department Management">
-        
-        <p>This page lets you manage departments in your organization.</p>
+            <h2><i class="fas fa-building"></i> Department Management</h2>
+            <img src="/assets/images/configuration-department.png" alt="Department Management">
+            
+            <p>This page lets you manage departments in your organization.</p>
 
-        <h3>Viewing Departments</h3>
-        <p>The list on the left shows all departments, including their active status. You can search for a department using the search bar.</p>
-        <img src="/assets/images/configuration-department-viewing.png" alt="Department Management">
+            <h3><i class="fas fa-eye"></i> Viewing Departments</h3>
+            <p>The list on the left shows all departments, including their active status. You can search for a department using the search bar.</p>
+            <img src="/assets/images/configuration-department-viewing.png" alt="Department Management">
 
-        <h3>Adding Department</h3>
-        <p>Use the form on the right to add a new department or update an existing one. Enter the department name,
-            choose its status, then click "Submit" to save or "Reset" to clear the form.</p>
+            <h3><i class="fas fa-plus-circle"></i> Adding Department</h3>
+            <p>Use the form on the right to add a new department or update an existing one. Enter the department name,
+                choose its status, then click "Submit" to save or "Reset" to clear the form.</p>
             <img src="/assets/images/configuration-department-add.png" alt="Department Management">
 
-        <h3>Removing or Editing</h3>
-        <p>To delete a department, use the delete option next to its name in the list.</p>
-        <img src="/assets/images/configuration-department-edit.png" alt="Department Management">
+            <h3><i class="fas fa-edit"></i> Removing or Editing</h3>
+            <p>To delete a department, use the delete option next to its name in the list.</p>
+            <img src="/assets/images/configuration-department-edit.png" alt="Department Management">
         </div>
     </section>
 
     <section>
-                <!-- Education level Setup -->
+        <!-- Education level Setup -->
         <div id="education" class="help-content">
-        <h2>Education Level</h2>
-        <img src="/assets/images/configuration-education-level.png" alt="Education Level Setup">
-        
-        <p>This page is for managing the "Education Level" dropdown list in your system.</p>
+            <h2><i class="fas fa-graduation-cap"></i> Education Level</h2>
+            <img src="/assets/images/configuration-education-level.png" alt="Education Level Setup">
+            
+            <p>This page is for managing the "Education Level" dropdown list in your system.</p>
 
-        <h3>Adding a New Level</h3>
-        <img src="/assets/images/configuration-department-add.png" alt="Department Management">
-        <ol class="step-list">
-            <li>Click the "Add Education Level" button to ensure the form is empty.</li>
-            <li>Type the new name (e.g., "Masters Degree") into the "Education Level" field.</li>
-            <li>Select "Active" from the dropdown menu (which currently says "Choose").</li>
-            <li>Click "Submit" to save it to the database. It will appear in the list above.</li>
-        </ol>
+            <h3><i class="fas fa-plus-circle"></i> Adding a New Level</h3>
+            <img src="/assets/images/configuration-department-add.png" alt="Department Management">
+            <ol class="step-list">
+                <li>Click the "Add Education Level" button to ensure the form is empty.</li>
+                <li>Type the new name (e.g., "Masters Degree") into the "Education Level" field.</li>
+                <li>Select "Active" from the dropdown menu (which currently says "Choose").</li>
+                <li>Click "Submit" to save it to the database. It will appear in the list above.</li>
+            </ol>
 
-        <h3>Editing an Existing Level</h3>
-        <img src="/assets/images/configuration-department-edit.png" alt="Department Management">
-        <ol class="step-list">
-            <li>Click on an existing level in the list (e.g., click "PER-SCHOOL").</li>
-            <li>The form will populate with that level's data: its name will be in the text field, and its status (Active/Inactive) will be shown in the dropdown.</li>
-            <li>You can then correct a typo (e.g., change "PER-SCHOOL" to "PRE-SCHOOL") or change its status to "Inactive".</li>
-            <li>Click "Submit" to save the changes.</li>
-        </ol>
-<h3></h3>
-<img src="/assets/images/configuration-cancel.png" alt="Income Type Setup">
-        <p>"Cancel": Clears the form without saving any changes, cancelling either an Add or Edit operation.</p>
+            <h3><i class="fas fa-edit"></i> Editing an Existing Level</h3>
+            <img src="/assets/images/configuration-department-edit.png" alt="Department Management">
+            <ol class="step-list">
+                <li>Click on an existing level in the list (e.g., click "PER-SCHOOL").</li>
+                <li>The form will populate with that level's data: its name will be in the text field, and its status (Active/Inactive) will be shown in the dropdown.</li>
+                <li>You can then correct a typo (e.g., change "PER-SCHOOL" to "PRE-SCHOOL") or change its status to "Inactive".</li>
+                <li>Click "Submit" to save the changes.</li>
+            </ol>
+
+            <h3><i class="fas fa-times"></i> Cancel Operation</h3>
+            <img src="/assets/images/configuration-cancel.png" alt="Cancel Button">
+            <p>"Cancel": Clears the form without saving any changes, cancelling either an Add or Edit operation.</p>
         </div>
     </section>
 
     <section>
         <!-- Fee Code Setup -->
         <div id="feecode" class="help-content">
-        <h2>Fee Code</h2>
-        <img src="/assets/images/configuration-fee-code.png" alt="Fee Code Setup">
-        
-        <p>This page is for creating and managing fee codes (e.g., "TUITION", "LIBRARY FEE").</p>
+            <h2><i class="fas fa-tags"></i> Fee Code</h2>
+            <img src="/assets/images/configuration-fee-code.png" alt="Fee Code Setup">
+            
+            <p>This page is for creating and managing fee codes (e.g., "TUITION", "LIBRARY FEE").</p>
 
-        <h3>To Add a Fee Code:</h3>
-        <img src="/assets/images/configuration-department-add.png" alt="Department Management">
-        <ol class="step-list">
-            <li>Type the code name in the "Fee Code" box.</li>
-            <li>Select "Active" from the dropdown.</li>
-            <li>Press "Submit".</li>
-        </ol>
-        <h3></h3>
-<img src="/assets/images/configuration-search.png" alt="Income Type Setup">
-        <p>The "Search" box will filter the list once codes are added.</p>
-<h3></h3>
-        <img src="/assets/images/configuration-cancel.png" alt="Income Type Setup">
-        <p>"Cancel" clears the form.</p>
+            <h3><i class="fas fa-plus-circle"></i> To Add a Fee Code:</h3>
+            <img src="/assets/images/configuration-department-add.png" alt="Department Management">
+            <ol class="step-list">
+                <li>Type the code name in the "Fee Code" box.</li>
+                <li>Select "Active" from the dropdown.</li>
+                <li>Press "Submit".</li>
+            </ol>
+
+            <h3><i class="fas fa-search"></i> Search Functionality</h3>
+            <img src="/assets/images/configuration-search.png" alt="Search Box">
+            <p>The "Search" box will filter the list once codes are added.</p>
+
+            <h3><i class="fas fa-times"></i> Clear Form</h3>
+            <img src="/assets/images/configuration-cancel.png" alt="Cancel Button">
+            <p>"Cancel" clears the form.</p>
         </div>
     </section>
 
     <section>
         <!-- Expense Type Setup -->
         <div id="expensetype" class="help-content">
-        <h2>Expence Type</h2>
-        <img src="/assets/images/configuration-expense-type.png" alt="Expense Type Setup">
+            <h2><i class="fas fa-receipt"></i> Expense Type</h2>
+            <img src="/assets/images/configuration-expense-type.png" alt="Expense Type Setup">
 
-        <p>Add types of expenses (e.g., "Rent", "Supplies", "Salaries")</p>
+            <p>Add types of expenses (e.g., "Rent", "Supplies", "Salaries")</p>
 
-        <h3>To Add:</h3>
-         <img src="/assets/images/configuration-department-add.png" alt="Department Management">
-        <ol class="step-list">
-            <li>Enter a name in "Expense Name".</li>
-            <li>Choose "Active".</li>
-            <li>Click "Submit".</li>
-        </ol>
-<h3></h3>
-<img src="/assets/images/configuration-generate-report.png" alt="Expense Type Setup">
-        <p>"Generate Report": Click to create a report of all expenses.</p>
+            <h3><i class="fas fa-plus-circle"></i> To Add:</h3>
+            <img src="/assets/images/configuration-department-add.png" alt="Department Management">
+            <ol class="step-list">
+                <li>Enter a name in "Expense Name".</li>
+                <li>Choose "Active".</li>
+                <li>Click "Submit".</li>
+            </ol>
 
-        <h3></h3>
-<img src="/assets/images/configuration-reset.png" alt="Income Type Setup">
-        <p>"Reset" clears the form.</p>
+            <h3><i class="fas fa-file-alt"></i> Generate Report</h3>
+            <img src="/assets/images/configuration-generate-report.png" alt="Generate Report">
+            <p>"Generate Report": Click to create a report of all expenses.</p>
+
+            <h3><i class="fas fa-redo"></i> Reset Form</h3>
+            <img src="/assets/images/configuration-reset.png" alt="Reset Button">
+            <p>"Reset" clears the form.</p>
         </div>
     </section>
 
     <section>
         <!-- House Setup -->
         <div id="house" class="help-content">
-         <h2>House</h2>
-        <img src="/assets/images/configuration-house.png" alt="House Setup">
+            <h2><i class="fas fa-home"></i> House</h2>
+            <img src="/assets/images/configuration-house.png" alt="House Setup">
 
-        <p>View and manage a list of houses (e.g., for a school).</p>
-        <p>The List: Shows all existing houses and their colors.</p>
-        <p>"All" and "None" are likely special options for filters elsewhere.</p>
-        <h3></h3>
-        <img src="/assets/images/configuration-house-report.png" alt="Expense Type Setup">
-        <p>"Generate Report": Click to create a printable or downloadable list of all houses</p>
-</div>
+            <p>View and manage a list of houses (e.g., for a school).</p>
+            <p>The List: Shows all existing houses and their colors.</p>
+            <p>"All" and "None" are likely special options for filters elsewhere.</p>
+            
+            <h3><i class="fas fa-file-alt"></i> Generate House Report</h3>
+            <img src="/assets/images/configuration-house-report.png" alt="House Report">
+            <p>"Generate Report": Click to create a printable or downloadable list of all houses</p>
+        </div>
     </section>
-
 
     <section>
         <!-- Income Type Setup -->
         <div id="incometype" class="help-content">
-        <h2>Income Type</h2>
-        <img src="/assets/images/configuration-income-type.png" alt="Income Type Setup">
+            <h2><i class="fas fa-money-bill"></i> Income Type</h2>
+            <img src="/assets/images/configuration-income-type.png" alt="Income Type Setup">
 
-        <p>This screen is for managing fee types.</p><br><br>
-        <h3></h3>
-        <img src="/assets/images/configuration-department-add.png" alt="Department Management">
-        <p>Add: Enter fee type, choose active, then save.</p>
-        <h3></h3>
-        <img src="/assets/images/configuration-department-edit.png" alt="Department Management">
-        <p>Edit: Click the pencil to update.</p>
-        <p>Delete: Click the bin to remove.</p>
-        <h3></h3>
-        <img src="/assets/images/configuration-search.png" alt="Income Type Setup">
-        <p>Search: Use the search box to find a fee type</p>
+            <p>This screen is for managing fee types.</p>
+            
+            <h3><i class="fas fa-plus-circle"></i> Add Income Type</h3>
+            <img src="/assets/images/configuration-department-add.png" alt="Add Button">
+            <p>Add: Enter fee type, choose active, then save.</p>
+            
+            <h3><i class="fas fa-edit"></i> Edit and Delete</h3>
+            <img src="/assets/images/configuration-department-edit.png" alt="Edit/Delete Buttons">
+            <p>Edit: Click the pencil to update.</p>
+            <p>Delete: Click the bin to remove.</p>
+            
+            <h3><i class="fas fa-search"></i> Search Function</h3>
+            <img src="/assets/images/configuration-search.png" alt="Search Box">
+            <p>Search: Use the search box to find a fee type</p>
         </div>
     </section>
-
 
     <section>
-                <!-- nationatily Setup Help -->
+        <!-- Nationality Setup Help -->
         <div id="nationality" class="help-content">
-        <h2>Nationality </h2>
-        <img src="/assets/images/configuration-income-type.png" alt="Income Type Setup">
+            <h2><i class="fas fa-flag"></i> Nationality</h2>
+            <img src="/assets/images/configuration-income-type.png" alt="Nationality Setup">
 
-        <p>This screen is for managing nationalities</p><br><br>
-        <h3></h3>
-        <img src="/assets/images/configuration-department-add.png" alt="Department Management">
-        <p>Add: Enter nationality, choose active, then submit.</p>
-        <h3></h3>
-        <img src="/assets/images/configuration-department-edit.png" alt="Department Management">
-        <p>Edit: Click the pencil to update.</p>
-        <p>Delete: Click the bin to remove.</p>
-        <h3></h3>
-        <img src="/assets/images/configuration-search.png" alt="Income Type Setup">
-        <p>Search: Use the box to find a nationality.</p>
-        </div>
-    </section>
+            <p>This screen is for managing nationalities</p>
+            
+            <h3><i class="fas fa-plus-circle"></i> Add Nationality</h3>
+            <img src="/assets/images/configuration-department-add.png" alt="Add Button">
+            <p>Add: Enter nationality, choose active, then submit.</p>
+            
+            <h3><i class="fas fa-edit"></i> Edit and Delete</h3>
+            <img src="/assets/images/configuration-department-edit.png" alt="Edit/Delete Buttons">
+            <p>Edit: Click the pencil to update.</p>
+            <p>Delete: Click the bin to remove.</p>
+            
+            <h3><i class="

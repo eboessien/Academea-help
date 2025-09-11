@@ -1,92 +1,490 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All Staff Documentation - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f9ff;
-            color: #333;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        h1, h2{
-            color: #1a4dab;
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-
-        h1 {
-            text-align: center;
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        hr {
-            border: none;
-            border-top: 3px solid #1a4dab;
-            margin-bottom: 30px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section {
-            max-width: 900px;
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #cce0ff;
+            display: flex;
+            gap: 30px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            align-self: flex-start;
+            position: sticky;
+            top: 100px;
         }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        
+        .sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
         }
-
-        img {
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar a {
             display: block;
+            padding: 8px 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .sidebar a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .main-content {
+            flex: 1;
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-content h1 i {
+            margin-right: 10px;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .help-section h3 {
+            color: #2c3e50;
+            margin: 20px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+            border: none;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .image-container img {
             max-width: 100%;
             height: auto;
-            margin: 20px auto;
-            border: 1px solid #cce0ff;
-            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .tool-card {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-left: 4px solid #3498db;
+        }
+        
+        .tool-card h4 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .tool-card h4 i {
+            margin-right: 10px;
+            color: #3498db;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
+            .container {
+                flex-direction: column;
             }
-
-            section {
-                padding: 15px;
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 20px;
             }
-
-            p {
-                font-size: 1.1em;
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .tools-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
-
-<h2>ALL STAFF</h2>
-    <section>
-     
-        <p>The All staff page is use to list all current staff in system. In addition some management task can be 
-performed here. </p><br>
-        <img src="/assets/images/all-staff.jpg" alt="menu"><br><br><br>
+</head>
+<body>
     
-        <p>1. Print student list. <br>
-      2. Copy the data in the list. <br>
-      3. Export the list to Ms Excel. <br>
-      4. Export the list to PDF. <br>
-      5. Move selected staff to old staff database.</p><br><br><br>
 
-      <h3>Hide And Show Columns</h3>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Staff Documentation</h3>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#management-tasks">Management Tasks</a></li>
+                <li><a href="#export-options">Export Options</a></li>
+                <li><a href="#column-visibility">Column Visibility</a></li>
+            </ul>
+        </aside>
 
-      <p>On the All Student Page you can hide or show is column you want make visible. Assume you want to 
-only the first name, last name and class of students. You will have to check the checkboxes the 
-represent a particular column to hide it. Checking it again will now make the column visible.</p><br>
-<img src="/assets/images/all-staff-filter.jpg" alt="menu">
+        <main class="main-content">
+            <div class="help-content">
+                <h1><i class="fas fa-users"></i> All Staff Documentation</h1>
+                
+                <div id="overview" class="help-section">
+                    <h2><i class="fas fa-info-circle"></i> Overview</h2>
+                    <p>The All Staff page displays a comprehensive list of all current staff members in the system. In addition to viewing staff information, various management tasks can be performed from this interface.</p>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/all-staff.jpg" alt="All Staff Interface">
+                        <div class="caption">Figure 1: All Staff page interface</div>
+                    </div>
+                </div>
+                
+                <div id="management-tasks" class="help-section">
+                    <h2><i class="fas fa-tasks"></i> Management Tasks</h2>
+                    <p>The All Staff page provides several management functions to help you work with staff data efficiently:</p>
+                    
+                    <div class="tools-grid">
+                        <div class="tool-card">
+                            <h4><i class="fas fa-print"></i> Print Staff List</h4>
+                            <p>Generate a printer-friendly version of the staff list for physical records or distribution.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <h4><i class="fas fa-copy"></i> Copy Data</h4>
+                            <p>Copy the staff list data to clipboard for pasting into other applications or documents.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <h4><i class="fas fa-file-excel"></i> Export to Excel</h4>
+                            <p>Export the staff list to Microsoft Excel format for further analysis or reporting.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <h4><i class="fas fa-file-pdf"></i> Export to PDF</h4>
+                            <p>Create a PDF document of the staff list for official records or sharing.</p>
+                        </div>
+                        
+                        <div class="tool-card">
+                            <h4><i class="fas fa-archive"></i> Move to Archive</h4>
+                            <p>Transfer selected staff members to the old staff database when they are no longer active.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="export-options" class="help-section">
+                    <h2><i class="fas fa-download"></i> Export Options</h2>
+                    <p>The All Staff page offers multiple export formats to suit different needs:</p>
+                    
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p><strong>Print:</strong> Creates a printer-friendly version of the staff list with optimized formatting for paper.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p><strong>Copy:</strong> Copies the visible data to your clipboard for quick pasting into other applications.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p><strong>Excel Export:</strong> Generates a complete Excel spreadsheet with all staff data for further analysis.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p><strong>PDF Export:</strong> Creates a professional PDF document suitable for official records or sharing.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-lightbulb"></i> Tip</h3>
+                        <p>When exporting data, only the currently visible columns will be included in the export. Use the column visibility options to customize what data is exported.</p>
+                    </div>
+                </div>
+                
+                <div id="column-visibility" class="help-section">
+                    <h2><i class="fas fa-columns"></i> Column Visibility Control</h2>
+                    <p>You can customize which columns are visible on the All Staff page to focus on the information that matters most to you.</p>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/all-staff-filter.jpg" alt="Column Visibility Options">
+                        <div class="caption">Figure 2: Column visibility controls</div>
+                    </div>
+                    
+                    <h3>How to Show or Hide Columns</h3>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Locate the column visibility controls (usually represented by checkboxes or a settings icon).</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Check the checkbox next to a column name to make it visible.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Uncheck the checkbox to hide that column from view.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Your column preferences are typically saved for your next visit.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-exclamation-circle"></i> Important Note</h3>
+                        <p>Only visible columns will be included when you print, copy, or export the staff data. Make sure to show all necessary columns before performing these operations.</p>
+                    </div>
+                    
+                    <h3>Example Use Case</h3>
+                    <p>If you only want to see staff members' first names, last names, and departments:</p>
+                    
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Open the column visibility controls.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Uncheck all columns except "First Name", "Last Name", and "Department".</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Apply the changes to update the staff list view.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
 
-    </section>
+   
 
+    <script>
+        // Simple JavaScript for sidebar navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
