@@ -1,112 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Staff Documentation - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f9ff;
-            color: #333;
+        * {
             margin: 0;
-            padding: 20px;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
-
-        h1, h2{
-            color: #1a4dab;
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
-
-        h1 {
-            text-align: center;
-            font-size: 3em;
-            margin-bottom: 10px;
-        }
-
-        hr {
-            border: none;
-            border-top: 3px solid #1a4dab;
-            margin-bottom: 30px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section {
-            max-width: 900px;
+        
+        .container {
+            max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
-            background-color: #ffffff;
-            border: 1px solid #cce0ff;
+            display: flex;
+            gap: 30px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .sidebar {
+            width: 250px;
+            background-color: white;
             border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
-            margin-bottom: 40px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            align-self: flex-start;
+            position: sticky;
+            top: 100px;
         }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
+        
+        .sidebar h3 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
         }
-
-        img {
+        
+        .sidebar ul {
+            list-style: none;
+        }
+        
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+        
+        .sidebar a {
             display: block;
+            padding: 8px 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .sidebar a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .main-content {
+            flex: 1;
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-content h1 i {
+            margin-right: 10px;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .help-section h3 {
+            color: #2c3e50;
+            margin: 20px 0 15px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #ecf0f1;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+            border: none;
+        }
+        
+        .image-container {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+        
+        .image-container img {
             max-width: 100%;
             height: auto;
-            margin: 20px auto;
-            border: 1px solid #cce0ff;
-            border-radius: 6px;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
         }
-
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+            text-align: center;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
         @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
+            .container {
+                flex-direction: column;
             }
-
-            section {
-                padding: 15px;
+            
+            .sidebar {
+                width: 100%;
+                position: static;
+                margin-bottom: 20px;
             }
-
-            p {
-                font-size: 1.1em;
+            
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
             }
         }
     </style>
-
-<h2>ADD STAFF</h2>
-    <section>
-     
-        <p>To add a staff click on the add staff menu below 
-</p><br>
-        <img src="/assets/images/add-staff-menu.jpg" alt="menu"><br><br><br>
-    
-        
-        <p>It opens the add staff form<br></p>
-        <img src="/assets/images/add-staff-form.jpg" alt="add staff form"><br><br><br>
-
-        <p>This form has four (4) steps.</p><br>
-<img src="/assets/images/add-staff-form-steps.jpg" alt="form steps"><br><br><br>
-
-<p>1. Step 1: Add Personal Information.<br>
-     2. Step 2: Add Education & Contact Information.<br>
-      3. Step 3: Class and Subject taught(if they are a teacher) <br>
-      4. Step 4: Other information of staff The other information may include medical information, employment history.</p><br><br><br>
-
-<h3>Add Class And Subject.</h3>
-
-<p>To add the class and subject taught by a member of staff, first complete the necessary information 
-under the personal information tab and education & contact information tab. The under the Class and 
-Subject tab, select the class the staff teaches. All subjects related to that class will be displayed. Now 
-select the subject that the staff teaches. The selected class and subject will appear in the right pane. To 
-the delete the subject from the staff’s list of subject taught, click the delete icon 
-</p>
-<img src="/assets/images/add-staff-add-subject-taught.jpg" alt="subject taught"><br><br><br>
+</head>
+<body>
   
-        <h3>Add Staff Form Navigation. </h3>
-        <p>The buttons below show the kind of navigation that can be performed when adding a new staff<br></p>
-        <img src="/assets/images/add-student-form-navigation.jpg" alt="subject taught"><br>
-        <p>The user can either go to the previous step, move to the next step, save the data currently entered or 
-reset the form. When next is clicked to move to the next step ensure that all required field are 
-completed, otherwise you will not be taken to the next step. The required field are marked with 
-asterisk.</p>
-<img src="/assets/images/add-student-form-required-field.jpg" alt="subject taught"><br>
 
-<h3>Save Information</h3>
-<p>When enough information about the staff have been keyed in. The Save button will be active to enable 
-the user to save the data, without necessarily completing all the steps. You can use the previous button, 
-to go back up the previous step. The reset is use to reset the form to its previous state.</p>
+    <div class="container">
+        <aside class="sidebar">
+            <h3>Staff Documentation</h3>
+            <ul>
+                <li><a href="#overview">Overview</a></li>
+                <li><a href="#accessing">Accessing Add Staff</a></li>
+                <li><a href="#form-steps">Form Steps</a></li>
+                <li><a href="#class-subject">Adding Class & Subject</a></li>
+                <li><a href="#navigation">Form Navigation</a></li>
+                <li><a href="#saving">Saving Information</a></li>
+            </ul>
+        </aside>
 
+        <main class="main-content">
+            <div class="help-content">
+                <h1><i class="fas fa-user-plus"></i> Add Staff Documentation</h1>
+                
+                <div id="overview" class="help-section">
+                    <h2><i class="fas fa-info-circle"></i> Overview</h2>
+                    <p>This documentation explains how to add new staff members to the AcademEA system. The process involves a multi-step form to capture all necessary information about the staff member.</p>
+                </div>
+                
+                <div id="accessing" class="help-section">
+                    <h2><i class="fas fa-map-signs"></i> Accessing the Add Staff Feature</h2>
+                    <p>To add a staff member, click on the "Add Staff" option in the main menu:</p>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/add-staff-menu.jpg" alt="Add Staff Menu">
+                        <div class="caption">Figure 1: Add Staff menu location</div>
+                    </div>
+                    
+                    <p>This will open the Add Staff form where you can enter the staff member's details.</p>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/add-staff-form.jpg" alt="Add Staff Form">
+                        <div class="caption">Figure 2: Add Staff form interface</div>
+                    </div>
+                </div>
+                
+                <div id="form-steps" class="help-section">
+                    <h2><i class="fas fa-layer-group"></i> Form Steps</h2>
+                    <p>The Add Staff form consists of four steps that guide you through the process of entering staff information:</p>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/add-staff-form-steps.jpg" alt="Form Steps">
+                        <div class="caption">Figure 3: The four steps of the Add Staff form</div>
+                    </div>
+                    
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p><strong>Step 1: Personal Information</strong> - Enter basic details like name, date of birth, gender, etc.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p><strong>Step 2: Education & Contact Information</strong> - Add educational background and contact details.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p><strong>Step 3: Class and Subject</strong> - Specify which classes and subjects the staff teaches (for teaching staff).</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p><strong>Step 4: Other Information</strong> - Add additional details like medical information, employment history, etc.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="class-subject" class="help-section">
+                    <h2><i class="fas fa-chalkboard-teacher"></i> Adding Class and Subject Information</h2>
+                    <p>To add the class and subject taught by a staff member:</p>
+                    
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Complete the necessary information under the Personal Information and Education & Contact tabs first.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Navigate to the Class and Subject tab.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Select the class the staff teaches. All subjects related to that class will be displayed.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the subject(s) that the staff teaches. The selected class and subject will appear in the right pane.</p>
+                        </div>
+                        <div class="step" data-number="5">
+                            <p>To remove a subject from the staff's list, click the delete icon next to it.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/add-staff-add-subject-taught.jpg" alt="Adding Subjects Taught">
+                        <div class="caption">Figure 4: Adding subjects taught by a staff member</div>
+                    </div>
+                </div>
+                
+                <div id="navigation" class="help-section">
+                    <h2><i class="fas fa-compass"></i> Form Navigation</h2>
+                    <p>The form includes navigation buttons to move between steps and manage the data entry process:</p>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/add-student-form-navigation.jpg" alt="Form Navigation Buttons">
+                        <div class="caption">Figure 5: Form navigation buttons</div>
+                    </div>
+                    
+                    <p>The navigation options include:</p>
+                    <ul>
+                        <li><strong>Previous:</strong> Return to the previous step</li>
+                        <li><strong>Next:</strong> Move to the next step (only available when all required fields are completed)</li>
+                        <li><strong>Save:</strong> Save the currently entered data</li>
+                        <li><strong>Reset:</strong> Clear the form and start over</li>
+                    </ul>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-exclamation-circle"></i> Important Note</h3>
+                        <p>You must complete all required fields (marked with an asterisk *) before you can proceed to the next step.</p>
+                    </div>
+                    
+                    <div class="image-container">
+                        <img src="/assets/images/add-student-form-required-field.jpg" alt="Required Fields">
+                        <div class="caption">Figure 6: Required fields marked with asterisks</div>
+                    </div>
+                </div>
+                
+                <div id="saving" class="help-section">
+                    <h2><i class="fas fa-save"></i> Saving Information</h2>
+                    <p>When sufficient information about the staff member has been entered, the Save button becomes active, allowing you to save the data without completing all steps.</p>
+                    
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Use the <strong>Previous</strong> button to return to earlier steps if you need to review or modify information.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>Click <strong>Save</strong> to store the currently entered information. You can return later to complete any missing details.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>Use <strong>Reset</strong> to clear the form and start over if needed.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-lightbulb"></i> Tip</h3>
+                        <p>You can save partially completed forms and return to them later. This is useful when you need to gather additional information before completing the staff record.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+   
+
+    <script>
+        // Simple JavaScript for sidebar navigation
+        document.addEventListener('DOMContentLoaded', function() {
+            const sidebarLinks = document.querySelectorAll('.sidebar a');
+            
+            sidebarLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>

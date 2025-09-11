@@ -1,4 +1,10 @@
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Income & Expenditure Module Help - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -6,16 +12,65 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        
         body {
             background-color: #f5f7fa;
             color: #333;
             line-height: 1.6;
         }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
+        
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
         .help-nav {
             background-color: white;
             padding: 20px;
@@ -23,126 +78,14 @@
             margin: 20px 0;
             box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
         }
-
-        h1, h2, h3 {
-            color: #1a4dab;
-        }
-
-        h1 {
-            text-align: center;
-            font-size: 2.8em;
-            margin-bottom: 10px;
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
             padding-bottom: 10px;
-            border-bottom: 2px solid #1a4dab;
-            display: inline-block;
-            width: 100%;
+            border-bottom: 2px solid #ecf0f1;
         }
-
-        hr {
-            border: none;
-            border-top: 3px solid #1a4dab;
-            margin-bottom: 30px;
-            width: 80%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-
-        section {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 25px;
-            background-color: #ecf0fa;
-            border: 1px solid #a2c3f5;
-            border-radius: 8px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-            margin-bottom: 40px;
-        }
-
-        p {
-            font-size: 1.2em;
-            line-height: 1.6;
-            margin-bottom: 20px;
-        }
-
-        /* Enhanced image styling */
-        img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-            margin: 25px auto;
-            border: 1px solid #b0c1da;
-            border-radius: 8px;
-            box-shadow: 0 6px 18px rgba(26, 77, 171, 0.2);
-            filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.1));
-            background-color: #fff;
-            padding: 4px;
-        }
-
-        /* Numbered steps for procedures */
-        .step-list {
-            counter-reset: step-counter;
-            padding-left: 20px;
-        }
-
-        .step-list li {
-            list-style-type: none;
-            margin-bottom: 15px;
-            position: relative;
-            padding-left: 40px;
-        }
-
-        .step-list li:before {
-            counter-increment: step-counter;
-            content: counter(step-counter);
-            position: absolute;
-            left: 0;
-            top: 0;
-            background-color: #1a4dab;
-            color: white;
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            text-align: center;
-            line-height: 30px;
-            font-weight: bold;
-        }
-
-        /* Section headers with subtle background */
-        h2 {
-            background-color: rgba(26, 77, 171, 0.1);
-            padding: 12px 15px;
-            border-radius: 6px;
-            margin-top: 30px;
-            margin-bottom: 20px;
-            border-left: 4px solid #1a4dab;
-        }
-
-        h3 {
-            color: #2c5282;
-            margin-top: 25px;
-            margin-bottom: 15px;
-            padding-bottom: 5px;
-            border-bottom: 1px dashed #a2c3f5;
-        }
-
-        /* Responsive design */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            section {
-                padding: 18px;
-            }
-
-            p {
-                font-size: 1.1em;
-            }
-            
-            img {
-                margin: 20px auto;
-            }
-        }
+        
         .config-links {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -165,55 +108,203 @@
             color: white;
             transform: translateY(-2px);
         }
-        .config-links {
-            grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
         }
         
-        /* Additional styles for multiple images */
-        .image-gallery {
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-section {
+            margin-bottom: 30px;
+        }
+        
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
             display: flex;
-            flex-wrap: wrap;
-            gap: 20px;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .help-section h3 {
+            color: #34495e;
+            margin-bottom: 15px;
+            margin-top: 20px;
+        }
+        
+        section {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+        }
+        
+        section h2 {
+            color: #3498db;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        section h2 i {
+            margin-right: 10px;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin: 25px 0;
+            font-size: 14px;
+            font-weight: bold;
         }
         
-        .image-container {
-            flex: 1;
-            min-width: 280px;
-            max-width: 100%;
+        .step-list {
+            background-color: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+            border-left: 4px solid #3498db;
         }
         
-        .image-caption {
-            text-align: center;
-            font-style: italic;
-            color: #5c6bc0;
-            margin-top: 8px;
-            font-size: 0.95em;
+        .step-list li {
+            margin-bottom: 12px;
+            padding: 8px 0;
+            border-bottom: 1px solid #e9ecef;
         }
         
-        .note-box {
+        .step-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .note {
             background-color: #fff8e1;
-            border-left: 4px solid #ffc107;
+            border-left: 4px solid #f39c12;
             padding: 15px;
-            margin: 20px 0;
+            margin: 15px 0;
             border-radius: 4px;
         }
         
-        .warning-box {
-            background-color: #ffebee;
-            border-left: 4px solid #f44336;
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 4px;
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
         }
         
         .tip-box {
-            background-color: #e8f5e9;
-            border-left: 4px solid #4caf50;
+            background-color: #e8f5e8;
+            border-left: 4px solid #27ae60;
             padding: 15px;
-            margin: 20px 0;
+            margin: 15px 0;
             border-radius: 4px;
+            color: #27ae60;
+        }
+        
+        .warning-box {
+            background-color: #ffeaa7;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #d35400;
+        }
+        
+        .note-box {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+            color: #1976d2;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin: 10px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
         }
         
         .feature-table {
@@ -223,13 +314,13 @@
         }
         
         .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
             padding: 12px;
             text-align: left;
-            border-bottom: 1px solid #ddd;
         }
         
         .feature-table th {
-            background-color: #1a4dab;
+            background-color: #3498db;
             color: white;
         }
         
@@ -237,39 +328,131 @@
             background-color: #f2f2f2;
         }
         
-        .feature-table tr:hover {
-            background-color: #e6f7ff;
+        .form-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            max-width: 600px;
+        }
+        
+        .form-preview .form-group {
+            margin-bottom: 15px;
+        }
+        
+        .form-preview label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        
+        .form-preview select, .form-preview input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        
+        .form-preview button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .permissions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .permission-item {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 6px;
+            border-left: 4px solid #3498db;
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .permissions-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
-
+</head>
 <body>
+  
+
     <div class="container">
         
         <div class="help-nav">
             <h2>Quick Navigation</h2>
             <div class="config-links">
-                <a href="#dashboard">Accounts Dashboard</a>
-                <a href="#income-expense">Income & Expenditure</a>
-                <a href="#summary">Income & Expenditure Summary</a>
-                <a href="#add-expense">Add Expenses</a>
-                <a href="#view-expense">View Expenses</a>
-                <a href="#print-voucher">Print Vouchers</a>
-                <a href="#other-income">Other Income</a>
-                <a href="#daily-cash">Daily Cash Report</a>
-                <a href="#fee-breakdown">Fee Breakdown</a>
+                <a href="#dashboard"><i class="fas fa-tachometer-alt"></i> Accounts Dashboard</a>
+                <a href="#income-expense"><i class="fas fa-chart-line"></i> Income & Expenditure</a>
+                <a href="#summary"><i class="fas fa-chart-pie"></i> Income & Expenditure Summary</a>
+                <a href="#add-expense"><i class="fas fa-plus-circle"></i> Add Expenses</a>
+                <a href="#view-expense"><i class="fas fa-eye"></i> View Expenses</a>
+                <a href="#print-voucher"><i class="fas fa-print"></i> Print Vouchers</a>
+                <a href="#other-income"><i class="fas fa-money-bill-wave"></i> Other Income</a>
+                <a href="#daily-cash"><i class="fas fa-cash-register"></i> Daily Cash Report</a>
+                <a href="#fee-breakdown"><i class="fas fa-chart-bar"></i> Fee Breakdown</a>
             </div>
         </div>
         
+        <div class="help-content">
+            <h1><i class="fas fa-calculator"></i> Income & Expenditure Module Help</h1>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-info-circle"></i> About the Income & Expenditure Module</h2>
+                <p>The Income & Expenditure module in AcademEA provides comprehensive financial management tools for tracking all monetary transactions within your institution. It allows you to record expenses, monitor income from various sources, and generate detailed financial reports for better decision-making.</p>
+                
+                <p>This help documentation covers the following features of the Income & Expenditure module:</p>
+                <ul>
+                    <li><strong>Income & Expenditure Overview:</strong> View all financial transactions</li>
+                    <li><strong>Summary Reports:</strong> Categorized financial overviews</li>
+                    <li><strong>Expense Management:</strong> Add and view expenditures</li>
+                    <li><strong>Voucher Management:</strong> Print and manage vouchers</li>
+                    <li><strong>Other Income:</strong> Record non-fee income sources</li>
+                    <li><strong>Fee Analysis:</strong> Detailed breakdown of student fees</li>
+                </ul>
+            </div>
+        </div>
         
         <section id="income-expense">
-            <h2>Income & Expenditure</h2>
+            <h2><i class="fas fa-chart-line"></i> Income & Expenditure</h2>
             <img src="/assets/images/IE.png" alt="I&E">
             <p>This module provides a comprehensive view of all financial transactions, showing both income (credits) and expenses (debits) within a selected date range.</p>
             
             <h3>How to Use:</h3>
             <ol class="step-list">
                 <li>From the side menu, select "Income & Expenditure"</li>
-                           <img src="/assets/images/IE-menu.png" alt="menu"> 
+                <img src="/assets/images/IE-menu.png" alt="menu"> 
                 <li>Set the desired date range using the Start Date and End Date fields</li>
                 <img src="/assets/images/IE-set-date.png" alt="menu">
                 <li>Click the "Search" button to view transactions</li>
@@ -278,12 +461,11 @@
                 <li>View detailed transaction information including dates, particulars, and amounts</li>
             </ol>
             
- <p class="tip-box"><strong>Pro Tip:</strong> Export the data to Excel for further analysis by using the export function if available.
-            </p>
+            <p class="tip-box"><i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Export the data to Excel for further analysis by using the export function if available.</p>
         </section>
         
         <section id="summary">
-            <h2>Income & Expenditure Summary</h2>
+            <h2><i class="fas fa-chart-pie"></i> Income & Expenditure Summary</h2>
             <img src="/assets/images/IE-summary.png" alt="summary">
             <p>The Summary view provides a categorized overview of all income and expenses. It shows totals for different categories rather than individual transactions.</p>
             
@@ -329,12 +511,12 @@
             </ol>
            
             <p class="tip-box">
-                <strong>Pro Tip:</strong> Check this view regularly to monitor your institution's financial health and spot trends.
+                <i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Check this view regularly to monitor your institution's financial health and spot trends.
             </p>
         </section>
         
         <section id="add-expense">
-            <h2>Add Expenditure</h2>
+            <h2><i class="fas fa-plus-circle"></i> Add Expenditure</h2>
             <img src="/assets/images/IE-add-expenditure.png" alt="add">
             <p>This form allows you to record new expenses incurred by your institution. It captures all necessary details including payment method, amount, category, and authorization information.</p>
             
@@ -342,25 +524,23 @@
             <ol class="step-list">
                 <li>Navigate to "Add Expenditure" from the menu</li>
                 <li>Enter a voucher number for reference (if applicable)</li>
-
                 <li>Provide a clear description of the expense</li>
                 <li>Select the appropriate payment method (Cash, Cheque, Momo, etc.)</li>
                 <li>Enter the expense amount in GHC</li>
                 <li>Choose the relevant expense category from the dropdown</li>
                 <li>Select the date of the transaction</li>
-                <li>select preview if you want to check the expences payment</li>
+                <li>Select preview if you want to check the expenses payment</li>
                 <img src="/assets/images/IE-expenditure-preview.png" alt="preview">
-                <li>select print and pay from the preview popup to make payment</li>
+                <li>Select print and pay from the preview popup to make payment</li>
             </ol>
->
             
             <p class="warning-box">
-                <strong>Important:</strong> Always double-check the amount and category before saving, as editing might require additional permissions.
+                <i class="fas fa-exclamation-triangle"></i> <strong>Important:</strong> Always double-check the amount and category before saving, as editing might require additional permissions.
             </p>
         </section>
         
         <section id="view-expense">
-            <h2>View Expenditure</h2>
+            <h2><i class="fas fa-eye"></i> View Expenditure</h2>
             <img src="/assets/images/IE-view-expenditure.png" alt="view">
             <p>This section allows you to search, view, and manage all recorded expenses. You can filter by date range, voucher number, or other criteria.</p>
             
@@ -377,12 +557,12 @@
             </ol>
             
             <p class="tip-box">
-                <strong>Pro Tip:</strong> Use specific date ranges to narrow down results when dealing with large volumes of transactions.
+                <i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> Use specific date ranges to narrow down results when dealing with large volumes of transactions.
             </p>
         </section>
         
         <section id="print-voucher">
-            <h2>Print Vouchers</h2>
+            <h2><i class="fas fa-print"></i> Print Vouchers</h2>
             <p>This feature allows you to generate and print vouchers for financial transactions. You can search for specific vouchers by number or date range.</p>
             
             <h3>How to Generate Vouchers:</h3>
@@ -399,12 +579,12 @@
             </ol>
            
             <p class="note-box">
-                <strong>Note:</strong> Always verify the information on the voucher before printing and filing for records.
+                <i class="fas fa-sticky-note"></i> <strong>Note:</strong> Always verify the information on the voucher before printing and filing for records.
             </p>
         </section>
         
         <section id="other-income">
-            <h2>Other Income</h2>
+            <h2><i class="fas fa-money-bill-wave"></i> Other Income</h2>
             <p>This form is used to record income from sources other than standard student fees, such as donations, event revenue, or other miscellaneous income.</p>
             
             <h3>Recording Other Income:</h3>
@@ -421,17 +601,16 @@
                 <li>Select the transaction date</li>
                 <li>Click "Save" to record the income</li>
             </ol>
-            
         </section>
         
         <section id="daily-cash">
-            <h2>View Other Income</h2>
+            <h2><i class="fas fa-cash-register"></i> View Other Income</h2>
             <img src="/assets/images/IE-view-other-income.png" alt="view">
             <p>This report provides a detailed view of daily cash transactions from other income sources. It includes comprehensive information about each transaction for auditing purposes.</p>
             
             <h3>Accessing the Report:</h3>
             <ol class="step-list">
-                <li>From the Sidemenu, navigate to "Daily Cash" then "Other Income"</li>
+                <li>From the Side menu, navigate to "Daily Cash" then "Other Income"</li>
                 <li>Set the desired date range for the report</li>
                 <img src="/assets/images/IE-view-date.png" alt="view">
                 <li>Click "Search" to generate the report</li>
@@ -439,17 +618,16 @@
                 <li>Note the payment method details (cheque numbers, bank draft info, etc.)</li>
                 <li>Identify who received each payment</li>
             </ol>
- 
         </section>
 
         <section id="fee-breakdown">
-            <h2>Fee Breakdown</h2>
+            <h2><i class="fas fa-chart-bar"></i> Fee Breakdown</h2>
             <img src="/assets/images/IE-fee-breakdown.png" alt="fee breakdown">
             <p>This section is designed to give you a detailed analysis of all student fee transactions. You can see how much has been collected, what types of fees have been collected, and from whom.</p>
             
             <h3>How to View Fee Breakdown:</h3>
             <ol class="step-list">
-                <li>From the Side Menu, select "Fee Breakdown" >Income and Expenditure >under the Account option</li>
+                <li>From the Side Menu, select "Fee Breakdown" > Income and Expenditure > under the Account option</li>
                 <img src="/assets/images/IE-fee-fb.png" alt="menu">
                 <li>Select the Term and Academic Year for the range you want to see.</li>
                 <img src="/assets/images/IE-fee-fb-range.png" alt="range">
@@ -459,11 +637,97 @@
             </ol>
             
             <p class="tip-box">
-                <strong>Pro Tip:</strong>In short, the <strong>"Fee Break Down / Summary" </strong>is your central hub for analyzing all student fee finances in detail.
-                 Always remember to use the filters at the top to specify exactly which data you want to see.</p>
-
-
+                <i class="fas fa-lightbulb"></i> <strong>Pro Tip:</strong> In short, the <strong>"Fee Break Down / Summary"</strong> is your central hub for analyzing all student fee finances in detail.
+                 Always remember to use the filters at the top to specify exactly which data you want to see.
+            </p>
         </section>
+        
+        <div class="help-content">
+            <div class="help-section">
+                <h2><i class="fas fa-lightbulb"></i> Best Practices for Financial Management</h2>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <p><strong>Regular Updates:</strong> Record transactions promptly to maintain accurate financial records.</p>
+                    </div>
+                    <div class="step" data-number="2">
+                        <p><strong>Proper Categorization:</strong> Use appropriate categories for expenses to generate meaningful reports.</p>
+                    </div>
+                    <div class="step" data-number="3">
+                        <p><strong>Regular Reviews:</strong> Check financial summaries regularly to monitor institutional health.</p>
+                    </div>
+                    <div class="step" data-number="4">
+                        <p><strong>Backup Documentation:</strong> Keep physical copies of important vouchers and receipts.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                <ul>
+                    <li>Only users with appropriate permissions can add or modify financial records.</li>
+                    <li>All financial activities are logged for audit purposes.</li>
+                    <li>Always verify amounts and categories before saving transactions.</li>
+                    <li>Use the export functions to create backups of financial data.</li>
+                </ul>
+            </div>
+            
+            <div class="help-section">
+                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
+                
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Cannot add expenses</td>
+                            <td>Insufficient permissions</td>
+                            <td>Check your user permissions or contact system administrator</td>
+                        </tr>
+                        <tr>
+                            <td>Reports not generating</td>
+                            <td>Date range too broad or system timeout</td>
+                            <td>Try smaller date ranges or refresh the page</td>
+                        </tr>
+                        <tr>
+                            <td>Missing transactions</td>
+                            <td>Incorrect date filters</td>
+                            <td>Verify date range settings and search criteria</td>
+                        </tr>
+                        <tr>
+                            <td>Cannot edit expenses</td>
+                            <td>Transaction may be locked or insufficient permissions</td>
+                            <td>Contact administrator or check if transaction is finalized</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="note">
+                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                <p>If you encounter issues with the Income & Expenditure module or need help with financial management, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+            </div>
+        </div>
     </div>
-</body>
-</html>
+
+
+    <script>
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+                step.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.config-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement
