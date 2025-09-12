@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Accounts Module Help - AcademEA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -210,6 +211,11 @@
             text-align: center;
             border-radius: 6px;
             margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
         }
         
         .image-placeholder i {
@@ -298,6 +304,132 @@
             border-left: 4px solid #3498db;
         }
         
+        .help-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .help-sidebar {
+            flex: 0 0 250px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        .help-sidebar h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-sidebar .nav-link {
+            color: #34495e;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .help-sidebar .nav-link:hover,
+        .help-sidebar .nav-link.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .help-main-content {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .help-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .help-header .lead {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            color: #3498db;
+            margin-right: 10px;
+        }
+        
+        .step-card {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .screenshot {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+        }
+        
+        .tip, .warning {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .tip {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .warning {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+        
+        .accordion-button:not(.collapsed) {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -318,65 +450,106 @@
                 overflow-x: auto;
             }
             
-            .permissions-grid {
-                grid-template-columns: 1fr;
+            .help-container {
+                flex-direction: column;
+            }
+            
+            .help-sidebar {
+                flex: 0 0 auto;
             }
         }
     </style>
 </head>
 <body>
-   
-        <!-- Accounts Module Help -->
-        <div id="accounts" class="help-content">
-            <h1><i class="fas fa-calculator"></i> Accounts Module Help</h1>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-info-circle"></i> About the Accounts Module</h2>
-                <p>The Accounts module in AcademEA provides comprehensive financial management tools for educational institutions. It allows you to manage student fees, track payments, generate financial reports, and monitor income and expenditure.</p>
-                
-                <p>This help documentation covers the following specific features of the Accounts module:</p>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AcademEA Help Center</span>
+            </div>
+            <nav>
                 <ul>
-                    <li><strong>Termly Bill:</strong> Generate and manage term bills for students</li>
-                    <li><strong>Fee Payment Status:</strong> Track payment status of students</li>
-                    <li><strong>Receive Fee / School Fees:</strong> Process school fee payments from students</li>
-                    <li><strong>Receive Feeding Fee (Daily/Weekly):</strong> Process daily or weekly feeding fee payments</li>
-                    <li><strong>Receive Feeding Fee (Termly):</strong> Process termly feeding fee payments</li>
-                    <li><strong>Daily Cash / All Income:</strong> View all income transactions</li>
-                    <li><strong>Daily Cash / School Fees:</strong> View school fee transactions specifically</li>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-book"></i> Modules</a></li>
+                    <li><a href="#"><i class="fas fa-question-circle"></i> Support</a></li>
                 </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="help-nav">
+            <h2>Accounts Module Sections</h2>
+            <div class="config-links">
+                <a href="#about">About Accounts</a>
+                <a href="#navigation">Navigation</a>
+                <a href="#termly-bill">Termly Bill</a>
+                <a href="#payment-status">Payment Status</a>
+                <a href="#school-fees">School Fees</a>
+                <a href="#feeding-fees">Feeding Fees</a>
+                <a href="#daily-cash">Daily Cash</a>
+                <a href="#best-practices">Best Practices</a>
+                <a href="#troubleshooting">Troubleshooting</a>
             </div>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-map-signs"></i> How to Navigate to Accounts Module</h2>
-                <div class="steps">
-                    <div class="step" data-number="1">
-                        <p>Log in to your AcademEA account with appropriate privileges.</p>
+        </div>
+
+          
+            <!-- Main Content -->
+            <div class="help-main-content">
+                <div class="help-header">
+                    <h1><i class="fas fa-calculator feature-icon"></i> Accounts Module Help</h1>
+                    <p class="lead">Complete guide to managing financial operations in AcademEA</p>
+                </div>
+
+                <!-- About Accounts Section -->
+                <div class="help-section" id="about">
+                    <h2><i class="fas fa-info-circle feature-icon"></i> About the Accounts Module</h2>
+                    <p>The Accounts module in AcademEA provides comprehensive financial management tools for educational institutions. It allows you to manage student fees, track payments, generate financial reports, and monitor income and expenditure.</p>
+                    
+                    <p>This help documentation covers the following specific features of the Accounts module:</p>
+                    <ul>
+                        <li><strong>Termly Bill:</strong> Generate and manage term bills for students</li>
+                        <li><strong>Fee Payment Status:</strong> Track payment status of students</li>
+                        <li><strong>Receive Fee / School Fees:</strong> Process school fee payments from students</li>
+                        <li><strong>Receive Feeding Fee (Daily/Weekly):</strong> Process daily or weekly feeding fee payments</li>
+                        <li><strong>Receive Feeding Fee (Termly):</strong> Process termly feeding fee payments</li>
+                        <li><strong>Daily Cash / All Income:</strong> View all income transactions</li>
+                        <li><strong>Daily Cash / School Fees:</strong> View school fee transactions specifically</li>
+                    </ul>
+                </div>
+
+                <!-- Navigation Section -->
+                <div class="help-section" id="navigation">
+                    <h2><i class="fas fa-compass feature-icon"></i> How to Navigate to Accounts Module</h2>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p>Log in to your AcademEA account with appropriate privileges.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p>From the main menu, click on <strong>Accounts</strong>.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p>You will see various options including Term Bill, Fee Payment Status, Receive Fee, and Daily Cash.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p>Select the specific feature you want to use.</p>
+                        </div>
                     </div>
-                    <div class="step" data-number="2">
-                        <p>From the main menu, click on <strong>Accounts</strong>.</p>
-                    </div>
-                    <div class="step" data-number="3">
-                        <p>You will see various options including Term Bill, Fee Payment Status, Receive Fee, and Daily Cash.</p>
-                    </div>
-                    <div class="step" data-number="4">
-                        <p>Select the specific feature you want to use.</p>
+                    
+                    <div class="ui-preview">
+                        <h4>Accounts Module Navigation</h4>
+                        <div class="image-placeholder">
+                            <img src="/assets/images/account_nav.png" alt="">
+                        </div>
+                        <p class="caption">Main menu showing Accounts options</p>
                     </div>
                 </div>
-                
-                <div class="ui-preview">
-                    <h3>Accounts Module Navigation</h3>
-                    <div class="image-placeholder">
-                        <img src="/assets/images/account_nav.png" alt="">
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Termly Bill Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-file-invoice"></i> Termly Bill</h2>
-                <p>The Termly Bill feature allows you to generate and manage bills for students for a specific term. You can view, print, and manage these bills.</p>
-                
-                <div class="help-section">
+
+                <!-- Termly Bill Section -->
+                <div class="help-section" id="termly-bill">
+                    <h2><i class="fas fa-file-invoice feature-icon"></i> Termly Bill</h2>
+                    <p>The Termly Bill feature allows you to generate and manage bills for students for a specific term. You can view, print, and manage these bills.</p>
+                    
                     <h3><i class="fas fa-tasks"></i> How to Generate Termly Bills</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -404,16 +577,15 @@
                         <div class="image-placeholder">
                             <img src="/assets/images/receivefee_form.png" alt="">
                         </div>
+                        <p class="caption">Termly bill generation interface</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Fee Payment Status Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-search-dollar"></i> Fee Payment Status</h2>
-                <p>The Fee Payment Status feature allows you to view and monitor the payment status of students. You can filter by class, student status, and other criteria.</p>
-                
-                <div class="help-section">
+
+                <!-- Payment Status Section -->
+                <div class="help-section" id="payment-status">
+                    <h2><i class="fas fa-search-dollar feature-icon"></i> Fee Payment Status</h2>
+                    <p>The Fee Payment Status feature allows you to view and monitor the payment status of students. You can filter by class, student status, and other criteria.</p>
+                    
                     <h3><i class="fas fa-tasks"></i> How to Check Fee Payment Status</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -436,18 +608,17 @@
                     <div class="ui-preview">
                         <h4>Fee Payment Status Interface</h4>
                         <div class="image-placeholder">
-                           <img src="/assets/images/feepayment_status.png" alt="">
+                            <img src="/assets/images/feepayment_status.png" alt="">
                         </div>
+                        <p class="caption">Fee payment status interface</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Receive Fee / School Fees Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-money-bill-wave"></i> Receive Fee / School Fees</h2>
-                <p>The Receive Fee feature allows you to process school fee payments from students. You can accept payments through various methods including cash, cheque, mobile money, and bank transfers.</p>
-                
-                <div class="help-section">
+
+                <!-- School Fees Section -->
+                <div class="help-section" id="school-fees">
+                    <h2><i class="fas fa-money-bill-wave feature-icon"></i> Receive Fee / School Fees</h2>
+                    <p>The Receive Fee feature allows you to process school fee payments from students. You can accept payments through various methods including cash, cheque, mobile money, and bank transfers.</p>
+                    
                     <h3><i class="fas fa-tasks"></i> How to Receive School Fee Payments</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -478,28 +649,27 @@
                         <div class="image-placeholder">
                             <img src="/assets/images/schoolfees.png" alt="">
                         </div>
+                        <p class="caption">School fee payment interface</p>
+                    </div>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-lightbulb"></i> Payment Methods</h3>
+                        <p>The system supports multiple payment methods:</p>
+                        <ul>
+                            <li><strong>Cash:</strong> Direct cash payments</li>
+                            <li><strong>Cheque:</strong> Payment by cheque (requires cheque number)</li>
+                            <li><strong>Bank Draft:</strong> Bank draft payments</li>
+                            <li><strong>Pay in Slip:</strong> Bank deposit slips</li>
+                            <li><strong>Momo:</strong> Mobile money payments (requires mobile number)</li>
+                        </ul>
                     </div>
                 </div>
-                
-                <div class="note">
-                    <h3><i class="fas fa-lightbulb"></i> Payment Methods</h3>
-                    <p>The system supports multiple payment methods:</p>
-                    <ul>
-                        <li><strong>Cash:</strong> Direct cash payments</li>
-                        <li><strong>Cheque:</strong> Payment by cheque (requires cheque number)</li>
-                        <li><strong>Bank Draft:</strong> Bank draft payments</li>
-                        <li><strong>Pay in Slip:</strong> Bank deposit slips</li>
-                        <li><strong>Momo:</strong> Mobile money payments (requires mobile number)</li>
-                    </ul>
-                </div>
-            </div>
-            
-            <!-- Receive Feeding Fee (Daily/Weekly) Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-utensils"></i> Receive Feeding Fee (Daily/Weekly)</h2>
-                <p>The Receive Feeding Fee (Daily/Weekly) feature allows you to process payments for student feeding programs on a daily or weekly basis.</p>
-                
-                <div class="help-section">
+
+                <!-- Feeding Fees Section -->
+                <div class="help-section" id="feeding-fees">
+                    <h2><i class="fas fa-utensils feature-icon"></i> Receive Feeding Fee</h2>
+                    <p>The Receive Feeding Fee feature allows you to process payments for student feeding programs on a daily, weekly, or termly basis.</p>
+                    
                     <h3><i class="fas fa-tasks"></i> How to Receive Daily/Weekly Feeding Fees</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -525,21 +695,6 @@
                         </div>
                     </div>
                     
-                    <div class="ui-preview">
-                        <h4>Receive Feeding Fee (Daily/Weekly) Interface</h4>
-                        <div class="image-placeholder">
-                           <img src="/assets/images/feedingfee.png" alt="">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Receive Feeding Fee (Termly) Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-utensils"></i> Receive Feeding Fee (Termly)</h2>
-                <p>The Receive Feeding Fee (Termly) feature allows you to process payments for student feeding programs for an entire term.</p>
-                
-                <div class="help-section">
                     <h3><i class="fas fa-tasks"></i> How to Receive Termly Feeding Fees</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -566,20 +721,19 @@
                     </div>
                     
                     <div class="ui-preview">
-                        <h4>Receive Feeding Fee (Termly) Interface</h4>
+                        <h4>Receive Feeding Fee Interface</h4>
                         <div class="image-placeholder">
-                            <img src="/assets/images/feedingfee_daily.png" alt="">
+                            <img src="/assets/images/feedingfee.png" alt="">
                         </div>
+                        <p class="caption">Feeding fee payment interface</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Daily Cash / All Income Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-receipt"></i> Daily Cash / All Income</h2>
-                <p>The Daily Cash / All Income feature provides a comprehensive view of all income transactions processed on a specific day or date range.</p>
-                
-                <div class="help-section">
+
+                <!-- Daily Cash Section -->
+                <div class="help-section" id="daily-cash">
+                    <h2><i class="fas fa-receipt feature-icon"></i> Daily Cash Reports</h2>
+                    <p>The Daily Cash features provide comprehensive views of income transactions processed on specific days or date ranges.</p>
+                    
                     <h3><i class="fas fa-tasks"></i> How to View All Income Reports</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -599,21 +753,6 @@
                         </div>
                     </div>
                     
-                    <div class="ui-preview">
-                        <h4>All Income Interface</h4>
-                        <div class="image-placeholder">
-                           <img src="/assets/images/allincome.png" alt="all income interface">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Daily Cash / School Fees Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-receipt"></i> Daily Cash / School Fees</h2>
-                <p>The Daily Cash / School Fees feature provides a detailed view of all school fee transactions processed on a specific day or date range.</p>
-                
-                <div class="help-section">
                     <h3><i class="fas fa-tasks"></i> How to View School Fee Transactions</h3>
                     <div class="steps">
                         <div class="step" data-number="1">
@@ -634,84 +773,88 @@
                     </div>
                     
                     <div class="ui-preview">
-                        <h4>School Fees Interface</h4>
+                        <h4>Daily Cash Interface</h4>
                         <div class="image-placeholder">
-                            <img src="/assets/images/schoolfees.png" alt="school fees interface">
+                             <img src="/assets/images/feedingfee_daily.png" alt="">
+                        </div>
+                        <p class="caption">Daily cash report interface</p>
+                    </div>
+                </div>
+
+                <!-- Best Practices Section -->
+                <div class="help-section" id="best-practices">
+                    <h2><i class="fas fa-lightbulb feature-icon"></i> Best Practices for Accounts Management</h2>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p><strong>Regular Reconciliation:</strong> Regularly reconcile your accounts to ensure accuracy.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p><strong>Backup Records:</strong> Regularly backup financial records for security and audit purposes.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p><strong>User Permissions:</strong> Assign appropriate permissions to staff members based on their roles.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p><strong>Regular Reports:</strong> Generate and review financial reports regularly to monitor the institution's financial health.</p>
                         </div>
                     </div>
-                </div>
-            </div>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-lightbulb"></i> Best Practices for Accounts Management</h2>
-                <div class="steps">
-                    <div class="step" data-number="1">
-                        <p><strong>Regular Reconciliation:</strong> Regularly reconcile your accounts to ensure accuracy.</p>
-                    </div>
-                    <div class="step" data-number="2">
-                        <p><strong>Backup Records:</strong> Regularly backup financial records for security and audit purposes.</p>
-                    </div>
-                    <div class="step" data-number="3">
-                        <p><strong>User Permissions:</strong> Assign appropriate permissions to staff members based on their roles.</p>
-                    </div>
-                    <div class="step" data-number="4">
-                        <p><strong>Regular Reports:</strong> Generate and review financial reports regularly to monitor the institution's financial health.</p>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
+                        <ul>
+                            <li>Only users with appropriate permissions can access financial features.</li>
+                            <li>All financial transactions are logged for audit purposes.</li>
+                            <li>Always verify payment details before processing transactions.</li>
+                            <li>Regularly update fee structures to reflect current rates.</li>
+                        </ul>
                     </div>
                 </div>
-            </div>
-            
-            <div class="note">
-                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
-                <ul>
-                    <li>Only users with appropriate permissions can access financial features.</li>
-                    <li>All financial transactions are logged for audit purposes.</li>
-                    <li>Always verify payment details before processing transactions.</li>
-                    <li>Regularly update fee structures to reflect current rates.</li>
-                </ul>
-            </div>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
-                
-                <table class="feature-table">
-                    <thead>
-                        <tr>
-                            <th>Issue</th>
-                            <th>Possible Cause</th>
-                            <th>Solution</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cannot process payment</td>
-                            <td>Insufficient permissions or system error</td>
-                            <td>Check your user permissions or contact system administrator</td>
-                        </tr>
-                        <tr>
-                            <td>Incorrect balance shown</td>
-                            <td>Pending transactions not processed</td>
-                            <td>Refresh the page or check for pending transactions</td>
-                        </tr>
-                        <tr>
-                            <td>Student not appearing in list</td>
-                            <td>Student may be inactive or filtered out</td>
-                            <td>Check filters and student status</td>
-                        </tr>
-                        <tr>
-                            <td>Report data not accurate</td>
-                            <td>Date range may be incorrect</td>
-                            <td>Verify the date range selected for the report</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="note">
-                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
-                <p>If you encounter issues with the Accounts module or need help with financial management, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+
+                <!-- Troubleshooting Section -->
+                <div class="help-section" id="troubleshooting">
+                    <h2><i class="fas fa-tools feature-icon"></i> Troubleshooting Common Issues</h2>
+                    
+                    <table class="feature-table">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Possible Cause</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cannot process payment</td>
+                                <td>Insufficient permissions or system error</td>
+                                <td>Check your user permissions or contact system administrator</td>
+                            </tr>
+                            <tr>
+                                <td>Incorrect balance shown</td>
+                                <td>Pending transactions not processed</td>
+                                <td>Refresh the page or check for pending transactions</td>
+                            </tr>
+                            <tr>
+                                <td>Student not appearing in list</td>
+                                <td>Student may be inactive or filtered out</td>
+                                <td>Check filters and student status</td>
+                            </tr>
+                            <tr>
+                                <td>Report data not accurate</td>
+                                <td>Date range may be incorrect</td>
+                                <td>Verify the date range selected for the report</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                        <p>If you encounter issues with the Accounts module or need help with financial management, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
+
 
     <script>
         // Simple JavaScript for interactive elements
@@ -724,7 +867,7 @@
             });
             
             // Smooth scrolling for navigation links
-            document.querySelectorAll('.config-links a').forEach(anchor => {
+            document.querySelectorAll('.config-links a, .help-sidebar a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
@@ -734,6 +877,14 @@
                             top: targetElement.offsetTop - 20,
                             behavior: 'smooth'
                         });
+                    }
+                    
+                    // Update active class for sidebar
+                    if (this.classList.contains('nav-link')) {
+                        document.querySelectorAll('.help-sidebar a').forEach(navLink => {
+                            navLink.classList.remove('active');
+                        });
+                        this.classList.add('active');
                     }
                 });
             });

@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Billing Module Help - AcademEA</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <style>
         * {
             margin: 0;
@@ -298,6 +299,121 @@
             border-left: 4px solid #3498db;
         }
         
+        /* Help Container and Sidebar Styles */
+        .help-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .help-sidebar {
+            flex: 0 0 250px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        .help-sidebar h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-sidebar .nav-link {
+            color: #34495e;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .help-sidebar .nav-link:hover,
+        .help-sidebar .nav-link.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .help-main-content {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .help-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .help-header .lead {
+            color: #7f8c8d;
+            margin-bottom: 20px;
+        }
+        
+        .feature-icon {
+            color: #3498db;
+            margin-right: 10px;
+        }
+        
+        .step-card {
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
+        }
+        
+        .step-number {
+            display: inline-block;
+            width: 30px;
+            height: 30px;
+            background: #3498db;
+            color: white;
+            text-align: center;
+            line-height: 30px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        
+        .screenshot {
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .tip, .warning {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
+        }
+        
+        .tip {
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
+        }
+        
+        .warning {
+            background: #ffebee;
+            border-left: 4px solid #f44336;
+        }
+        
         @media (max-width: 768px) {
             .header-content {
                 flex-direction: column;
@@ -321,163 +437,153 @@
             .permissions-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .help-container {
+                flex-direction: column;
+            }
+            
+            .help-sidebar {
+                flex: 0 0 auto;
+            }
         }
     </style>
 </head>
 <body>
-    
 
+    <div class="container">
+        <div class="help-nav">
+            <h2>Billing Module Help Sections</h2>
+            <div class="config-links">
+                <a href="#about">About Billing</a>
+                <a href="#navigation">Navigation</a>
+                <a href="#bill-setup">Bill Setup</a>
+                <a href="#bill-students">Bill Students</a>
+                <a href="#bill-individual">Individual Bill</a>
+                <a href="#best-practices">Best Practices</a>
+                <a href="#troubleshooting">Troubleshooting</a>
+            </div>
+        </div>
 
-        <!-- Billing Module Help -->
-        <div id="billing" class="help-content">
-            <h1><i class="fas fa-file-invoice-dollar"></i> Billing Module Help</h1>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-info-circle"></i> About the Billing Module</h2>
-                <p>The Billing module in AcademEA provides comprehensive tools for creating, managing, and applying fees to students. It allows you to set up custom fee structures, apply bills to individual students or groups, and manage billing cycles.</p>
-                
-                <p>This help documentation covers the following specific features of the Billing module:</p>
-                <ul>
-                    <li><strong>Bill Setup:</strong> Create and manage fee structures and billing items</li>
-                    <li><strong>Bill Students:</strong> Apply bills to multiple students at once</li>
-                    <li><strong>Bill Individual Student:</strong> Apply custom bills to specific students</li>
-                </ul>
-            </div>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-map-signs"></i> How to Navigate to Billing Module</h2>
-                <div class="steps">
-                    <div class="step" data-number="1">
-                        <p>Log in to your AcademEA account with appropriate privileges.</p>
-                    </div>
-                    <div class="step" data-number="2">
-                        <p>From the main menu, navigate to <strong>Billing</strong>.</p>
-                    </div>
-                    <div class="step" data-number="3">
-                        <p>You will see options for Bill Setup, Bill Students, and Bill Individual Student.</p>
-                    </div>
-                    <div class="step" data-number="4">
-                        <p>Select the specific feature you want to use.</p>
+        <div class="help-container">
+
+            <!-- Main Content -->
+            <div class="help-main-content">
+                <!-- Header -->
+                <div class="help-header">
+                    <h1><i class="fas fa-file-invoice-dollar feature-icon"></i>Billing Module Help</h1>
+                    <p class="lead">Learn how to manage student billing, set up fees, and process payments in AcademEA</p>
+                    <div class="screenshot">
+                        <img src="/assets/images/billing_nav.png" alt="Billing Module Overview" class="img-fluid rounded">
+                        <p class="caption">Billing module interface overview</p>
                     </div>
                 </div>
-                
-                <div class="ui-preview">
-                    <h3>Billing Module Navigation</h3>
-                    <div class="image-placeholder">
-                         <img src="/assets/images/billing_nav.png" alt="billing navigation screenshot">
+
+                <!-- About Billing Section -->
+                <div class="help-section" id="about">
+                    <h2><i class="fas fa-info-circle feature-icon"></i>About the Billing Module</h2>
+                    <p>The Billing module in AcademEA provides comprehensive tools for creating, managing, and applying fees to students. It allows you to set up custom fee structures, apply bills to individual students or groups, and manage billing cycles.</p>
+                    
+                    <div class="note">
+                        <h3><i class="fas fa-lightbulb"></i> Note</h3>
+                        <p>You need appropriate permissions to access billing features. Contact your system administrator if you don't see the Billing options.</p>
                     </div>
+
+                    <p>This help documentation covers the following specific features of the Billing module:</p>
+                    <ul>
+                        <li><strong>Bill Setup:</strong> Create and manage fee structures and billing items</li>
+                        <li><strong>Bill Students:</strong> Apply bills to multiple students at once</li>
+                        <li><strong>Bill Individual Student:</strong> Apply custom bills to specific students</li>
+                    </ul>
                 </div>
-            </div>
-            
-            <!-- Bill Setup Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-cog"></i> Bill Setup</h2>
-                <p>The Bill Setup feature allows you to create and manage fee structures that can be applied to students. You can define fee codes, types, amounts, and specify which students the fees apply to.</p>
-                
-                <div class="help-section">
-                    <h3><i class="fas fa-plus-circle"></i> How to Add a New Fee</h3>
+
+                <!-- Navigation Section -->
+                <div class="help-section" id="navigation">
+                    <h2><i class="fas fa-map-signs feature-icon"></i>How to Navigate to Billing Module</h2>
                     <div class="steps">
                         <div class="step" data-number="1">
-                            <p>Navigate to Billing → Bill Setup.</p>
+                            <p>Log in to your AcademEA account with appropriate privileges.</p>
                         </div>
                         <div class="step" data-number="2">
-                            <p>Click on "Add Fees" to create a new billing item.</p>
+                            <p>From the main menu, navigate to <strong>Billing</strong>.</p>
                         </div>
                         <div class="step" data-number="3">
-                            <p>Enter a unique Fee Code for identification.</p>
+                            <p>You will see options for Bill Setup, Bill Students, and Bill Individual Student.</p>
                         </div>
                         <div class="step" data-number="4">
-                            <p>Select the Fee Type from the dropdown menu.</p>
-                        </div>
-                        <div class="step" data-number="5">
-                            <p>Enter a descriptive Fee Name.</p>
-                        </div>
-                        <div class="step" data-number="6">
-                            <p>Select the applicable Academic Year and Term.</p>
-                        </div>
-                        <div class="step" data-number="7">
-                            <p>Enter the Amount for the fee.</p>
-                        </div>
-                        <div class="step" data-number="8">
-                            <p>Set the Active status to "Yes" to make the fee available for use.</p>
+                            <p>Select the specific feature you want to use.</p>
                         </div>
                     </div>
                     
-                    <div class="ui-preview">
-                        <h4>Add Fees Interface - Part 1</h4>
-                        <div class="image-placeholder">
-                            <img src="/assets/images/addbill_1.png" alt="add bill screenshot">
-                        </div>
+                    <div class="screenshot">
+                        <h4>Billing Module Navigation</h4>
+                        <img src="/assets/images/billing_nav.png" alt="Billing navigation screenshot">
+                        <p class="caption">Billing module navigation menu</p>
                     </div>
                 </div>
-                
-                <div class="help-section">
-                    <h3><i class="fas fa-filter"></i> How to Specify Fee Applicability</h3>
-                    <div class="steps">
-                        <div class="step" data-number="1">
-                            <p>In the "This bill item applies to the following" section, specify which students the fee should apply to.</p>
-                        </div>
-                        <div class="step" data-number="2">
-                            <p>Select the applicable Residence type (Day, Boarding, or both).</p>
-                        </div>
-                        <div class="step" data-number="3">
-                            <p>Select the applicable Gender (Male, Female, or both).</p>
-                        </div>
-                        <div class="step" data-number="4">
-                            <p>Select the applicable Student Type (Local, International, or both).</p>
-                        </div>
-                        <div class="step" data-number="5">
-                            <p>Select the specific classes this fee applies to, or choose "Select All" to apply to all classes.</p>
-                        </div>
-                        <div class="step" data-number="6">
-                            <p>Click "Save Item" to save the fee structure or "Clear" to start over.</p>
-                        </div>
-                    </div>
+
+                <!-- Bill Setup Section -->
+                <div class="help-section" id="bill-setup">
+                    <h2><i class="fas fa-cog feature-icon"></i>Bill Setup</h2>
+                    <p>The Bill Setup feature allows you to create and manage fee structures that can be applied to students. You can define fee codes, types, amounts, and specify which students the fees apply to.</p>
                     
-                    <div class="ui-preview">
-                        <h4>Add Fees Interface - Part 2</h4>
-                        <div class="image-placeholder">
-                            <img src="/assets/images/addbill_2.png" alt="add bill screenshot">
+                    <div class="step-card">
+                        <h5><span class="step-number">1</span>Navigate to Billing → Bill Setup</h5>
+                        <p>Access the bill setup section from the main billing menu.</p>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">2</span>Add New Fees</h5>
+                        <p>Click on "Add Fees" to create a new billing item and fill in the required information:</p>
+                        <ul>
+                            <li>Fee Code (unique identifier)</li>
+                            <li>Fee Type (select from dropdown)</li>
+                            <li>Fee Name (descriptive name)</li>
+                            <li>Academic Year and Term</li>
+                            <li>Amount</li>
+                            <li>Active status</li>
+                        </ul>
+                        <div class="screenshot">
+                            <img src="/assets/images/addbill_1.png" alt="Add bill interface">
+                            <p class="caption">Add new fee interface</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">3</span>Specify Fee Applicability</h5>
+                        <p>In the "This bill item applies to the following" section, specify which students the fee should apply to:</p>
+                        <ul>
+                            <li>Residence type (Day, Boarding, or both)</li>
+                            <li>Gender (Male, Female, or both)</li>
+                            <li>Student Type (Local, International, or both)</li>
+                            <li>Specific classes or "Select All"</li>
+                        </ul>
+                        <div class="screenshot">
+                            <img src="/assets/images/addbill_2.png" alt="Fee applicability section">
+                            <p class="caption">Fee applicability settings</p>
+                        </div>
+                    </div>
+
+                    <div class="step-card">
+                        <h5><span class="step-number">4</span>Find and Manage Existing Bills</h5>
+                        <p>Use the "Find Bill" section to search for existing fee structures:</p>
+                        <ol>
+                            <li>Select Academic Year and Term to filter bills</li>
+                            <li>Click "Apply Bill" to view matching bills</li>
+                            <li>Review the list of bills with details</li>
+                            <li>Use action buttons to edit or delete bills</li>
+                        </ol>
+                        <div class="screenshot">
+                            <img src="/assets/images/addbill_3.png" alt="Find bill interface">
+                            <p class="caption">Find and manage existing bills</p>
                         </div>
                     </div>
                 </div>
-                
-                <div class="help-section">
-                    <h3><i class="fas fa-search"></i> How to Find and Manage Existing Bills</h3>
-                    <div class="steps">
-                        <div class="step" data-number="1">
-                            <p>Use the "Find Bill" section to search for existing fee structures.</p>
-                        </div>
-                        <div class="step" data-number="2">
-                            <p>Select the Academic Year and Term to filter bills.</p>
-                        </div>
-                        <div class="step" data-number="3">
-                            <p>Click "Apply Bill" to view bills matching your criteria.</p>
-                        </div>
-                        <div class="step" data-number="4">
-                            <p>The system will display a list of bills with details including Fee Code, Name, Amount, Class, Term, and applicability criteria.</p>
-                        </div>
-                        <div class="step" data-number="5">
-                            <p>Use the action buttons to edit or delete existing bills.</p>
-                        </div>
-                    </div>
-                    
-                    <div class="ui-preview">
-                        <h4>Find Bill Interface</h4>
-                        <div class="image-placeholder">
-                            <img src="/assets/images/addbill_3.png" alt="add bill screenshot">
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Bill Students Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-users"></i> Bill Students</h2>
-                <p>The Bill Students feature allows you to apply fee structures to multiple students at once based on selected criteria.</p>
-                
-                <div class="help-section">
-                    <h3><i class="fas fa-tasks"></i> How to Bill Multiple Students</h3>
+
+                <!-- Bill Students Section -->
+                <div class="help-section" id="bill-students">
+                    <h2><i class="fas fa-users feature-icon"></i>Bill Students</h2>
+                    <p>The Bill Students feature allows you to apply fee structures to multiple students at once based on selected criteria.</p>
+
                     <div class="steps">
                         <div class="step" data-number="1">
                             <p>Navigate to Billing → Bill Students.</p>
@@ -505,22 +611,18 @@
                         </div>
                     </div>
                     
-                    <div class="ui-preview">
+                    <div class="screenshot">
                         <h4>Bill Students Interface</h4>
-                        <div class="image-placeholder">
-                            <img src="/assets/images/billsetup.png" alt="add bill screenshot">
-                        </div>
+                        <img src="/assets/images/billsetup.png" alt="Bill students interface">
+                        <p class="caption">Billing multiple students at once</p>
                     </div>
                 </div>
-            </div>
-            
-            <!-- Bill Individual Student Section -->
-            <div class="help-section">
-                <h2><i class="fas fa-user"></i> Bill Individual Student</h2>
-                <p>The Bill Individual Student feature allows you to apply custom bills to specific students, which is useful for special cases or one-time charges.</p>
-                
-                <div class="help-section">
-                    <h3><i class="fas fa-tasks"></i> How to Bill an Individual Student</h3>
+
+                <!-- Bill Individual Student Section -->
+                <div class="help-section" id="bill-individual">
+                    <h2><i class="fas fa-user feature-icon"></i>Bill Individual Student</h2>
+                    <p>The Bill Individual Student feature allows you to apply custom bills to specific students, which is useful for special cases or one-time charges.</p>
+
                     <div class="steps">
                         <div class="step" data-number="1">
                             <p>Navigate to Billing → Bill Individual Student.</p>
@@ -548,93 +650,80 @@
                         </div>
                     </div>
                     
-                    <div class="ui-preview">
+                    <div class="screenshot">
                         <h4>Bill Individual Student Interface</h4>
-                        <div class="image-placeholder">
-                            <img src="/assets/images/billstudent.png" alt="">
+                        <img src="/assets/images/billstudent.png" alt="Bill individual student interface">
+                        <p class="caption">Billing an individual student</p>
+                    </div>
+                </div>
+
+                <!-- Best Practices Section -->
+                <div class="help-section" id="best-practices">
+                    <h2><i class="fas fa-lightbulb feature-icon"></i>Best Practices for Billing Management</h2>
+                    <div class="steps">
+                        <div class="step" data-number="1">
+                            <p><strong>Clear Fee Codes:</strong> Use descriptive and consistent fee codes for easy identification.</p>
+                        </div>
+                        <div class="step" data-number="2">
+                            <p><strong>Regular Reviews:</strong> Regularly review and update fee structures to reflect current rates.</p>
+                        </div>
+                        <div class="step" data-number="3">
+                            <p><strong>Specific Applicability:</strong> Be specific about which students fees apply to avoid incorrect billing.</p>
+                        </div>
+                        <div class="step" data-number="4">
+                            <p><strong>Document Changes:</strong> Keep records of changes to fee structures for reference.</p>
                         </div>
                     </div>
                 </div>
-            </div>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-lightbulb"></i> Best Practices for Billing Management</h2>
-                <div class="steps">
-                    <div class="step" data-number="1">
-                        <p><strong>Clear Fee Codes:</strong> Use descriptive and consistent fee codes for easy identification.</p>
-                    </div>
-                    <div class="step" data-number="2">
-                        <p><strong>Regular Reviews:</strong> Regularly review and update fee structures to reflect current rates.</p>
-                    </div>
-                    <div class="step" data-number="3">
-                        <p><strong>Specific Applicability:</strong> Be specific about which students fees apply to avoid incorrect billing.</p>
-                    </div>
-                    <div class="step" data-number="4">
-                        <p><strong>Document Changes:</strong> Keep records of changes to fee structures for reference.</p>
+
+                <!-- Troubleshooting Section -->
+                <div class="help-section" id="troubleshooting">
+                    <h2><i class="fas fa-tools feature-icon"></i>Troubleshooting Common Issues</h2>
+                    
+                    <table class="feature-table">
+                        <thead>
+                            <tr>
+                                <th>Issue</th>
+                                <th>Possible Cause</th>
+                                <th>Solution</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Cannot create or apply bills</td>
+                                <td>Insufficient permissions</td>
+                                <td>Check your user permissions or contact system administrator</td>
+                            </tr>
+                            <tr>
+                                <td>Fee not appearing in dropdown</td>
+                                <td>Fee may be inactive or not applicable to selected students</td>
+                                <td>Check fee status and applicability criteria</td>
+                            </tr>
+                            <tr>
+                                <td>Student not appearing in list</td>
+                                <td>Student may be inactive or filtered out</td>
+                                <td>Check student status and filters</td>
+                            </tr>
+                            <tr>
+                                <td>Incorrect amount being applied</td>
+                                <td>Fee structure may have been updated</td>
+                                <td>Verify the current fee amount in Bill Setup</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="note">
+                        <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
+                        <p>If you encounter issues with the Billing module or need help with fee management, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
                     </div>
                 </div>
-            </div>
-            
-            <div class="note">
-                <h3><i class="fas fa-exclamation-circle"></i> Important Notes</h3>
-                <ul>
-                    <li>Only users with appropriate permissions can create and apply bills.</li>
-                    <li>All billing activities are logged for audit purposes.</li>
-                    <li>Always verify fee applicability before applying bills to students.</li>
-                    <li>Inactive fees will not be available for application to students.</li>
-                </ul>
-            </div>
-            
-            <div class="help-section">
-                <h2><i class="fas fa-question-circle"></i> Troubleshooting Common Issues</h2>
-                
-                <table class="feature-table">
-                    <thead>
-                        <tr>
-                            <th>Issue</th>
-                            <th>Possible Cause</th>
-                            <th>Solution</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>Cannot create or apply bills</td>
-                            <td>Insufficient permissions</td>
-                            <td>Check your user permissions or contact system administrator</td>
-                        </tr>
-                        <tr>
-                            <td>Fee not appearing in dropdown</td>
-                            <td>Fee may be inactive or not applicable to selected students</td>
-                            <td>Check fee status and applicability criteria</td>
-                        </tr>
-                        <tr>
-                            <td>Student not appearing in list</td>
-                            <td>Student may be inactive or filtered out</td>
-                            <td>Check student status and filters</td>
-                        </tr>
-                        <tr>
-                            <td>Incorrect amount being applied</td>
-                            <td>Fee structure may have been updated</td>
-                            <td>Verify the current fee amount in Bill Setup</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <div class="note">
-                <h3><i class="fas fa-life-ring"></i> Need Further Assistance?</h3>
-                <p>If you encounter issues with the Billing module or need help with fee management, please contact our support team at <a href="mailto:support@eatechnologies.tech">support@eatechnologies.tech</a> or visit our <a href="https://eatechnologies.tech/contact" target="_blank">support portal</a>.</p>
             </div>
         </div>
     </div>
 
-    <footer>
-        <div class="container">
-            <p>&copy; 2025 AcademEA Management System. All rights reserved.</p>
-            <p>Help Documentation v1.6 | Last updated: September 5, 2025</p>
-        </div>
-    </footer>
 
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
         // Simple JavaScript for interactive elements
         document.addEventListener('DOMContentLoaded', function() {
@@ -646,7 +735,7 @@
             });
             
             // Smooth scrolling for navigation links
-            document.querySelectorAll('.config-links a').forEach(anchor => {
+            document.querySelectorAll('.config-links a, .help-sidebar a').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     e.preventDefault();
                     const targetId = this.getAttribute('href');
@@ -656,6 +745,14 @@
                             top: targetElement.offsetTop - 20,
                             behavior: 'smooth'
                         });
+                    }
+                    
+                    // Update active class for sidebar
+                    if (this.classList.contains('nav-link')) {
+                        document.querySelectorAll('.help-sidebar a').forEach(navLink => {
+                            navLink.classList.remove('active');
+                        });
+                        this.classList.add('active');
                     }
                 });
             });

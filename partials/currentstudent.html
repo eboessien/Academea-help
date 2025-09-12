@@ -1,69 +1,356 @@
- <style>
-        :root {
-            --primary: #4e73df;
-            --secondary: #858796;
-            --success: #1cc88a;
-            --info: #36b9cc;
-            --warning: #f6c23e;
-            --danger: #e74a3b;
-            --light: #f8f9fc;
-            --dark: #5a5c69;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Current Students Guide - AcademEA</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
         
         body {
-            background-color: #f8f9fc;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
+            background-color: #f5f7fa;
             color: #333;
+            line-height: 1.6;
         }
         
-        .navbar {
-            background: linear-gradient(135deg, #4e73df 0%, #224abe 100%);
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-        }
-        
-        .help-container {
+        .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 20px;
         }
         
-        .help-header {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 30px;
+        header {
+            background: linear-gradient(135deg, #3498db, #2c3e50);
+            color: white;
+            padding: 20px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            font-size: 28px;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        nav ul li {
+            margin-left: 20px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 5px 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+        
+        nav ul li a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        
+        .help-nav {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-nav h2 {
+            color: #2c3e50;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .config-links {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 10px;
+        }
+        
+        .config-links a {
+            display: block;
+            padding: 12px;
+            background-color: #ecf0f1;
+            color: #34495e;
+            text-decoration: none;
+            border-radius: 6px;
+            transition: all 0.3s;
+            border-left: 4px solid #3498db;
+        }
+        
+        .config-links a:hover {
+            background-color: #3498db;
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .help-content {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
             margin-bottom: 30px;
+        }
+        
+        .help-content h1 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #ecf0f1;
         }
         
         .help-section {
-            background: white;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-            padding: 25px;
             margin-bottom: 30px;
         }
         
-        .help-section h3 {
-            color: var(--primary);
-            border-bottom: 2px solid var(--light);
+        .help-section h2 {
+            color: #3498db;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .help-section h2 i {
+            margin-right: 10px;
+        }
+        
+        .steps {
+            background-color: #ecf0f1;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 15px 0;
+        }
+        
+        .step {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+        }
+        
+        .step:before {
+            content: attr(data-number);
+            position: absolute;
+            left: 0;
+            top: 0;
+            background-color: #3498db;
+            color: white;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 14px;
+            font-weight: bold;
+        }
+        
+        .note {
+            background-color: #fff8e1;
+            border-left: 4px solid #f39c12;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 4px;
+        }
+        
+        .note h3 {
+            color: #f39c12;
+            margin-bottom: 5px;
+        }
+        
+        .ui-preview {
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        
+        .ui-preview img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            margin-bottom: 15px;
+        }
+        
+        .caption {
+            font-style: italic;
+            color: #777;
+            margin-top: 10px;
+        }
+        
+        .image-placeholder {
+            background-color: #eee;
+            padding: 40px;
+            text-align: center;
+            border-radius: 6px;
+            margin: 15px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 250px;
+        }
+        
+        .image-placeholder i {
+            font-size: 48px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+        
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .image-grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        footer {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+        }
+        
+        .feature-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        .feature-table th, .feature-table td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        
+        .feature-table th {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .feature-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .help-container {
+            display: flex;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .help-sidebar {
+            flex: 0 0 250px;
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            height: fit-content;
+        }
+        
+        .help-sidebar h4 {
+            color: #2c3e50;
+            margin-bottom: 15px;
             padding-bottom: 10px;
+            border-bottom: 2px solid #ecf0f1;
+        }
+        
+        .help-sidebar .nav-link {
+            color: #34495e;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin-bottom: 5px;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: block;
+        }
+        
+        .help-sidebar .nav-link:hover,
+        .help-sidebar .nav-link.active {
+            background-color: #3498db;
+            color: white;
+        }
+        
+        .help-main-content {
+            flex: 1;
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .help-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .help-header h1 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+        }
+        
+        .help-header .lead {
+            color: #7f8c8d;
             margin-bottom: 20px;
         }
         
+        .badge {
+            font-size: 0.9rem;
+            padding: 8px 12px;
+            border-radius: 20px;
+        }
+        
+        .feature-icon {
+            color: #3498db;
+            margin-right: 10px;
+        }
+        
         .step-card {
-            border-left: 4px solid var(--primary);
-            padding: 15px 20px;
-            margin-bottom: 20px;
-            background: var(--light);
-            border-radius: 0 8px 8px 0;
+            background: #f8f9fa;
+            border-left: 4px solid #3498db;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 4px;
         }
         
         .step-number {
             display: inline-block;
             width: 30px;
             height: 30px;
-            background: var(--primary);
+            background: #3498db;
             color: white;
             text-align: center;
             line-height: 30px;
@@ -72,211 +359,193 @@
         }
         
         .screenshot {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 10px;
-            background: white;
-            margin: 15px 0;
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            margin: 20px 0;
+            text-align: center;
         }
         
-        .note {
-            background: #e8f4fd;
-            border-left: 4px solid var(--info);
-            padding: 15px;
+        .screenshot img {
+            max-width: 100%;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-preview {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 8px;
             margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+        }
+        
+        .tip, .warning {
+            padding: 15px;
+            border-radius: 6px;
+            margin: 15px 0;
         }
         
         .tip {
-            background: #f0f9f0;
-            border-left: 4px solid var(--success);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+            background: #e8f5e9;
+            border-left: 4px solid #4caf50;
         }
         
         .warning {
-            background: #fef7f7;
-            border-left: 4px solid var(--danger);
-            padding: 15px;
-            margin: 20px 0;
-            border-radius: 0 8px 8px 0;
+            background: #ffebee;
+            border-left: 4px solid #f44336;
         }
         
-        .feature-icon {
-            color: var(--primary);
-            font-size: 24px;
-            margin-right: 10px;
-        }
-        
-        .help-nav {
-            position: sticky;
-            top: 20px;
-        }
-
-        /* Image placeholder styles */
-        .image-placeholder {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 100%;
-            max-height: 460px;
-            overflow: hidden;
-            border-radius: 8px;
-        }
-
-        .image-placeholder img {
-            width: 100%;
-            height: auto;
-            object-fit: cover;
-            display: block;
+        .accordion-button:not(.collapsed) {
+            background-color: #e3f2fd;
+            color: #1565c0;
         }
         
         @media (max-width: 768px) {
-            .help-nav {
-                position: static;
-                margin-bottom: 30px;
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            nav ul {
+                margin-top: 15px;
+                justify-content: center;
+            }
+            
+            .config-links {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            
+            .feature-table {
+                display: block;
+                overflow-x: auto;
+            }
+            
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .help-container {
+                flex-direction: column;
+            }
+            
+            .help-sidebar {
+                flex: 0 0 auto;
             }
         }
     </style>
-    <div class="help-container">
-        <div class="row">
-            <!-- Sidebar Navigation -->
-            <div class="col-lg-3">
-                <div class="help-section help-nav">
-                    <h4>Contents</h4>
-                    <div class="nav flex-column">
-                        <a class="nav-link active" href="#intro">Introduction</a>
-                        <a class="nav-link" href="#viewing">Viewing Students</a>
-                        <a class="nav-link" href="#details">Student Details</a>
-                        <a class="nav-link" href="#photos">Adding Photos</a>
-                        <a class="nav-link" href="#tabs">Information Tabs</a>
-                        <a class="nav-link" href="#troubleshooting">Troubleshooting</a>
-                    </div>
+</head>
+<body>
+    <header>
+        <div class="container header-content">
+            <div class="logo">
+                <i class="fas fa-graduation-cap"></i>
+                <span>AcademEA</span>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <div class="help-nav">
+            <h2>Current Students Guide Sections</h2>
+            <div class="config-links">
+                <a href="#intro">Introduction</a>
+                <a href="#viewing">Viewing Students</a>
+                <a href="#details">Student Details</a>
+                <a href="#photos">Adding Photos</a>
+                <a href="#tabs">Information Tabs</a>
+                <a href="#troubleshooting">Troubleshooting</a>
+            </div>
+        </div>
+
+        <div class="help-content">
+            <div class="help-header">
+                <h1><i class="fas fa-user-graduate feature-icon"></i>Current Students Guide</h1>
+                <p class="lead">Learn how to effectively manage and view current student information in AcademEA</p>
+                <div class="screenshot">
+                    <img src="/assets/images/current-student-a-particular-class-selected.jpg" alt="Current Students Page" class="img-fluid rounded">
+                    <p class="caption">Current Students page with a class selected</p>
                 </div>
             </div>
 
-            <!-- Main Content -->
-            <div class="col-lg-9">
-                <!-- Header -->
-                <div class="help-header text-center">
-                    <h1 class="text-primary"><i class="fas fa-user-graduate me-2"></i>Current Students Guide</h1>
-                    <p class="lead">Learn how to effectively manage and view current student information in AcademEA</p>
-
-                            <img id="page-screenshot" src="/assets/images/current-student-a-particular-class-selected.jpg" alt="Page screenshot" class="img-fluid rounded" />
-                        </div>
-                    </div>
-
+            <!-- Introduction Section -->
+            <div class="help-section" id="intro">
+                <h2><i class="fas fa-info-circle feature-icon"></i>Introduction to Current Students</h2>
+                <p>The <strong>Current Students</strong> section allows you to view and manage all students currently enrolled in your institution. This powerful tool helps you access student information quickly and efficiently.</p>
+                
+                <div class="note">
+                    <h3><i class="fas fa-lightbulb"></i> Note</h3>
+                    <p>You must have appropriate permissions to view and edit student information. Contact your system administrator if you need access.</p>
                 </div>
 
-                <!-- Introduction Section -->
-                <div class="help-section" id="intro">
-                    <h3><i class="fas fa-info-circle feature-icon"></i>Introduction to Current Students</h3>
-                    <p>The <strong>Current Students</strong> section allows you to view and manage all students currently enrolled in your institution. This powerful tool helps you access student information quickly and efficiently.</p>
-                    
-                    <div class="note">
-                        <strong><i class="fas fa-lightbulb me-1"></i>Note:</strong> You must have appropriate permissions to view and edit student information. Contact your system administrator if you need access.
-                    </div>
+                <p>In this guide, you'll learn how to:</p>
+                <ul>
+                    <li>Select a class to view its students</li>
+                    <li>Search for specific students</li>
+                    <li>View detailed student information</li>
+                    <li>Add student photos</li>
+                    <li>Navigate between different information tabs</li>
+                </ul>
+            </div>
 
-                    <p>In this guide, you'll learn how to:</p>
-                    <ul>
-                        <li>Select a class to view its students</li>
-                        <li>Search for specific students</li>
-                        <li>View detailed student information</li>
-                        <li>Add student photos</li>
-                        <li>Navigate between different information tabs</li>
-                    </ul>
-                </div>
+            <!-- Viewing Students Section -->
+            <div class="help-section" id="viewing">
+                <h2><i class="fas fa-list feature-icon"></i>Viewing Students by Class</h2>
+                <p>To view students in a specific class, follow these steps:</p>
 
-                <!-- Viewing Students Section -->
-                <div class="help-section" id="viewing">
-                    <h3><i class="fas fa-list feature-icon"></i>Viewing Students by Class</h3>
-                    <p>To view students in a specific class, follow these steps:</p>
-
-                    <div class="step-card">
-                        <h5><span class="step-number">1</span>Select a Class</h5>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <h5>Select a Class</h5>
                         <p>Use the <strong>"Choose Class"</strong> dropdown menu to select the class you want to view. The student list will automatically update to show only students from that class.</p>
-                        <div class="screenshot text-center bg-light py-4">
-                            <p class="text-muted"><i class="fas fa-image me-1"></i>Class selection dropdown</p>
-                            <div class="d-inline-block text-start">
-                              
-                                 <img src="/assets/images/current-student-select-class.jpg" alt="class select">
-                            </div>
+                        <div class="screenshot">
+                            <img src="/assets/images/current-student-select-class.jpg" alt="Class selection dropdown">
+                            <p class="caption">Class selection dropdown</p>
                         </div>
                     </div>
 
-                    <div class="step-card">
-                        <h5><span class="step-number">2</span>Search for a Student</h5>
+                    <div class="step" data-number="2">
+                        <h5>Search for a Student</h5>
                         <p>If you're looking for a specific student, use the <strong>Search box</strong> above the student list. You can search by:</p>
                         <ul>
                             <li>Student ID</li>
                             <li>First or Last name</li>
                             <li>Other identifying information</li>
                         </ul>
-                        <div class="screenshot text-center bg-light py-4">
-                            <p class="text-muted"><i class="fas fa-image me-1"></i>Search box example</p>
-                            <div class="d-inline-block text-start w-75">
-                                <div class="input-group">
-                                    <span class="input-group-text"><i class="fas fa-search"></i></span>
-                                    <input type="text" class="form-control" placeholder="Search...">
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
-                    <div class="step-card">
-                        <h5><span class="step-number">3</span>View Student List</h5>
+                    <div class="step" data-number="3">
+                        <h5>View Student List</h5>
                         <p>Once you've selected a class, the student list will display all students in that class. The list shows:</p>
                         <ul>
                             <li>Student ID</li>
                             <li>Student Name</li>
                             <li>Class Information</li>
                         </ul>
-                        <div class="screenshot text-center bg-light py-4">
-                            <p class="text-muted"><i class="fas fa-image me-1"></i>Student list example</p>
-                            <div class="d-inline-block text-start w-100">
-                                <table class="table table-bordered">
-                                    <thead class="table-light">
-                                        <tr>
-                                            <th>#</th>
-                                            <th>ID</th>
-                                            <th>Name</th>
-                                            <th>Class</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>1</td>
-                                            <td>STD10050</td>
-                                            <td>FRANK DEBRA J.H.</td>
-                                            <td>J.H.S 1</td>
-                                        </tr>
-                                        <tr>
-                                            <td>2</td>
-                                            <td>STD10053</td>
-                                            <td>SUSANA ARTHUR J.H.</td>
-                                            <td>J.H.S 1</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                        <div class="screenshot">
+                            <div class="image-placeholder">
+                                <img src="/assets/images/current-student-student-list.jpg" alt="">
                             </div>
+                            <p class="caption">Student list display</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Student Details Section -->
-                <div class="help-section" id="details">
-                    <h3><i class="fas fa-user feature-icon"></i>Viewing Student Details</h3>
-                    <p>To view detailed information about a student:</p>
+            <!-- Student Details Section -->
+            <div class="help-section" id="details">
+                <h2><i class="fas fa-user feature-icon"></i>Viewing Student Details</h2>
+                <p>To view detailed information about a student:</p>
 
-                    <div class="step-card">
-                        <h5><span class="step-number">1</span>Select a Student</h5>
+                <div class="steps">
+                    <div class="step" data-number="1">
                         <p>Click on a student's name in the student list. Their details will appear on the right side of the screen (or below on mobile devices).</p>
                     </div>
 
-                    <div class="step-card">
-                        <h5><span class="step-number">2</span>Review Student Information</h5>
+                    <div class="step" data-number="2">
                         <p>The student details section shows important information such as:</p>
                         <ul>
                             <li>First and Last name</li>
@@ -288,19 +557,22 @@
                             <li>Program Type</li>
                         </ul>
                     </div>
-
-                    <div class="tip">
-                        <strong><i class="fas fa-tip me-1"></i>Tip:</strong> Required fields are marked with an asterisk (*). You must complete these fields when adding or editing student information.
-                    </div>
                 </div>
 
-                <!-- Adding Photos Section -->
-                <div class="help-section" id="photos">
-                    <h3><i class="fas fa-camera feature-icon"></i>Adding Student Photos</h3>
-                    <p>You can add photos to student profiles in two ways:</p>
+                <div class="tip">
+                    <h3><i class="fas fa-lightbulb"></i> Tip</h3>
+                    <p>Required fields are marked with an asterisk (*). You must complete these fields when adding or editing student information.</p>
+                </div>
+            </div>
 
-                    <div class="step-card">
-                        <h5><span class="step-number">1</span>Upload from Your Device</h5>
+            <!-- Adding Photos Section -->
+            <div class="help-section" id="photos">
+                <h2><i class="fas fa-camera feature-icon"></i>Adding Student Photos</h2>
+                <p>You can add photos to student profiles in two ways:</p>
+
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <h5>Upload from Your Device</h5>
                         <p>To upload a photo from your computer or mobile device:</p>
                         <ol>
                             <li>Scroll to the bottom of the student details section</li>
@@ -310,8 +582,8 @@
                         </ol>
                     </div>
 
-                    <div class="step-card">
-                        <h5><span class="step-number">2</span>Take a Photo with Your Camera</h5>
+                    <div class="step" data-number="2">
+                        <h5>Take a Photo with Your Camera</h5>
                         <p>To take a new photo using your device's camera:</p>
                         <ol>
                             <li>Click the <strong>"Start Camera"</strong> button</li>
@@ -321,135 +593,132 @@
                             <li>Click <strong>"Stop Camera"</strong> when finished</li>
                         </ol>
                     </div>
+                </div>
 
-                    <div class="warning">
-                        <strong><i class="fas fa-exclamation-triangle me-1"></i>Important:</strong> Make sure you have permission to take and store student photos according to your institution's privacy policy.
+                <div class="warning">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Important</h3>
+                    <p>Make sure you have permission to take and store student photos according to your institution's privacy policy.</p>
+                </div>
+            </div>
+
+            <!-- Information Tabs Section -->
+            <div class="help-section" id="tabs">
+                <h2><i class="fas fa-folder feature-icon"></i>Information Tabs</h2>
+                <p>Each student's profile contains multiple tabs with different types of information:</p>
+
+                <div class="image-grid">
+                    <div class="image-grid-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-user-graduate me-2"></i>Student Tab</h5>
+                                <p class="card-text">Contains basic student information like name, ID, class, and contact details.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-grid-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-male me-2"></i>Father Tab</h5>
+                                <p class="card-text">Contains information about the student's father, including contact details.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-grid-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-female me-2"></i>Mother Tab</h5>
+                                <p class="card-text">Contains information about the student's mother, including contact details.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="image-grid-item">
+                        <div class="card">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fas fa-user-friends me-2"></i>Guardian Tab</h5>
+                                <p class="card-text">Contains information about the student's guardian if different from parents.</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
-                <!-- Information Tabs Section -->
-                <div class="help-section" id="tabs">
-                    <h3><i class="fas fa-folder feature-icon"></i>Information Tabs</h3>
-                    <p>Each student's profile contains multiple tabs with different types of information:</p>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-user-graduate me-2"></i>Student Tab</h5>
-                                    <p class="card-text">Contains basic student information like name, ID, class, and contact details.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-male me-2"></i>Father Tab</h5>
-                                    <p class="card-text">Contains information about the student's father, including contact details.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-female me-2"></i>Mother Tab</h5>
-                                    <p class="card-text">Contains information about the student's mother, including contact details.</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card mb-3">
-                                <div class="card-body">
-                                    <h5 class="card-title"><i class="fas fa-user-friends me-2"></i>Guardian Tab</h5>
-                                    <p class="card-text">Contains information about the student's guardian if different from parents.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="step-card">
-                        <h5><span class="step-number">1</span>Switch Between Tabs</h5>
+                <div class="steps">
+                    <div class="step" data-number="1">
+                        <h5>Switch Between Tabs</h5>
                         <p>Click on any tab to view the corresponding information. The active tab will be highlighted.</p>
-                        <div class="screenshot text-center bg-light py-4">
-                            <p class="text-muted"><i class="fas fa-image me-1"></i>Tab navigation example</p>
-                            <div class="d-inline-block">
-                               <img src="/assets/images/current-student-tabs.jpg" alt="current-student-tabs">
-                            </div>
+                        <div class="screenshot">
+                            <img src="/assets/images/current-student-tabs.jpg" alt="Tab navigation">
+                            <p class="caption">Tab navigation example</p>
                         </div>
                     </div>
                 </div>
+            </div>
 
-                <!-- Troubleshooting Section -->
-                <div class="help-section" id="troubleshooting">
-                    <h3><i class="fas fa-tools feature-icon"></i>Troubleshooting</h3>
-                    <p>Here are solutions to common issues you might encounter:</p>
+            <!-- Troubleshooting Section -->
+            <div class="help-section" id="troubleshooting">
+                <h2><i class="fas fa-tools feature-icon"></i>Troubleshooting</h2>
+                <p>Here are solutions to common issues you might encounter:</p>
 
-                    <div class="accordion" id="helpAccordion">
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
-                                    No students appear in the list
-                                </button>
-                            </h2>
-                            <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#helpAccordion">
-                                <div class="accordion-body">
-                                    Make sure you've selected a class from the dropdown menu. If the problem persists, contact your system administrator to verify that students are properly enrolled in the selected class.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
-                                    Camera not working for photos
-                                </button>
-                            </h2>
-                            <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
-                                <div class="accordion-body">
-                                    Ensure that you've allowed browser access to your camera. Check your browser settings and privacy permissions. If using a work computer, your organization might restrict camera access.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="accordion-item">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
-                                    Can't edit student information
-                                </button>
-                            </h2>
-                            <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#helpAccordion">
-                                <div class="accordion-body">
-                                    You may not have editing permissions. Contact your system administrator to verify your user role has appropriate permissions to edit student information.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <table class="feature-table">
+                    <thead>
+                        <tr>
+                            <th>Issue</th>
+                            <th>Possible Cause</th>
+                            <th>Solution</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>No students appear in the list</td>
+                            <td>No class selected or no students enrolled</td>
+                            <td>Make sure you've selected a class from the dropdown menu</td>
+                        </tr>
+                        <tr>
+                            <td>Can't upload student photo</td>
+                            <td>File type not supported or file size too large</td>
+                            <td>Use a JPG or PNG file under 2MB in size</td>
+                        </tr>   
+                        <tr>
+                            <td>Student details not updating</td>
+                            <td>Missing required fields or invalid data</td>
+                            <td>Ensure all required fields are filled out correctly</td>    
+                        </tr>
+                    </tbody>
+                </table>
 
-                    <div class="note mt-4">
-                        <strong><i class="fas fa-life-ring me-1"></i>Need more help?</strong> Contact the AcademEA support team at support@eatechnologies.tech or call (233)50 128 2006 between 8am and 5pm GMT.
-                    </div>
+                <div class="note">
+                    <h3><i class="fas fa-life-ring"></i> Need more help?</h3>
+                    <p>Contact the AcademEA support team at support@eatechnologies.tech or call (233)50 128 2006 between 8am and 5pm GMT.</p>
                 </div>
             </div>
         </div>
     </div>
 
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        // Simple smooth scrolling for navigation links
-        document.querySelectorAll('.help-nav .nav-link').forEach(link => {
-            link.addEventListener('click', function(e) {
-                e.preventDefault();
-                const targetId = this.getAttribute('href');
-                const targetElement = document.querySelector(targetId);
-                window.scrollTo({
-                    top: targetElement.offsetTop - 20,
-                    behavior: 'smooth'
+        // Simple JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add animation to steps
+            const steps = document.querySelectorAll('.step');
+            steps.forEach((step, index) => {
+                step.style.animationDelay = `${index * 0.1}s`;
+                step.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('.config-links a').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 20,
+                            behavior: 'smooth'
+                        });
+                    }
                 });
-                
-                // Update active class
-                document.querySelectorAll('.help-nav .nav-link').forEach(navLink => {
-                    navLink.classList.remove('active');
-                });
-                this.classList.add('active');
             });
         });
     </script>
